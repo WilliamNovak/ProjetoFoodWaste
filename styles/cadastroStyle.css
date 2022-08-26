@@ -1,0 +1,61 @@
+form {
+    display:grid;
+    align-items: center;
+    border-radius: 5%;
+    background-color: rgb(255,255,255,0.9);
+    max-width: 600px;
+    padding: 20px;
+    width: 100%;
+    position: relative;
+    margin: auto;
+}
+
+.legend {
+    text-align: center;
+    color: #01937C;
+}
+
+.typeDiv{
+    border: none;
+    background: transparent;
+    width: 80%;
+    border-bottom: 1px solid #01937C;
+    padding-left: 10px;
+    margin: 10px auto;
+    border-radius: 5px;
+}
+.typeDiv:focus{
+    outline: 0;
+    border-bottom: 2px solid #01937C;
+}
+.inputUser{
+    border: none;
+    height: 35px;
+    background: transparent;
+    width: 80%;
+    border-bottom: 1px solid #01937C;
+    padding-left: 10px;
+    margin: 10px auto;
+    border-radius: 5px;
+}
+
+.inputUser:focus{
+    outline: 0;
+    border-bottom: 2px solid #01937C;
+}
+
+.buttonform{
+    margin: 10px auto;
+    height: 40px;
+    cursor: pointer;
+    background-color: #01937C;
+    color: white;
+    width: 80%;
+    border: none;
+    border-radius: 10px;
+    transition: 0.25s;
+}
+
+.buttonform:hover{
+    filter: brightness(0.7);
+}
