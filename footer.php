@@ -1,5 +1,4 @@
-        </div>
-    </div>
-    <script src="scripts/script.js"></script>
+        <!-- </div>
+    </div> -->
 </body>
 </html>

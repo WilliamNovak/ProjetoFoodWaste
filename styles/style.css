@@ -1,12 +1,9 @@
-body,html {
+html {
   height: 100%;
+  width: 100%;
 }
 
-/* * {
-  box-sizing: border-box;
-} */
-
-.bg-image {
+/* .bg-image {
   background: linear-gradient(to right, rgb(29, 151, 108, 0.45), rgb(147, 249, 185, 0.65)),
   url("../imgs/background.png"); 
   background-position: center;
@@ -14,25 +11,34 @@ body,html {
   background-size: cover;
   height: 100%;
   /* position: relative; */
-   /* -webkit-filter: blur(1px); */
-}
+   /* -webkit-filter: blur(1px); 
+} */
 
-.body{
-  margin: auto;
+body{
+  background: linear-gradient(to right, rgb(29, 151, 108, 0.45), rgb(147, 249, 185, 0.65)),
+  url("../imgs/background.png"); 
+  background-position: center;
+  background-repeat: repeat;
+  background-size: cover;
+  /* margin: auto; */
   position: relative;
-  top: 50%;
+  /* top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); */
   text-align: center;
+  height: 100%;
+  width: 100%;
 }
 
 .navbar{
   background-image: linear-gradient(to right, rgb(29, 151, 108), rgb(147, 219, 185));
   display: flex;
   justify-content: space-between;
+  margin-bottom: 20px;
 }
 
 #nav {
   position: sticky;
   top: 0px;
+  z-index: 1;
 }

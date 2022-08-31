@@ -36,5 +36,5 @@
         </div>
     </nav>
     
-    <div class="bg-image">
-        <div class="body">
+    <!-- <div class="bg-image">
+        <div class="body"> -->

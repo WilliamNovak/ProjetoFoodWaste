@@ -18,24 +18,6 @@ form {
     }
 } */
 
-form {
-    display:grid;
-    align-items: center;
-    border-radius: 20px;
-    background-color: rgb(255,255,255,0.9);
-    max-width: 600px;
-    padding: 20px;
-    width: 100%;
-    position: relative;
-    margin: auto;
-}
-
-@media screen and (max-width: 480px){
-    form{
-        margin-top: 110px;
-    }
-}
-
 .cadastro-div {
     position: relative;
 }
