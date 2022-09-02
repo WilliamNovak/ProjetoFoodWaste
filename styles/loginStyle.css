@@ -1,85 +1,79 @@
 form {
-    display:grid;
-    align-items: center;
-    border-radius: 20px;
-    background-color: rgb(255,255,255,0.83);
     max-width: 500px;
-    max-height: 400px;
-    padding: 20px;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    margin: auto;
+    max-height: 480px;
 }
 
 .login-div {
     position: relative;
+    height: 90%;
+    display: flex;
 }
 
-.legend {
+.input-div {
+    display: block;
+    align-items: center;
+}
+
+.login-icon {
+    position: absolute;
     color: rgb(1, 147, 124);
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 45px;
+    padding: 16px;
 }
 
 .inputUser{
-    border: none;
+    border: 2px solid rgb(203, 203, 203);
     height: 35px;
     background: transparent;
     width: 80%;
-    border-bottom: 1px solid rgb(1, 147, 124);
-    padding-left: 10px;
-    margin: 10px auto;
-    border-radius: 5px;
-    font-family: serif;
-    font-size: 20px;   
+    /* border-bottom: 1px solid rgb(1, 147, 124); */
+    padding: 24px 24px 24px 44px;
+    margin: auto;
+    border-radius: 4px; 
+    color: rgb(1, 147, 124);
 }
 
 .inputUser::placeholder{
-    font-size: 20px;
-    font-family: serif;
     color: rgb(1, 147, 124);
 }
 
 .inputUser:focus::placeholder{
     color: rgb(1, 147, 124);
-    font-family: serif;
+    font-weight: 500;
     font-size: 23px;
 }
 
 .inputUser:focus{
     outline: 0;
-    border-bottom: 3.5px solid rgb(1, 147, 124);
+    border: 2.5px solid rgb(1, 147, 124);
     font-size: 23px;
-}
-
-.buttonform{
-    margin: 10px auto;
-    height: 40px;
-    cursor: pointer;
-    background-color: rgb(1, 147, 124);
-    color: white;
-    width: 80%;
-    border: none;
-    border-radius: 10px;
-    transition: 0.25s;
-}
-
-.buttonform:hover{
-    filter: brightness(0.7);
-}
-
-.login-icon {
-    color: rgb(1, 147, 124);
 }
 
 .linkPw {
     color: rgb(1, 147, 124);
     text-decoration: none;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-style: italic;
 }
 
 .linkPw:hover {
     color: rgb(1, 147, 124);
-    font-weight: bold;
+}
+
+.newAccount-div {
+    display: flex;
+    justify-content:center;
+}
+
+.newAccountText {
+    color: rgb(140, 140, 140);
+    padding: 5px;
+}
+
+.newAccountLink {
+    text-decoration: none;
+    color: rgb(1, 147, 124);
+    padding: 5px;
+}
+
+.newAccountLink:hover {
+    color: rgb(1, 147, 124);
 }

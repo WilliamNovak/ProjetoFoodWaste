@@ -1,25 +1,12 @@
 form {
-    display:grid;
-    align-items: center;
-    border-radius: 20px;
-    background-color: rgb(255,255,255,0.9);
     max-width: 600px;
     max-height: 900px;
-    padding: 20px;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    margin: auto;
 }
-
-/* @media screen and (max-width: 480px){
-    form{
-        margin-top: 110px;
-    }
-} */
 
 .cadastro-div {
     position: relative;
+    height: 100%;
+    display: flex;
 }
 
 .typeDiv{
@@ -36,12 +23,6 @@ form {
     border-bottom: 2px solid #01937C;
 }
 
-.legend {
-    color: rgb(1, 147, 124);
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 45px;
-}
-
 .inputUser{
     border: none;
     height: 35px;
@@ -51,19 +32,15 @@ form {
     padding-left: 10px;
     margin: 10px auto;
     border-radius: 5px;
-    font-family: serif;
-    font-size: 20px;   
 }
 
 .inputUser::placeholder{
     font-size: 20px;
-    font-family: serif;
     color: rgb(1, 147, 124);
 }
 
 .inputUser:focus::placeholder{
     color: rgb(1, 147, 124);
-    font-family: serif;
     font-size: 23px;
 }
 
@@ -71,20 +48,4 @@ form {
     outline: 0;
     border-bottom: 3.5px solid rgb(1, 147, 124);
     font-size: 23px;
-}
-
-.buttonform{
-    margin: 10px auto;
-    height: 40px;
-    cursor: pointer;
-    background-color: rgb(1, 147, 124);
-    color: white;
-    width: 80%;
-    border: none;
-    border-radius: 10px;
-    transition: 0.25s;
-}
-
-.buttonform:hover{
-    filter: brightness(0.7);
 }

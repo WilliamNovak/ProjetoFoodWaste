@@ -16,20 +16,26 @@
     <form action="testaLogin.php" method="POST">
         <h1 class="legend">Login</h1>
       
-        <div>
-            <i class="bi bi-person-fill login-icon"></i>
+        <div class="input-div">
+            <span class="fa fa-user login-icon"></span>
             <input class="inputUser" type="text" name="user" placeholder="Usuário" tabindex=1 required>
         </div>
 
-        <div>
-            <i class="bi bi-lock-fill login-icon"></i>
+        <div class="input-div">
+            <i class="fa fa-key login-icon"></i>
             <input class="inputUser" type="password" name="password" placeholder="Senha" tabindex=2 required>
-            <div class="forgot-div">
-                <a href="" class="linkPw">Esqueceu sua senha?</a>
-            </div>
         </div>
 
-        <input class="buttonform" type="submit" name="submit" value="Entrar">
+        <div class="forgot-div">
+            <a href="" class="linkPw">Esqueceu sua senha?</a>
+        </div>
+
+        <input class="buttonform" type="submit" name="submit" value="Entrar" tabindex=3>
+
+        <div class="newAccount-div">
+            <p class="newAccountText">Não possui conta?</p>
+            <a href="cadastro.php" class="newAccountLink">Cadastre-se</a>
+        </div>
 
     </form>
 </div>

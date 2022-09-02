@@ -18,16 +18,26 @@
                 <li class="nav-item active">
                     <a class="nav-link" id="login-link" href="login.php">
                         Login
-                        <!-- <span class="material-symbols-outlined">login</span> -->
                     </a>
                 </li>
                 <?php
                     }
                     else {
                 ?>
-                <li class="nav-item active">
-                    <a href="logout.php" id="logout-link" class="nav-link">Sair</a>
-                </li>
+                <div class="menu-div">
+                    <button onclick="openMenu()" class="btnMenu">
+                        <i class="fa fa-user"></i>
+                        <?php
+                        print_r($_SESSION['user']);
+                        ?>
+                        <i class="fa fa-chevron-down"></i>
+                    </button>
+                    <div id="userMenu" class="menu-content">
+                        <li class="nav-item">
+                            <a href="logout.php" id="logout-link" class="nav-link"><i class="fa fa-arrow-right-from-bracket"></i>Sair</a>
+                        </li>
+                    </div>
+                </div>
                 <?php
                     }
                 ?>
@@ -35,6 +45,3 @@
             </div>
         </div>
     </nav>
-    
-    <!-- <div class="bg-image">
-        <div class="body"> -->
