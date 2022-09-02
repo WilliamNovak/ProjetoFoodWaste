@@ -1,12 +1,27 @@
 form {
-    max-width: 600px;
     max-height: 900px;
+    border-radius: 0;
 }
 
 .cadastro-div {
     position: relative;
     height: 100%;
     display: flex;
+    width: 100%;
+}
+
+.template-div{
+    width: 40%;
+}
+
+.form-div {
+    width: 60%;
+}
+
+.passwords-div {
+    display: flex;
+    width: 80%;
+    margin: auto;
 }
 
 .typeDiv{

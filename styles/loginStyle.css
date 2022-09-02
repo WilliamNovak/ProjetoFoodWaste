@@ -30,22 +30,24 @@ form {
     margin: auto;
     border-radius: 4px; 
     color: rgb(1, 147, 124);
+    transition: border .6s;
 }
 
+.inputUser:hover{
+    border: 2px solid rgb(1, 147, 124);
+    }
+    
 .inputUser::placeholder{
     color: rgb(1, 147, 124);
 }
 
 .inputUser:focus::placeholder{
-    color: rgb(1, 147, 124);
-    font-weight: 500;
-    font-size: 23px;
+    color: 2px solid rgb(1, 147, 124);
 }
 
 .inputUser:focus{
     outline: 0;
-    border: 2.5px solid rgb(1, 147, 124);
-    font-size: 23px;
+    border: 2px solid rgb(1, 147, 124);
 }
 
 .linkPw {

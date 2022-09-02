@@ -1,5 +1,10 @@
 <?php
     require_once("./template.php");
+
+    session_start();
+    if((isset($_SESSION['user']) == true) and (isset($_SESSION['password']) == true)){
+        header('Location: index.php');
+    }
 ?>
     <link rel="stylesheet" type="text/css" href="styles/style.css" >
     <link rel="stylesheet" type="text/css" href="styles/loginStyle.css" >
@@ -9,7 +14,6 @@
 
 <?php
     require_once("./navbar.php");
-  
 ?>
 
 <div class="login-div">
