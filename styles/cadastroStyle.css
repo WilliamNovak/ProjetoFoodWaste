@@ -11,7 +11,7 @@ form {
 }
 
 .columns-div {
-    width: 85%;
+    width: 90%;
     margin: auto;
     display: flex;
 }
@@ -66,4 +66,8 @@ form {
     padding: 0 20px 0 20px;
     height: 52px;
     margin: none;
+}
+
+.buttonform {
+    width: 85%;
 }

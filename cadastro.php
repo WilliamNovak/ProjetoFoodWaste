@@ -24,7 +24,7 @@
         $number = $_POST['num'];
 
         $query = mysqli_query($conexao, "INSERT INTO usuario (tipo_usuario, nome_usuario, senha, nome_fantasia, razao_social, email, telefone, cnpj, estado, cidade, cep, endereco, numero) 
-                                         VALUES ('$userType', '$username', '$hashPw', '$fantasyName', '$reason', '$email', '$telephone', '$cnpj', '$state', '$city', '$cep', '$address', '$number')");
+                                            VALUES ('$userType', '$username', '$hashPw', '$fantasyName', '$reason', '$email', '$telephone', '$cnpj', '$state', '$city', '$cep', '$address', '$number')");
 
         header("Location: login.php");
     }
@@ -49,9 +49,9 @@
                 <div class="column1">
                     <input type="text" name="username" placeholder="Nome de usúario" class="inputs" required>
                 
-                    <input type="password" name="password" placeholder="Senha" class="inputs" required>
+                    <input type="password" name="password" placeholder="Senha" class="inputs" id="pw1" required>
                     
-                    <input type="password" name="confirmPassword" placeholder="Confirmar senha" class="inputs" required>
+                    <input type="password" name="confirmPassword" placeholder="Confirmar senha" class="inputs"  id="pw2" required>
 
                     <input type="text" name="cnpj" placeholder="CNPJ" class="inputs" required>
 
@@ -113,16 +113,17 @@
                     <div class="flex-div">
                         <input type="text" name="address" placeholder="Endereço" class="inputs firstInput" required>
 
-                        <input type="text" name="num" placeholder="Número" class="inputs secondInput" required>
+                        <input type="number" name="num" placeholder="Número" class="inputs secondInput" required>
                     </div>
 
                 </div>
             </div>
 
-            <input class="buttonform" type="submit" name="submit" value="Finalizar Cadastro">
+            <button class="buttonform" onclick="return validaCadastro()" type="submit" name="submit">Finalizar Cadastro</button>
         </form>
     </div>
     
+    <script src="js/script.js"></script>
 <?php
     require_once("./footer.php");
 ?>
