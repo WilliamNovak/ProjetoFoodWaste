@@ -12,8 +12,8 @@ form {
     width: 100%;
 }
 
-.columns-div {
-    display: flex;
+.column1, .column2 {
+    width: 50%;
 }
 
 .typeDiv{
@@ -25,12 +25,13 @@ form {
     margin: 10px auto;
     border-radius: 5px;
 }
+
 .typeDiv:focus{
     outline: 0;
     border-bottom: 2px solid #01937C;
 }
 
-.inputUser{
+.inputs{
     border: none;
     height: 35px;
     background: transparent;
@@ -41,18 +42,26 @@ form {
     border-radius: 5px;
 }
 
-.inputUser::placeholder{
+.inputs::placeholder{
     font-size: 20px;
     color: rgb(1, 147, 124);
 }
 
-.inputUser:focus::placeholder{
+.inputs:focus::placeholder{
     color: rgb(1, 147, 124);
     font-size: 23px;
 }
 
-.inputUser:focus{
+.inputs:focus{
     outline: 0;
     border-bottom: 3.5px solid rgb(1, 147, 124);
     font-size: 23px;
+}
+
+.firstInput {
+    width: 50%;
+}
+
+.secondInput {
+    width: 30%;
 }

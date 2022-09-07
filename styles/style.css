@@ -104,3 +104,7 @@ form {
   color: rgb(1, 147, 124);
   font-weight: 500;
 }
+
+.flex-div {
+  display: flex;
+}
