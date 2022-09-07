@@ -22,12 +22,12 @@
       
         <div class="input-div">
             <span class="fa fa-user login-icon"></span>
-            <input class="inputUser" type="text" name="user" placeholder="Usuário" tabindex=1 required>
+            <input class="inputs" type="text" name="user" placeholder="Usuário" tabindex=1 required>
         </div>
 
         <div class="input-div">
             <i class="fa fa-key login-icon"></i>
-            <input class="inputUser" type="password" name="password" placeholder="Senha" tabindex=2 required>
+            <input class="inputs" type="password" name="password" placeholder="Senha" tabindex=2 required>
         </div>
 
         <div class="forgot-div">

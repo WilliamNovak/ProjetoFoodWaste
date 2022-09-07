@@ -20,32 +20,6 @@ form {
     padding: 16px;
 }
 
-.inputUser{
-    border: 2px solid rgb(203, 203, 203);
-    height: 35px;
-    background: transparent;
-    width: 80%;
-    /* border-bottom: 1px solid rgb(1, 147, 124); */
-    padding: 24px 24px 24px 44px;
-    margin: auto;
-    border-radius: 4px; 
-    color: rgb(1, 147, 124);
-    transition: border .6s;
-}
-    
-.inputUser::placeholder{
-    color: rgb(1, 147, 124);
-}
-
-.inputUser:focus::placeholder{
-    color: 2px solid rgb(1, 147, 124);
-}
-
-.inputUser:focus, .inputUser:hover{
-    outline: 0;
-    border: 2px solid rgb(1, 147, 124);
-}
-
 .linkPw {
     color: rgb(1, 147, 124);
     text-decoration: none;

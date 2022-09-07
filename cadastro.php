@@ -62,11 +62,11 @@
                 
                 <div class="column2">
                     <div class="typeDiv">
-                        <input  type="radio" name="userType" id="doador" value="D" checked>
-                        <label  for="doador">Doador</label>
+                        <input type="radio" name="userType" class="toggle toggle-left" id="doador" value="D" checked>
+                        <label for="doador" class="labelType">Doador</label>
                     
-                        <input  type="radio" name="userType" id="receptor" value="R">
-                        <label  for="receptor">Receptor</label>
+                        <input type="radio" name="userType" class="toggle toggle-right" id="receptor" value="R">
+                        <label for="receptor" class="labelType">Receptor</label>
                     </div>
 
                     <input type="email" name="email" placeholder="E-mail" class="inputs" required>

@@ -37,13 +37,11 @@ form {
 }
 
 .typeDiv{
-    border: none;
     background: transparent;
     width: 80%;
-    border-bottom: 1px solid #01937C;
     padding-left: 10px;
-    margin: 10px auto;  
-    border-radius: 5px;
+    margin: 20px auto;
+    height: 35px;
 }
 
 .typeDiv:focus{
@@ -52,28 +50,9 @@ form {
 }
 
 .inputs{
-    border: 2px solid rgb(203, 203, 203);
-    height: 35px;
-    background: transparent;
     width: 90%;
     padding: 24px;
     margin: 10px 0 10px 0;
-    border-radius: 4px; 
-    color: rgb(1, 147, 124);
-    transition: border .6s;
-}
-
-.inputs::placeholder{
-    color: rgb(1, 147, 124);
-}
-
-.inputs:focus::placeholder{
-    color: rgb(1, 147, 124);
-}
-
-.inputs:focus, .inputs:hover{
-    outline: 0;
-    border: 2px solid rgb(1, 147, 124);
 }
 
 .firstInput {

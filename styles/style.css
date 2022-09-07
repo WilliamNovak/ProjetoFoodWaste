@@ -44,6 +44,31 @@ form {
   font-size: 45px;
 }
 
+.inputs{
+  border: 2px solid rgb(203, 203, 203);
+  height: 35px;
+  background: transparent;
+  width: 80%;
+  padding: 24px 24px 24px 44px;
+  margin: auto;
+  border-radius: 4px; 
+  color: rgb(1, 147, 124);
+  transition: border .6s;
+}
+
+.inputs::placeholder{
+  color: rgb(1, 147, 124);
+}
+
+.inputs:focus::placeholder{
+  color: 2px solid rgb(1, 147, 124);
+}
+
+.inputs:focus, .inputs:hover{
+  outline: 0;
+  border: 2px solid rgb(1, 147, 124);
+}
+
 .buttonform{
   margin: 10px auto;
   height: 50px;
