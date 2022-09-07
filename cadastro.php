@@ -50,8 +50,10 @@
                     <input type="text" name="username" placeholder="Nome de usúario" class="inputs" required>
                 
                     <input type="password" name="password" placeholder="Senha" class="inputs" id="pw1" required>
-                    
+                    <div class="pw-error" id="errPw1"></div>
+
                     <input type="password" name="confirmPassword" placeholder="Confirmar senha" class="inputs"  id="pw2" required>
+                    <div class="pw-error" id="errPw2"></div>
 
                     <input type="text" name="cnpj" placeholder="CNPJ" class="inputs" required>
 

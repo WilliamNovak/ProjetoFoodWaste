@@ -11,10 +11,12 @@ window.onclick = function(event) {
 function validaCadastro(){
     var pw1 = document.getElementById("pw1").value;
     var pw2 = document.getElementById("pw2").value;
-
-    console.log(pw1 + " - " + pw2);
+    var errPw1 = document.getElementById("errPw1");
+    var errPw2 = document.getElementById("errPw2");
 
     if(pw1 != pw2){
+        errPw1.innerHTML = 'As senhas não são compatíveis.';
+        errPw2.innerHTML = 'As senhas não são compatíveis.';
         return false;
     }
     else{

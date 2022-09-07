@@ -71,3 +71,14 @@ form {
 .buttonform {
     width: 85%;
 }
+
+.pw-error {
+    width: 90%;
+    padding-left: 35px;
+    display: block;
+    text-align: left;
+    color: red;
+    font-size: 14px;
+    font-weight: 500;
+    height: 5px;
+}
