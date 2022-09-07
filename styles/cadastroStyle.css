@@ -1,6 +1,8 @@
 form {
     max-height: 900px;
     border-radius: 0;
+    width: 80%;
+    height: 80%;
 }
 
 .cadastro-div {
@@ -8,6 +10,10 @@ form {
     height: 100%;
     display: flex;
     width: 100%;
+}
+
+.columns-div {
+    display: flex;
 }
 
 .typeDiv{

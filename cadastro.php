@@ -53,9 +53,9 @@
                     
                     <input type="password" name="confirmPassword" placeholder="Confirmar senha" class="inputUser" required>
 
-                    <input type="text" name="fantasyName" placeholder="Nome fantasia" class="inputUser" required>
-
                     <input type="text" name="cnpj" placeholder="CNPJ" class="inputUser" required>
+
+                    <input type="text" name="fantasyName" placeholder="Nome fantasia" class="inputUser" required>
                 
                     <input type="text" name="reason" placeholder="Razão social" class="inputUser" required>
                 </div>
@@ -75,7 +75,36 @@
                     
                     <input type="text" name="cep" placeholder="CEP" class="inputUser" required>
                     
-                    <input type="text" name="state" placeholder="Estado" class="inputUser" required>
+                    <select name="state" class="inputUser" required>
+                        <option value="" disable selected hidden>Estado</option>
+                        <option value="AC">AC</option>
+                        <option value="AL">AL</option>
+                        <option value="AP">AP</option>
+                        <option value="AM">AM</option>
+                        <option value="BA">BA</option>
+                        <option value="CE">CE</option>
+                        <option value="DF">DF</option>
+                        <option value="ES">ES</option>
+                        <option value="GO">GO</option>
+                        <option value="MA">MA</option>
+                        <option value="MT">MT</option>
+                        <option value="MS">MS</option>
+                        <option value="MG">MG</option>
+                        <option value="PA">PA</option>
+                        <option value="PB">PB</option>
+                        <option value="PR">PR</option>
+                        <option value="PE">PE</option>
+                        <option value="PI">PI</option>
+                        <option value="RR">RR</option>
+                        <option value="RO">RO</option>
+                        <option value="RJ">RJ</option>
+                        <option value="RN">RN</option>
+                        <option value="RS">RS</option>
+                        <option value="SC">SC</option>
+                        <option value="SP">SP</option>
+                        <option value="SE">SE</option>
+                        <option value="TO">TO</option>
+                    </select>
 
                     <input type="text" name="city" placeholder="Cidade" class="inputUser" required>
 
