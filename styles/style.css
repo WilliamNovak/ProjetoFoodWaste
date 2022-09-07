@@ -107,4 +107,5 @@ form {
 
 .flex-div {
   display: flex;
+  justify-content: center;
 }

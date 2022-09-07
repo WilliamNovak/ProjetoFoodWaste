@@ -45,7 +45,7 @@
         <form action="cadastro.php" method="POST">
             <h2 class="legend">Cadastrar Usuário</h2>
 
-            <div class="columns-div flex-div">
+            <div class="columns-div">
                 <div class="column1">
                     <input type="text" name="username" placeholder="Nome de usúario" class="inputs" required>
                 
@@ -77,7 +77,7 @@
                         <input type="text" name="cep" placeholder="CEP" class="inputs firstInput" required>
                         
                         <select name="state" class="inputs secondInput" required>
-                            <option value="" disable selected hidden>Estado</option>
+                            <option value="" selected hidden>Estado</option>
                             <option value="AC">AC</option>
                             <option value="AL">AL</option>
                             <option value="AP">AP</option>

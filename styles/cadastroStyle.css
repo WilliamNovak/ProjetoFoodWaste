@@ -1,7 +1,6 @@
 form {
-    max-height: 900px;
     border-radius: 0;
-    width: 80%;
+    width: 70%;
     height: 80%;
 }
 
@@ -12,8 +11,29 @@ form {
     width: 100%;
 }
 
+.columns-div {
+    width: 90%;
+    margin: auto;
+    display: flex;
+}
+
 .column1, .column2 {
     width: 50%;
+}
+
+@media screen and (max-width: 540px) {
+    .columns-div {
+        display: grid;
+    }
+
+    .column1, .column2 {
+        width: 100%;
+    }
+
+    form {
+        width: 100%;
+        height: 100%;
+    }
 }
 
 .typeDiv{
@@ -22,7 +42,7 @@ form {
     width: 80%;
     border-bottom: 1px solid #01937C;
     padding-left: 10px;
-    margin: 10px auto;
+    margin: 10px auto;  
     border-radius: 5px;
 }
 
@@ -32,14 +52,16 @@ form {
 }
 
 .inputs{
-    border: none;
+    border: 2px solid rgb(203, 203, 203);
     height: 35px;
     background: transparent;
     width: 80%;
-    border-bottom: 1px solid rgb(1, 147, 124);
-    padding-left: 10px;
-    margin: 10px auto;
-    border-radius: 5px;
+    /* border-bottom: 1px solid rgb(1, 147, 124); */
+    padding: 24px;
+    margin: 10px 0 10px 0;
+    border-radius: 4px; 
+    color: rgb(1, 147, 124);
+    transition: border .6s;
 }
 
 .inputs::placeholder{
@@ -60,8 +82,10 @@ form {
 
 .firstInput {
     width: 50%;
+    margin: none;
 }
 
 .secondInput {
     width: 30%;
+    margin: none;
 }
