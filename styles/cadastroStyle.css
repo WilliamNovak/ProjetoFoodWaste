@@ -1,5 +1,4 @@
 form {
-    border-radius: 0;
     width: 70%;
     height: 80%;
 }
@@ -12,7 +11,7 @@ form {
 }
 
 .columns-div {
-    width: 90%;
+    width: 85%;
     margin: auto;
     display: flex;
 }
@@ -33,6 +32,7 @@ form {
     form {
         width: 100%;
         height: 100%;
+        border-radius: 0;
     }
 }
 
@@ -55,8 +55,7 @@ form {
     border: 2px solid rgb(203, 203, 203);
     height: 35px;
     background: transparent;
-    width: 80%;
-    /* border-bottom: 1px solid rgb(1, 147, 124); */
+    width: 90%;
     padding: 24px;
     margin: 10px 0 10px 0;
     border-radius: 4px; 
@@ -65,27 +64,27 @@ form {
 }
 
 .inputs::placeholder{
-    font-size: 20px;
     color: rgb(1, 147, 124);
 }
 
 .inputs:focus::placeholder{
     color: rgb(1, 147, 124);
-    font-size: 23px;
 }
 
-.inputs:focus{
+.inputs:focus, .inputs:hover{
     outline: 0;
-    border-bottom: 3.5px solid rgb(1, 147, 124);
-    font-size: 23px;
+    border: 2px solid rgb(1, 147, 124);
 }
 
 .firstInput {
-    width: 50%;
+    width: 55%;
     margin: none;
+    margin-right: 25px;
 }
 
 .secondInput {
     width: 30%;
+    padding: 0 20px 0 20px;
+    height: 52px;
     margin: none;
 }

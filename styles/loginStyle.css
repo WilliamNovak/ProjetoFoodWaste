@@ -32,10 +32,6 @@ form {
     color: rgb(1, 147, 124);
     transition: border .6s;
 }
-
-.inputUser:hover{
-    border: 2px solid rgb(1, 147, 124);
-    }
     
 .inputUser::placeholder{
     color: rgb(1, 147, 124);
@@ -45,7 +41,7 @@ form {
     color: 2px solid rgb(1, 147, 124);
 }
 
-.inputUser:focus{
+.inputUser:focus, .inputUser:hover{
     outline: 0;
     border: 2px solid rgb(1, 147, 124);
 }
