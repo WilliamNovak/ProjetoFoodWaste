@@ -18,7 +18,9 @@
 
 <div class="login-div">
     <form action="testaLogin.php" method="POST">
-        <h1 class="legend">Login</h1>
+        <h1 class="legend">
+            <img src="imgs/LogoPequena.png" alt="Login Logo" class="login-logo">
+        </h1>
       
         <div class="input-div">
             <span class="fa fa-user login-icon"></span>
