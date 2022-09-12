@@ -5,8 +5,8 @@ if(isset($_POST['submit']) && !empty($_POST['user']) && !empty($_POST['password'
 
     include_once('database.php');
 
-    $user = $_POST['user'];
-    $password = $_POST['password'];
+    $user = preg_replace('/[^[:alnum:]_]/', '',$_POST['user']);
+    $password = preg_replace('/[^[:alnum:]_]/', '',$_POST['password']);
 
     $queryDados = mysqli_query($conexao,"SELECT nome_usuario, senha FROM usuario WHERE nome_usuario = '$user'");
 
