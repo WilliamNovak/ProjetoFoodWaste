@@ -47,7 +47,7 @@
 
             <div class="columns-div">
                 <div class="column1">
-                    <input type="text" name="username" placeholder="Nome de usúario" class="inputs" required>
+                    <input type="text" name="username" id="username" placeholder="Nome de usúario" class="inputs" required>
                 
                     <input type="password" name="password" placeholder="Senha" class="inputs" id="pw1" required>
                     <div class="pw-error" id="errPw1"></div>
@@ -55,11 +55,12 @@
                     <input type="password" name="confirmPassword" placeholder="Confirmar senha" class="inputs"  id="pw2" required>
                     <div class="pw-error" id="errPw2"></div>
 
-                    <input type="text" name="cnpj" placeholder="CNPJ" class="inputs" required>
+                    <input type="text" name="cnpj" id="cnpj" placeholder="CNPJ" class="inputs" required>
+                    <br><span id="error_cnpj" class="small errors msg_error">( CNPJ inválido )</span>
 
-                    <input type="text" name="fantasyName" placeholder="Nome fantasia" class="inputs" required>
+                    <input type="text" name="fantasyName" id="fantasyName" placeholder="Nome fantasia" class="inputs" required>
                 
-                    <input type="text" name="reason" placeholder="Razão social" class="inputs" required>
+                    <input type="text" name="reason" id="reason" placeholder="Razão social" class="inputs" required>
                 </div>
                 
                 <div class="column2">
@@ -71,14 +72,14 @@
                         <label for="receptor" class="labelType">Receptor</label>
                     </div>
 
-                    <input type="email" name="email" placeholder="E-mail" class="inputs" required>
+                    <input type="email" name="email" id="email" placeholder="E-mail" class="inputs" required>
             
-                    <input type="tel" name="tel" placeholder="Telefone" class="inputs" required>
+                    <input type="tel" name="tel" id="tel" placeholder="Telefone" class="inputs" required>
                     
                     <div class="flex-div">
-                        <input type="text" name="cep" placeholder="CEP" class="inputs firstInput" required>
+                        <input type="text" name="cep" id="cep" placeholder="CEP" class="inputs firstInput" required>
                         
-                        <select name="state" class="inputs secondInput" required>
+                        <select name="state" id="state" class="inputs secondInput" required>
                             <option value="" selected hidden>Estado</option>
                             <option value="AC">AC</option>
                             <option value="AL">AL</option>
@@ -110,18 +111,18 @@
                         </select>
                     </div>
 
-                    <input type="text" name="city" placeholder="Cidade" class="inputs" required>
+                    <input type="text" name="city" id="city" placeholder="Cidade" class="inputs" required>
 
                     <div class="flex-div">
-                        <input type="text" name="address" placeholder="Endereço" class="inputs firstInput" required>
+                        <input type="text" name="address" id="address" placeholder="Endereço" class="inputs firstInput" required>
 
-                        <input type="number" name="num" placeholder="Número" class="inputs secondInput" required>
+                        <input type="number" name="num" id="num" placeholder="Número" class="inputs secondInput" required>
                     </div>
 
                 </div>
             </div>
 
-            <button class="buttonform" onclick="return validaCadastro()" type="submit" name="submit">Finalizar Cadastro</button>
+            <button class="buttonform" type="submit" name="submit" id="btnSubmit">Finalizar Cadastro</button>
         </form>
     </div>
     

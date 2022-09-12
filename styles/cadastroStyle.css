@@ -72,10 +72,10 @@ form {
     width: 85%;
 }
 
-.pw-error {
+.msg_error {
     width: 90%;
     padding-left: 35px;
-    display: block;
+    display: none;
     text-align: left;
     color: red;
     font-size: 14px;
