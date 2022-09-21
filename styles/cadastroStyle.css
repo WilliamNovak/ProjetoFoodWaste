@@ -1,6 +1,6 @@
 form {
-    width: 70%;
-    height: 80%;
+    width: 80%;
+    height: 100%;
 }
 
 .cadastro-div {
@@ -72,7 +72,7 @@ form {
     width: 85%;
 }
 
-.msg_error {
+.error_cnpj {
     width: 90%;
     padding-left: 35px;
     display: none;

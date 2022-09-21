@@ -8,21 +8,22 @@ window.onclick = function(event) {
     }
 }
 
-// function validaCadastro(){
-//     var pw1 = document.getElementById("pw1").value;
-//     var pw2 = document.getElementById("pw2").value;
-//     var errPw1 = document.getElementById("errPw1");
-//     var errPw2 = document.getElementById("errPw2");
+function validaSenha(){
+    var pw1 = document.getElementById("pw1").value;
+    var pw2 = document.getElementById("pw2").value;
 
-//     if(pw1 != pw2){
-//         errPw1.innerHTML = 'As senhas não são compatíveis.';
-//         errPw2.innerHTML = 'As senhas não são compatíveis.';
-//         return false;
-//     }
-//     else{
-//         return true;
-//     }
-// }
+    if(pw1 != pw2){
+        return false;
+    }
+    else{
+        return true;
+    }
+}
+
+// document.getElementById('cnpj').addEventListener('input', function (e) {
+//     var x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,3})(\d{0,3})(\d{0,4})(\d{0,2})/);
+//     e.target.value = !x[2] ? x[1] : x[1] + '.' + x[2] + '.' + x[3] + '/' + x[4] + (x[5] ? '-' + x[5] : '');
+// });
 
 var data_form;
 const url = window.location.protocol + '//' + window.location.host + '/cadastro/';
@@ -31,6 +32,7 @@ $(document).ready(function() {
     $('#btnSubmit').click(function() {
         var inputs = document.getElementsByClassName('inputs');
         var errors = 0;
+
         for (var i = 0; i < inputs.length; i++) {
             if (inputs[i].value === '') {
                 toggle_erro(1, inputs[i].id);
@@ -40,12 +42,12 @@ $(document).ready(function() {
             }
         }
 
-        if (!validation_cnpj($('#cnjp').val())) {
+        if (!validation_cnpj($('#cnpj').val())) {
             toggle_erro(1, 'cnpj');
-            $('#error_cpnj').show();
+            $('#error_cnpj').show();
             errors++;
         } else {
-            $('#error_cpnj').hide();
+            $('#error_cnpj').hide();
             toggle_erro(2, 'cnpj');
         }
 
@@ -110,12 +112,14 @@ function validation_cnpj(cnpj) {
     digitos = cnpj.substring(tamanho);
     soma = 0;
     pos = tamanho - 7;
+
     for (i = tamanho; i >= 1; i--) {
         soma += numeros.charAt(tamanho - i) * pos--;
         if (pos < 2)
             pos = 9;
     }
     resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+
     if (resultado != digitos.charAt(0))
         return false;
             
@@ -123,12 +127,15 @@ function validation_cnpj(cnpj) {
     numeros = cnpj.substring(0,tamanho);
     soma = 0;
     pos = tamanho - 7;
+
     for (i = tamanho; i >= 1; i--) {
         soma += numeros.charAt(tamanho - i) * pos--;
         if (pos < 2)
             pos = 9;
     }
+
     resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+
     if (resultado != digitos.charAt(1))
             return false;
             
