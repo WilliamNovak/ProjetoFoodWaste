@@ -20,6 +20,7 @@
     require_once("./navbar.php"); 
 ?>
 
+<script src="js/script.js"></script>
 
 <?php
     require_once("./footer.php");

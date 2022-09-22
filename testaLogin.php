@@ -14,6 +14,7 @@ if(isset($_POST['submit']) && !empty($_POST['user']) && !empty($_POST['password'
     {
         unset($_SESSION['user']);
         unset($_SESSION['password']);
+        unset($_SESSION['userType']);
         header('Location: login.php');
     }
     else{
@@ -22,11 +23,15 @@ if(isset($_POST['submit']) && !empty($_POST['user']) && !empty($_POST['password'
             if (password_verify($password, $result['senha'])) {
                 $_SESSION['user'] = $user;
                 $_SESSION['password'] = $password;
+                $query = mysqli_query($conexao,"SELECT tipo_usuario FROM usuario WHERE nome_usuario = '$user'");
+                $row = mysqli_fetch_row($query);
+                $_SESSION['userType'] = $row[0];
                 header('Location: index.php');
             }
             else {
                 unset($_SESSION['user']);
                 unset($_SESSION['password']);
+                unset($_SESSION['userType']);
                 header('Location: login.php');
             }
         }
@@ -36,6 +41,7 @@ if(isset($_POST['submit']) && !empty($_POST['user']) && !empty($_POST['password'
 else{
     unset($_SESSION['user']);
     unset($_SESSION['password']);
+    unset($_SESSION['userType']);
     header('Location: login.php');
 }
 

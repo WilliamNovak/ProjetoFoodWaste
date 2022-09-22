@@ -11,6 +11,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
+
                 <?php 
                     if((!isset($_SESSION['user']) == true) and (!isset($_SESSION['password']) == true)){
                 ?>
@@ -22,10 +23,29 @@
                         Login
                     </a>
                 </li>
+
                 <?php
-                    }
-                    else {
+                    } else {
+                        if($_SESSION['userType'] == "D"){
                 ?>
+                <li class="nav-item active">
+                    <a class="nav-link" id="alimento-link" href="alimentos.php">
+                        Alimentos
+                    </a>
+                </li>
+
+                <?php
+                        } else {
+                ?>
+                <li class="nav-item active">
+                    <a class="nav-link" id="doacao-link" href="doacoes.php">
+                        Doações
+                    </a>
+                </li>
+                <?php
+                        }
+                ?>
+
                 <div class="menu-div">
                     <button onclick="openMenu()" class="btnMenu">
                         <i class="fa fa-user"></i>
