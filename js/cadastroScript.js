@@ -12,9 +12,7 @@ window.onclick = function(event) {
     }
 }
 
-function passwordValidation(){
-    var pw1 = document.getElementById("pw1").value;
-    var pw2 = document.getElementById("pw2").value;
+function passwordValidation(pw1, pw2){
 
     if(pw1 != pw2){
         return false;
@@ -34,9 +32,12 @@ $(document).ready(function() {
         e.target.value = !x[2] ? x[1] : x[1] + '.' + x[2] + '.' + x[3] + '/' + x[4] + (x[5] ? '-' + x[5] : '');
     });
 
-    $('#btnSubmit').click(function() {
+    $('#formCadastro').submit(function(e) {
         var inputs = document.getElementsByClassName('inputs');
         var errors = 0;
+        const pw1 = $('#pw1').val();
+        const pw2 = $('#pw2').val();
+        const cnpj = $('#cnpj').val();
 
         for (var i = 0; i < inputs.length; i++) {
             if (inputs[i].value === '') {
@@ -47,14 +48,17 @@ $(document).ready(function() {
             }
         }
 
-        // if(!passwordValidation){
-        //     showError(1,);
-        //     errors++;
-        // } else {
-        //     showError(2,);
-        // }
-
-        const cnpj = $('#cnpj').val();
+        if (pw1 != '' || pw2 != ''){
+            if(!passwordValidation(pw1,pw2)){
+                showError(1,'pw1');
+                showError(1,'pw2');
+                $('#pwError').show();
+                errors++;
+            } else {
+                showError(2,);
+                $('#pwError').hide();
+            }
+        }
 
         if (cnpj != ''){
             if (!cnpjValidation(cnpj)) {
@@ -66,30 +70,10 @@ $(document).ready(function() {
                 showError(2, 'cnpj');
             }
         }
-
-        if (errors === 0) {
-            data_form = {
-                'username': $('#username').val(),
-                'password': $('#pw1').val(),
-                'confirmPassword': $('#pw2').val(),
-                'fantasyName': $('#fantasyName').val(),
-                'reason': $('#reason').val(),
-                'email': $('#email').val(),
-                'tel': $('#tel').val(),
-                'cnpj': $('#cnpj').val(),
-                'cep': $('#cep').val(),
-                'state': $('#state').val(),
-                'city': $('#city').val(),
-                'address': $('#address').val(),
-                'num': $('#num').val(),
-            }
-        } 
-        // else {
-        //     $('#msg_erro').fadeIn(800);
-        //     setTimeout(function() {
-        //         $('#msg_erro').fadeOut(800);
-        //     }, 3000);
-        // }
+        
+        if (errors > 0) {
+            e.preventDefault();
+        }
     });
 })
 

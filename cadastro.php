@@ -16,7 +16,7 @@
         $reason = $_POST['reason'];
         $email = $_POST['email'];
         $telephone = $_POST['tel'];
-        $cnpj = $_POST['cnpj'];
+        $cnpj = preg_replace("/[^0-9]/", "", $_POST['cnpj']);;
         $state = $_POST['state'];
         $city = $_POST['city'];
         $cep = $_POST['cep'];
@@ -42,7 +42,7 @@
 ?>
 
     <div class="cadastro-div">
-        <form action="cadastro.php" method="POST">
+        <form action="cadastro.php" method="POST" id="formCadastro">
             <h2 class="legend">Cadastrar Usuário</h2>
 
             <div class="columns-div">
@@ -50,13 +50,12 @@
                     <input type="text" name="username" id="username" placeholder="Nome de usúario" class="inputs" required>
                 
                     <input type="password" name="password" placeholder="Senha" class="inputs" id="pw1" required>
-                    <div class="pw-error" id="errPw1"></div>
 
                     <input type="password" name="confirmPassword" placeholder="Confirmar senha" class="inputs"  id="pw2" required>
-                    <div class="pw-error" id="errPw2"></div>
+                    <div id="pwError" class="error_msg">As senhas não são compatíveis</div>
 
                     <input type="text" name="cnpj" id="cnpj" placeholder="CNPJ" class="inputs" required>
-                    <div id="error_cnpj" class="error_msg">CNPJ inválido!</div>
+                    <div id="error_cnpj" class="error_msg">CNPJ inválido</div>
 
                     <input type="text" name="fantasyName" id="fantasyName" placeholder="Nome fantasia" class="inputs" required>
                 
@@ -122,7 +121,7 @@
                 </div>
             </div>
 
-            <button class="buttonform" type="submit" name="submit" id="btnSubmit">Finalizar Cadastro</button>
+            <input class="buttonform" type="submit" name="submit" id="btnSubmit" value="Finalizar Cadastro">
         </form>
     </div>
     
