@@ -41,7 +41,7 @@ form {
     width: 80%;
     padding-left: 10px;
     margin: 20px auto;
-    height: 35px;
+    height: 30px;
 }
 
 .typeDiv:focus{
@@ -51,7 +51,7 @@ form {
 
 .inputs{
     width: 90%;
-    padding: 24px;
+    padding: 22px;
     margin: 10px 0 10px 0;
 }
 
@@ -64,7 +64,7 @@ form {
 .secondInput {
     width: 30%;
     padding: 0 20px 0 20px;
-    height: 52px;
+    height: 44px;
     margin: none;
 }
 
@@ -72,7 +72,7 @@ form {
     width: 85%;
 }
 
-.error_cnpj {
+.error_msg {
     width: 90%;
     padding-left: 35px;
     display: none;
@@ -80,5 +80,5 @@ form {
     color: red;
     font-size: 14px;
     font-weight: 500;
-    height: 5px;
+    margin-top: -5px;
 }

@@ -5,7 +5,7 @@ html, body {
 
 .nav-logo {
   max-width: 150px;
-  max-height: 50px;
+  max-height: 45px;
 }
 
 .login-logo {
@@ -59,7 +59,7 @@ form {
   height: 35px;
   background: transparent;
   width: 80%;
-  padding: 24px 24px 24px 44px;
+  padding: 22px 22px 22px 44px;
   margin: auto;
   border-radius: 4px; 
   color: rgb(1, 147, 124);

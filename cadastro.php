@@ -56,8 +56,7 @@
                     <div class="pw-error" id="errPw2"></div>
 
                     <input type="text" name="cnpj" id="cnpj" placeholder="CNPJ" class="inputs" required>
-                    <br>
-                    <div id="error_cnpj" class="small errors error_cnpj">CNPJ inválido!</div>
+                    <div id="error_cnpj" class="error_msg">CNPJ inválido!</div>
 
                     <input type="text" name="fantasyName" id="fantasyName" placeholder="Nome fantasia" class="inputs" required>
                 
@@ -127,13 +126,7 @@
         </form>
     </div>
     
-    <script src="js/script.js"></script>
-    <!-- <script>
-        document.getElementById('cnpj').addEventListener('input', function (e) {
-            var x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,3})(\d{0,3})(\d{0,4})(\d{0,2})/);
-            e.target.value = !x[2] ? x[1] : x[1] + '.' + x[2] + '.' + x[3] + '/' + x[4] + (x[5] ? '-' + x[5] : '');
-        });
-    </script> -->
+    <script src="js/cadastroScript.js"></script>
 <?php
     require_once("./footer.php");
 ?>
