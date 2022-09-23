@@ -2,3 +2,8 @@ body {
     background: none;
     background-color: #EDF5E1;
 }
+
+.btnFormat {
+    background-color: #379683;
+    color: #EDF5E1;
+}
