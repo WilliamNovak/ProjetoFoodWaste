@@ -20,11 +20,12 @@
         $state = $_POST['state'];
         $city = $_POST['city'];
         $cep = preg_replace("/[^0-9]/", "", $_POST['cep']);
-        $address = $_POST['address'];
+        $district = $_POST['district'];
+        $street = $_POST['street'];
         $number = $_POST['num'];
 
-        $query = mysqli_query($conexao, "INSERT INTO usuario (tipo_usuario, nome_usuario, senha, nome_fantasia, razao_social, email, telefone, cnpj, estado, cidade, cep, endereco, numero) 
-                                            VALUES ('$userType', '$username', '$hashPw', '$fantasyName', '$reason', '$email', '$telephone', '$cnpj', '$state', '$city', '$cep', '$address', '$number')");
+        $query = mysqli_query($conexao, "INSERT INTO usuario (tipo_usuario, nome_usuario, senha, nome_fantasia, razao_social, email, telefone, cnpj, estado, cidade, cep, bairro, rua, numero) 
+                                            VALUES ('$userType', '$username', '$hashPw', '$fantasyName', '$reason', '$email', '$telephone', '$cnpj', '$state', '$city', '$cep', '$district', '$street', '$number')");
 
         header("Location: login.php");
     }
@@ -73,10 +74,10 @@
 
                     <input type="email" name="email" id="email" placeholder="E-mail" class="inputs" required>
             
-                    <input type="tel" name="tel" id="tel" placeholder="Telefone" class="inputs" required>
+                    <input type="tel" name="tel" id="tel" placeholder="Telefone" class="inputs" maxlength="15" required>
                     
                     <div class="flex-div">
-                        <input type="text" name="cep" id="cep" placeholder="CEP" class="inputs firstInput" required>
+                        <input type="text" name="cep" id="cep" onblur="pesquisacep(this.value);" placeholder="CEP" class="inputs firstInput" maxlength="9" required>
                         
                         <select name="state" id="state" class="inputs secondInput" required>
                             <option value="" selected hidden>Estado</option>
@@ -113,7 +114,9 @@
                     <input type="text" name="city" id="city" placeholder="Cidade" class="inputs" required>
 
                     <div class="flex-div">
-                        <input type="text" name="address" id="address" placeholder="Endereço" class="inputs firstInput" required>
+                        <input type="text" name="district" id="district" placeholder="Bairro" class="inputs firstInput" required>
+
+                        <input type="text" id="street" name="street" placeholder="Rua" class="inputs">
 
                         <input type="number" name="num" id="num" placeholder="Número" class="inputs secondInput" required>
                     </div>

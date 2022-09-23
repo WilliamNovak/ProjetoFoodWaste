@@ -41,7 +41,8 @@ $(document).ready(function() {
                 $('#pwError').show();
                 errors++;
             } else {
-                showError(2,);
+                showError(2,'pw1');
+                showError(2,'pw2');
                 $('#pwError').hide();
             }
         }
@@ -136,4 +137,96 @@ function cnpjValidation(cnpj) {
             
     return true;
 
+}
+
+function clearCepForm() {
+    document.getElementById('cep').value=("");
+    document.getElementById('street').value=("");
+    document.getElementById('district').value=("");
+    document.getElementById('city').value=("");
+    document.getElementById('state').value=("");
+}
+
+function my_callback(content) {
+
+    if (!("erro" in content)) {
+        document.getElementById('street').value=(content.logradouro);
+        document.getElementById('district').value=(content.bairro);
+        document.getElementById('city').value=(content.localidade);
+        document.getElementById('state').value=(content.uf);
+    } else {
+        clearCepForm();
+        alert("CEP não encontrado.");
+    }
+}
+    
+function pesquisacep(valor) {
+
+    var cep = valor.replace(/\D/g, '');
+
+    if (cep != "") {
+
+        var validacep = /^[0-9]{8}$/;
+        
+        if(validacep.test(cep)) {
+
+            document.getElementById('street').value="...";
+            document.getElementById('district').value="...";
+            document.getElementById('city').value="...";
+            document.getElementById('state').value="...";
+
+            var script = document.createElement('script');
+
+            script.src = 'https://viacep.com.br/ws/'+ cep + '/json/?callback=my_callback';
+
+            document.body.appendChild(script);
+
+        } else {
+            clearCepForm();
+            alert("Formato de CEP inválido.");
+        }
+
+    } else {
+        clearCepForm();
+    }
+};
+
+const cepInput = document.getElementById("cep");
+
+cepInput.addEventListener("keyup", formatarCep);
+
+function formatarCep(e){
+
+    var v = e.target.value.replace(/\D/g,"")                
+
+    v = v.replace(/^(\d{5})(\d)/,"$1-$2") 
+
+    e.target.value = v;
+
+}
+
+function mascara(obj,fun){
+    v_obj = obj
+    v_fun = fun
+    setTimeout("execmascara()",1)
+}
+
+function execmascara(){
+    v_obj.value = v_fun(v_obj.value)
+}
+
+function mtel(v){
+    v = v.replace(/\D/g,"");
+    v = v.replace(/^(\d{2})(\d)/g,"($1) $2");
+    v = v.replace(/(\d)(\d{4})$/,"$1-$2");
+    return v;
+}
+
+function getElement( el ){
+	return document.getElementById( el );
+}
+window.onload = function(){
+	getElement('tel').onkeyup = function(){
+		mascara( this, mtel );
+	}
 }

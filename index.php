@@ -6,7 +6,6 @@
     }
     else{
         $loged = $_SESSION['user'];
-        echo $_SESSION['userType'] . ' - ' . $_SESSION['userId'];
     }
 
     require_once("./template.php");

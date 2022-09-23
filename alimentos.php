@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    if(isset($_POST['submit'])){
+    if(isset($_POST['food'])){
 
       include_once('database.php');
 
@@ -14,7 +14,6 @@
       $query = mysqli_query($conexao, "INSERT INTO alimentos (idproprietario, descricao, tipo_alimento, prazo_validade, quantidade, situacao)
                                             VALUES ('$userId', '$food', '$foodType', '$validity', '$amount', 'E')");
 
-      header("Location: alimentos.php");
     }
 
     require_once("./template.php");
@@ -44,7 +43,7 @@
         </div>
 
         <div class="modal-body">
-          <form action="POST" id="foodForm" action="alimentos.php">
+          <form action="alimentos.php" method="POST" id="foodForm">
             <div class="flex-container">
               <div class="flex-child">
                 <input type="text" class="inputs" name="food" placeholder="Alimento" required>
