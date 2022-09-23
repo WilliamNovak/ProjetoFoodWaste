@@ -1,5 +1,22 @@
 <?php
     session_start();
+
+    if(isset($_POST['submit'])){
+
+      include_once('database.php');
+
+      $food = $_POST['food'];
+      $foodType = $_POST['foodType'];
+      $amount = $_POST['amount'];
+      $validity = $_POST['validity'];
+      $userId = $_SESSION['userId'];
+
+      $query = mysqli_query($conexao, "INSERT INTO alimentos (idproprietario, descricao, tipo_alimento, prazo_validade, quantidade, situacao)
+                                            VALUES ('$userId', '$food', '$foodType', '$validity', '$amount', 'E')");
+
+      header("Location: alimentos.php");
+    }
+
     require_once("./template.php");
 ?>
     <link rel="stylesheet" type="text/css" href="styles/style.css" >
@@ -27,24 +44,24 @@
         </div>
 
         <div class="modal-body">
-          <form action="POST">
+          <form action="POST" id="foodForm" action="alimentos.php">
             <div class="flex-container">
               <div class="flex-child">
-                <input type="text" class="inputs" placeholder="Alimento">
+                <input type="text" class="inputs" name="food" placeholder="Alimento" required>
               </div>
 
               <div class="flex-child">
-                <input type="text" class="inputs" placeholder="Tipo de alimento">
+                <input type="text" class="inputs" name="foodType" placeholder="Tipo de alimento" required>
               </div>
             </div>
 
             <div class="flex-container">
               <div class="flex-child">
-                <input type="number" class="inputs" placeholder="Quantidade">
+                <input type="number" class="inputs" name="amount" placeholder="Quantidade" required>
               </div>
 
               <div class="flex-child">
-                <input type="text" class="inputs" placeholder="Validade">
+                <input type="text" class="inputs" name="validity" placeholder="Validade" required>
               </div>
             </div>
           </form>
@@ -55,7 +72,7 @@
           <i class="fa-solid fa-chevron-left"></i> 
             Voltar
           </button>
-          <button type="button" class="btn btnFormat">
+          <button type="submit" form="foodForm" class="btn btnFormat">
             <i class="fa-solid fa-plus"></i> 
             Adicionar
           </button>

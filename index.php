@@ -2,11 +2,11 @@
 
     session_start();
     if((!isset($_SESSION['user']) == true) and (!isset($_SESSION['password']) == true)){
-        unset($_SESSION['user']);
-        unset($_SESSION['password']);
+        session_unset();
     }
     else{
         $loged = $_SESSION['user'];
+        echo $_SESSION['userType'] . ' - ' . $_SESSION['userId'];
     }
 
     require_once("./template.php");

@@ -15,11 +15,11 @@
         $fantasyName = $_POST['fantasyName'];
         $reason = $_POST['reason'];
         $email = $_POST['email'];
-        $telephone = $_POST['tel'];
-        $cnpj = preg_replace("/[^0-9]/", "", $_POST['cnpj']);;
+        $telephone = preg_replace("/[^0-9]/", "", $_POST['tel']);
+        $cnpj = preg_replace("/[^0-9]/", "", $_POST['cnpj']);
         $state = $_POST['state'];
         $city = $_POST['city'];
-        $cep = $_POST['cep'];
+        $cep = preg_replace("/[^0-9]/", "", $_POST['cep']);
         $address = $_POST['address'];
         $number = $_POST['num'];
 
