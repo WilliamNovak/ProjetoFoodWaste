@@ -1,20 +1,24 @@
 <?php
     session_start();
 
-    if(isset($_POST['food'])){
+    include_once('database.php');
+    $userId = $_SESSION['userId'];
 
-      include_once('database.php');
+    if(isset($_POST['food'])){
 
       $food = $_POST['food'];
       $foodType = $_POST['foodType'];
       $amount = $_POST['amount'];
       $validity = $_POST['validity'];
-      $userId = $_SESSION['userId'];
 
       $query = mysqli_query($conexao, "INSERT INTO alimentos (idproprietario, descricao, tipo_alimento, prazo_validade, quantidade, situacao)
                                             VALUES ('$userId', '$food', '$foodType', '$validity', '$amount', 'E')");
 
     }
+
+    $sql = "SELECT * FROM alimentos WHERE idproprietario = '$userId' ORDER BY prazo_validade ASC";
+
+    $res = $conexao->query($sql);
 
     require_once("./template.php");
 ?>
@@ -78,6 +82,34 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Alimento</th>
+          <th scope="col">Tipo de Alimento</th>
+          <th scope="col">Prazo de Validade</th>
+          <th scope="col">Quantidade</th>
+          <th scope="col">Situação</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <?php
+          while($data = mysqli_fetch_array($res)){
+            echo "<tr>";
+            echo "<td>".$data['descricao']."</td>";
+            echo "<td>".$data['tipo_alimento']."</td>";
+            echo "<td>".$data['prazo_validade']."</td>";
+            echo "<td>".$data['quantidade']."</td>";
+            echo "<td>".$data['situacao']."</td>";
+            echo "</tr>";
+          }
+        ?>
+      </tbody>
+    </table>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
