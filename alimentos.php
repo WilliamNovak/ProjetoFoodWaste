@@ -25,9 +25,31 @@
             <i class="fa-solid fa-xmark"></i> 
           </button>
         </div>
+
         <div class="modal-body">
-          ...
+          <form action="POST">
+            <div class="flex-container">
+              <div class="flex-child">
+                <input type="text" class="inputs" placeholder="Alimento">
+              </div>
+
+              <div class="flex-child">
+                <input type="text" class="inputs" placeholder="Tipo de alimento">
+              </div>
+            </div>
+
+            <div class="flex-container">
+              <div class="flex-child">
+                <input type="number" class="inputs" placeholder="Quantidade">
+              </div>
+
+              <div class="flex-child">
+                <input type="text" class="inputs" placeholder="Validade">
+              </div>
+            </div>
+          </form>
         </div>
+
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
           <i class="fa-solid fa-chevron-left"></i> 

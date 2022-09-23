@@ -3,7 +3,26 @@ body {
     background-color: #EDF5E1;
 }
 
+.modal-content {
+    width: 600px;
+    transform: translate(-8%, 34%);
+}
+
 .btnFormat {
     background-color: #379683;
     color: #EDF5E1;
+}
+
+.flex-container {
+    display: flex;
+    padding: 10px;
+}
+
+.flex-child {
+    flex: 1;
+}
+
+.inputs {
+    padding: 22px;
+    width: 90%;
 }
