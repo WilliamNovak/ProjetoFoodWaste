@@ -111,12 +111,15 @@
                         </select>
                     </div>
 
-                    <input type="text" name="city" id="city" placeholder="Cidade" class="inputs" required>
+                    <div class="flex-div">
+                        <input type="text" name="city" id="city" placeholder="Cidade" class="inputs firstInput" required>
+
+                        <input type="text" name="district" id="district" placeholder="Bairro" class="inputs secondInput" required>
+                    </div>
 
                     <div class="flex-div">
-                        <input type="text" name="district" id="district" placeholder="Bairro" class="inputs firstInput" required>
 
-                        <input type="text" id="street" name="street" placeholder="Rua" class="inputs">
+                        <input type="text" id="street" name="street" placeholder="Rua" class="inputs firstInput">
 
                         <input type="number" name="num" id="num" placeholder="Número" class="inputs secondInput" required>
                     </div>
