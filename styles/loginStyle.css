@@ -16,18 +16,18 @@ form {
 
 .login-icon {
     position: absolute;
-    color: rgb(1, 147, 124);
+    color: #379683;
     padding: 16px;
 }
 
 .linkPw {
-    color: rgb(1, 147, 124);
+    color: #379683;
     text-decoration: none;
     font-style: italic;
 }
 
 .linkPw:hover {
-    color: rgb(1, 147, 124);
+    color: #379683;
 }
 
 .newAccount-div {
@@ -42,10 +42,10 @@ form {
 
 .newAccountLink {
     text-decoration: none;
-    color: rgb(1, 147, 124);
+    color: #379683;
     padding: 5px;
 }
 
 .newAccountLink:hover {
-    color: rgb(1, 147, 124);
+    color: #379683;
 }

@@ -44,11 +44,6 @@ form {
     height: 30px;
 }
 
-.typeDiv:focus{
-    outline: 0;
-    border-bottom: 2px solid #01937C;
-}
-
 .inputs{
     width: 90%;
     padding: 22px;
