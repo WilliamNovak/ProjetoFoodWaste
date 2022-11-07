@@ -1,1 +1,57 @@
+body{
+  background: whitesmoke !important;
+}
 
+.fluxo{
+  height: 400px;
+  width: 1400px;
+}
+
+
+.div-objetivos{
+  margin: auto 50% auto 50%;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-content: space-around;
+  justify-content: space-around;
+}
+
+.objetivos{
+ 
+  display: flex;
+  grid-template-columns:  repeat(3, 310px);
+}
+.propag{
+  height: 150px;
+  width: 300px;
+  border: 3px;
+  border-style: solid;
+  background-color: rgba(255,255,255,0.3);
+  margin: 10px;
+  border-color: white;
+}
+.div-ceos{
+  margin: 50% 50% auto 50%;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-content: space-around;
+  justify-content: space-around;
+}
+
+.ceos{
+  display: flex;
+  grid-template-columns:  repeat(3, 310px);
+}
+.card{
+  height: 200px;
+  width: 150px;
+  border: 3px;
+  border-style: solid;
+  background-color: rgba(255,255,255,0.3);
+  margin: 10px;
+  border-color: white;
+}
