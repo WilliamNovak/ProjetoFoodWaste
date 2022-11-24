@@ -36,6 +36,28 @@ form {
     }
 }
 
+.btn-check:active+.btn-outline-success, .btn-check:checked+.btn-outline-success, .btn-outline-success.active, .btn-outline-success.dropdown-toggle.show, .btn-outline-success:active{
+    color: #fff;
+    background-color: #379683;
+    border-color: #379683;
+}
+.btn-outline-success {
+    color: #379683;
+    border-color: #379683;
+}
+.btn-outline-success:hover {
+    background-color: #379683;
+    border-color: #379683;
+}
+
+
+
+.labelType{
+    width: 45%;
+    font-size:100%;
+    margin: -10px 0 20px 0;
+}
+
 .typeDiv{
     background: transparent;
     width: 80%;
@@ -50,18 +72,35 @@ form {
     margin: 10px 0 10px 0;
 }
 
-.firstInput {
-    width: 55%;
+.inputCidade {
+    width: 57%;
     margin: none;
-    margin-right: 25px;
 }
-
-.secondInput {
-    width: 30%;
+.inputBairro{
+    width: 33%;
     padding: 0 20px 0 20px;
     height: 46px;
     margin: none;
 }
+
+.inputRua{
+    width: 55%;
+    margin: none;
+    /* margin-right: 25px; */
+}
+.inputUF {
+    padding: 0 20px 0 20px;
+    width: 15%;
+    height: 46px;
+    margin: none;
+}
+.inputNum {
+    padding: 0 20px 0 20px;
+    width: 20%;
+    height: 46px;
+    margin: none;
+}
+
 
 .buttonform {
     width: 85%;

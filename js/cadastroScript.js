@@ -155,8 +155,13 @@ function my_callback(content) {
         document.getElementById('city').value=(content.localidade);
         document.getElementById('state').value=(content.uf);
     } else {
-        clearCepForm();
-        alert("CEP não encontrado.");
+        clearCepForm(cep);
+        $('#error_cepE').hide();
+        $('#error_cepI').hide();
+        // alert("CEP não encontrado.");
+        showError(1, 'cep');
+        $('#error_cepE').show();
+
     }
 }
     
@@ -181,9 +186,18 @@ function pesquisacep(valor) {
 
             document.body.appendChild(script);
 
+            $('#error_cepE').hide();
+            $('#error_cepI').hide();
+            showError(2, 'cep');
+
         } else {
             clearCepForm();
-            alert("Formato de CEP inválido.");
+            $('#error_cepE').hide();
+            $('#error_cepI').hide();
+            // alert("Formato de CEP inválido.");
+            showError(1, 'cep');
+            $('#error_cepI').show();
+
         }
 
     } else {

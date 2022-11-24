@@ -65,22 +65,33 @@
                 
                 <div class="column2">
                     <div class="typeDiv">
-                        <input type="radio" name="userType" class="toggle toggle-left" id="doador" value="D" checked>
-                        <label for="doador" class="labelType">Doador</label>
+                        <input type="radio" name="userType" class="btn-check toggle toggle-left" id="doador" autocomplete="off" value="D" checked>
+                        <label for="doador" class="btn btn-outline-success labelType">Doador</label>
                     
-                        <input type="radio" name="userType" class="toggle toggle-right" id="receptor" value="R">
-                        <label for="receptor" class="labelType">Receptor</label>
+                        <input type="radio" name="userType" class="btn-check toggle toggle-right" id="receptor" value="R">
+                        <label for="receptor" class="btn btn-outline-success labelType">Receptor</label>
                     </div>
 
                     <input type="email" name="email" id="email" placeholder="E-mail" class="inputs" required>
             
                     <input type="tel" name="tel" id="tel" placeholder="Telefone" class="inputs" maxlength="15" required>
                     
+            
+                    <input type="text" name="cep" id="cep" onblur="pesquisacep(this.value);" placeholder="CEP" class="inputs" maxlength="9" required>
+                    <div id="error_cepE" class="error_msg">CEP não encontrado</div>
+                    <div id="error_cepI" class="error_msg">Formato de CEP inválido</div>
+                    
                     <div class="flex-div">
-                        <input type="text" name="cep" id="cep" onblur="pesquisacep(this.value);" placeholder="CEP" class="inputs firstInput" maxlength="9" required>
-                        
-                        <select name="state" id="state" class="inputs secondInput" required>
-                            <option value="" selected hidden>Estado</option>
+                        <input type="text" name="city" id="city" placeholder="Cidade" class="inputs inputCidade" required>
+
+                        <input type="text" name="district" id="district" placeholder="Bairro" class="inputs inputBairro" required>
+                    </div>
+
+                    <div class="flex-div">
+                        <input type="text" id="street" name="street" placeholder="Rua" class="inputs inputRua">
+
+                        <select name="state" id="state" class="inputs inputUF" required>
+                            <option value="" selected hidden>UF</option>
                             <option value="AC">AC</option>
                             <option value="AL">AL</option>
                             <option value="AP">AP</option>
@@ -109,19 +120,8 @@
                             <option value="SE">SE</option>
                             <option value="TO">TO</option>
                         </select>
-                    </div>
 
-                    <div class="flex-div">
-                        <input type="text" name="city" id="city" placeholder="Cidade" class="inputs firstInput" required>
-
-                        <input type="text" name="district" id="district" placeholder="Bairro" class="inputs secondInput" required>
-                    </div>
-
-                    <div class="flex-div">
-
-                        <input type="text" id="street" name="street" placeholder="Rua" class="inputs firstInput">
-
-                        <input type="number" name="num" id="num" placeholder="Número" class="inputs secondInput" required>
+                        <input type="number" name="num" id="num" placeholder="Número" class="inputs inputNum" required>
                     </div>
 
                 </div>

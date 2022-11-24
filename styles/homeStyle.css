@@ -1,15 +1,33 @@
 body{
-  background: whitesmoke !important;
+  background: #D4EDD5 !important;
+}
+
+.banner{
+  height: 400px;
+  width: 100%;
+  background-color: rgba(255,255,255,0.3);
+  border: 3px;
+  margin-bottom: 5%;
+  padding:30px;
+  border-style: solid;
+  border-color: white;
 }
 
 .fluxo{
   height: 400px;
-  width: 1400px;
+  width: 95%;
+  background-color: rgba(255,255,255,0.3);
+  border: 3px;
+  margin: 2px;
+  padding:30px;
+  border-style: solid;
+  border-color: white;
+
 }
 
 
 .div-objetivos{
-  margin: auto 50% auto 50%;
+  margin: auto 50% 5% 50%;
   display: flex;
   align-items: center;
   flex-wrap: nowrap;
@@ -19,10 +37,10 @@ body{
 }
 
 .objetivos{
- 
   display: flex;
   grid-template-columns:  repeat(3, 310px);
 }
+
 .propag{
   height: 150px;
   width: 300px;
@@ -32,6 +50,7 @@ body{
   margin: 10px;
   border-color: white;
 }
+
 .div-ceos{
   margin: 50% 50% auto 50%;
   display: flex;
@@ -46,6 +65,7 @@ body{
   display: flex;
   grid-template-columns:  repeat(3, 310px);
 }
+
 .card{
   height: 200px;
   width: 150px;

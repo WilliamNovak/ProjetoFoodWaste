@@ -18,8 +18,8 @@
 <?php
     require_once("./navbar.php"); 
 ?>
+<img src="imgs/teste.svg" class="banner">
 
-<h2>FOOD WASTE</h2>
 
 
 <div class="div-objetivos">
@@ -46,7 +46,7 @@
 <div class="div-ceos">
     <div class="ceos">
         <div class="card">
-            Dionantan Jocemar de Souza de Lima
+            Dionatan Jocemar de Souza de Lima
         </div>
         
         <div class="card">
