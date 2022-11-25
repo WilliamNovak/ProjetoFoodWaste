@@ -42,7 +42,8 @@ form {
 }
 
 .buttonform {
-    width: 95%;
+    width: 60%;
+    border-radius: 0.5rem;
 }
 
 .error_msg {
