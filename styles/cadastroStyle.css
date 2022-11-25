@@ -4,6 +4,12 @@ form {
     padding: 22px;
 }
 
+.divBody {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
 .btn-check:active+.btn-outline-success, .btn-check:checked+.btn-outline-success, .btn-outline-success.active, .btn-outline-success.dropdown-toggle.show, .btn-outline-success:active{
     color: #fff;
     background-color: #379683;

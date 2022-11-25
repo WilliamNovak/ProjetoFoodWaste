@@ -41,7 +41,7 @@
 <?php
     require_once("./navbar.php");
 ?>
-
+    <div class="divBody">
     <form action="cadastro.php" method="POST" id="formCadastro">
         <div class="container">
             <h2 class="legend">Cadastrar Usuário</h2>
@@ -184,6 +184,7 @@
             <input class="buttonform" type="submit" name="submit" id="btnSubmit" value="Finalizar Cadastro">
         </div>
     </form>
+    </div>
     
     <script src="js/cadastroScript.js"></script>
 <?php
