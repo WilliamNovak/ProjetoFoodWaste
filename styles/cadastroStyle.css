@@ -36,13 +36,17 @@ form {
     margin: 10px 0 10px 0;
 }
 
+.inputUf {
+    padding: 0 8px;
+    height: 48px;
+}
+
 .buttonform {
     width: 95%;
 }
 
 .error_msg {
     width: 90%;
-    padding-left: 35px;
     display: none;
     text-align: left;
     color: red;

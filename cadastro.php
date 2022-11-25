@@ -141,8 +141,8 @@
 
                         <div class="col-md-2">
                             <div class="row">
-                                <select name="state" id="state" class="inputs w-100" required>
-                                    <option value="" selected hidden>UF</option>
+                                <select name="state" id="state" class="inputs inputUf" required>
+                                    <option value="" selected>UF</option>
                                     <option value="AC">AC</option>
                                     <option value="AL">AL</option>
                                     <option value="AP">AP</option>
