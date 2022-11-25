@@ -52,7 +52,7 @@ form {
 
 .legend {
   color: #379683;
-  font-size: 45px;
+  font-size: 2em;
 }
 
 .inputs{
@@ -62,7 +62,7 @@ form {
   width: 80%;
   padding: 22px 22px 22px 44px;
   margin: auto;
-  border-radius: 4px; 
+  border-radius: 4px;
   color: rgb(1, 147, 124);
   transition: border .6s;
 }

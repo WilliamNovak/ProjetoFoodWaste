@@ -1,6 +1,7 @@
 form {
-    width: 90%;
-    height: 90%;
+    width: 85%;
+    height: auto;
+    padding: 22px;
 }
 
 .btn-check:active+.btn-outline-success, .btn-check:checked+.btn-outline-success, .btn-outline-success.active, .btn-outline-success.dropdown-toggle.show, .btn-outline-success:active{
@@ -24,40 +25,13 @@ form {
 }
 
 .inputs{
-    width: 90%;
+    width: 100%;
     padding: 22px;
     margin: 10px 0 10px 0;
 }
-/*
-.inputCidade {
-    width: 57%;
-    margin: 0;
-}
-.inputBairro{
-    width: 33%;
-    padding: 0 20px 0 20px;
-    height: 46px;
-    margin: 0;
-}
-
-.inputRua{
-    width: 55%;
-    margin: none;
-    // margin-right: 25px;
-}
-.inputUF {
-    width: 100%;
-}
-.inputNum {
-    padding: 0 20px 0 20px;
-    width: 20%;
-    height: 46px;
-    margin: none;
-} */
-
 
 .buttonform {
-    width: 85%;
+    width: 95%;
 }
 
 .error_msg {
@@ -69,4 +43,8 @@ form {
     font-size: 14px;
     font-weight: 500;
     margin-top: -5px;
+}
+
+.divcadastro {
+    padding: 0 3%;
 }

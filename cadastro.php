@@ -47,7 +47,7 @@
             <h2 class="legend">Cadastrar Usuário</h2>
 
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6 divcadastro">
                     <div class="row">
                         <input type="text" name="username" id="username" placeholder="Nome de usúario" class="inputs mx-auto" required>
                     </div>
@@ -87,7 +87,7 @@
                     </div>
                 </div>
                 
-                <div class="col-md-6">
+                <div class="col-md-6 divcadastro">
                     <div class="row mx-auto">
                         <div class="col-md-6">
                             <input type="radio" name="userType" class="btn-check toggle toggle-left" id="doador" autocomplete="off" value="D" checked>
@@ -121,13 +121,13 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="row d-flex justify-content-end">
-                                <input type="text" name="city" id="city" placeholder="Cidade" class="inputs inputCidade" required>
+                                <input type="text" name="city" id="city" placeholder="Cidade" class="inputs" required>
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="row">
-                                <input type="text" name="district" id="district" placeholder="Bairro" class="inputs inputBairro" required>
+                                <input type="text" name="district" id="district" placeholder="Bairro" class="inputs" required>
                             </div>
                         </div>
                     </div>
@@ -135,13 +135,13 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="row d-flex justify-content-end">
-                                <input type="text" id="street" name="street" placeholder="Rua" class="inputs inputRua">
+                                <input type="text" id="street" name="street" placeholder="Rua" class="inputs">
                             </div>
                         </div>
 
                         <div class="col-md-2">
                             <div class="row">
-                                <select name="state" id="state" class="inputs inputUF" required>
+                                <select name="state" id="state" class="inputs w-100" required>
                                     <option value="" selected hidden>UF</option>
                                     <option value="AC">AC</option>
                                     <option value="AL">AL</option>
@@ -174,7 +174,7 @@
 
                         <div class="col-md-4">
                             <div class="row">
-                                <input type="number" name="num" id="num" placeholder="Número" class="inputs inputNum" required>
+                                <input type="number" name="num" id="num" placeholder="Número" class="inputs" required>
                             </div>
                         </div>
                     </div>
