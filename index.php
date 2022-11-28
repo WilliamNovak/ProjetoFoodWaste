@@ -55,24 +55,6 @@
   
 </div>
 
-
-
-
-
-
-
-
-
-
-
-<!-- <img src="imgs/teste.svg" class="banner"> -->
-
-
-
-
-
-
-
 <div class="div-objetivos">
     <div class="objetivos">
         <div class="propag">
@@ -91,7 +73,6 @@
 
 <h2>COMO FUNCIONA?</h2>
 
-
 <img src="imgs/teste.svg" class="fluxo">
 
 <div class="div-ceos">
@@ -109,9 +90,6 @@
         </div>
     </div>
 </div>
-
-
-
 
 <script src="js/script.js"></script>
 
