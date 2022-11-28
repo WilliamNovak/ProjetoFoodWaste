@@ -60,11 +60,11 @@
 
             <div class="flex-container">
               <div class="flex-child">
-                <input type="number" class="inputs" name="amount" placeholder="Quantidade" required>
+                <input type="number" class="inputs" name="amount" placeholder="Quantidade" min="1" max="1000" required>
               </div>
 
               <div class="flex-child">
-                <input type="text" class="inputs" name="validity" placeholder="Validade" required>
+                <input type="date" class="inputs" name="validity" placeholder="Validade" required>
               </div>
             </div>
           </form>

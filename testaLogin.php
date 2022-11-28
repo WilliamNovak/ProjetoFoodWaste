@@ -8,7 +8,7 @@ if(isset($_POST['submit']) && !empty($_POST['user']) && !empty($_POST['password'
     $user = preg_replace('/[^[:alnum:]_]/', '',$_POST['user']);
     $password = preg_replace('/[^[:alnum:]_]/', '',$_POST['password']);
 
-    $queryDados = @mysqli_query($conexao,"SELECT nome_usuario, senha u FROM usuario WHERE nome_usuario = '$user'") or die("<script language='javascript' type='text/javascript'>
+    $queryDados = @mysqli_query($conexao,"SELECT nome_usuario, senha FROM usuario WHERE nome_usuario = '$user'") or die("<script language='javascript' type='text/javascript'>
                 alert('Erro interno de login: Contate o suporte!');
                 window.location.href='login.php';
             </script>");
