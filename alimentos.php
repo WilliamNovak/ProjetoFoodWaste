@@ -11,8 +11,8 @@
       $amount = $_POST['amount'];
       $validity = $_POST['validity'];
 
-      $query = mysqli_query($conexao, "INSERT INTO alimentos (idproprietario, descricao, tipo_alimento, prazo_validade, quantidade, situacao)
-                                            VALUES ('$userId', '$food', '$foodType', '$validity', '$amount', 'E')");
+      $query = mysqli_query($conexao, "INSERT INTO alimentos (idproprietario, idtipo, descricao, prazo_validade, quantidade, situacao)
+                                            VALUES ('$userId', '$foodType', '$food', '$validity', '$amount', 'E')");
 
     }
 
@@ -54,7 +54,17 @@
               </div>
 
               <div class="flex-child">
-                <input type="text" class="inputs" name="foodType" placeholder="Tipo de alimento" required>
+                <select name="foodType" class="inputs foodTypeInput" placeholder="Tipo de alimento" required>
+                  <option value="" selected>Tipo de alimento</option>
+                  <option value="1">Cereais, pães e tubérculos</option>
+                  <option value="2">Hortaliças</option>
+                  <option value="3">Frutas</option>
+                  <option value="4">Leguminosas</option>
+                  <option value="5">Carnes e ovos</option>
+                  <option value="6">Leite e derivados</option>
+                  <option value="7">Óleos e gorduras</option>
+                  <option value="8">Açúcares e doces</option>
+                </select>
               </div>
             </div>
 
@@ -99,9 +109,17 @@
       <tbody>
         <?php
           while($data = mysqli_fetch_array($res)){
+
+            $typeId = $data['idtipo'];
+            $sql_food_type = "SELECT descricao_alimento FROM tipo_alimento WHERE idtipo_alimento = '$typeId'";
+            $typeRes = $conexao->query($sql_food_type);
+            while($typeData = mysqli_fetch_array($typeRes)){
+              $foodType = $typeData['descricao_alimento'];
+            }
+
             echo "<tr>";
             echo "<td>".$data['descricao']."</td>";
-            echo "<td>".$data['tipo_alimento']."</td>";
+            echo "<td>".$foodType."</td>";
             echo "<td>".$data['prazo_validade']."</td>";
             echo "<td>".$data['quantidade']."</td>";
             echo "<td>".$data['situacao']."</td>";

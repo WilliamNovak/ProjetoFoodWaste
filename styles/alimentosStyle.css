@@ -26,3 +26,8 @@ body {
     padding: 22px;
     width: 90%;
 }
+
+.foodTypeInput {
+    padding: 0 8px;
+    height: 48px;
+}
