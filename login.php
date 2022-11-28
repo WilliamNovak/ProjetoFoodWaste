@@ -5,6 +5,10 @@
     if((isset($_SESSION['user']) == true) and (isset($_SESSION['password']) == true)){
         header('Location: index.php');
     }
+
+    if(isset($_GET['msg'])) {
+        echo "<script> alert('{$_GET['msg']}'); </script>";
+    }
 ?>
     <link rel="stylesheet" type="text/css" href="styles/style.css" >
     <link rel="stylesheet" type="text/css" href="styles/loginStyle.css" >
