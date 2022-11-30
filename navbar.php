@@ -2,7 +2,7 @@
    <nav class="navbar navbar-expand-lg navbar-light" id="nav">
         <div class="logo-div">
             <a class="navbar-brand" href="index.php">
-                <img src="imgs/LogoGrande.png" alt="Food Waste Logo" class="nav-logo">
+                <img src="imgs/navLogo.png" alt="Food Waste Logo" class="nav-logo">
             </a>
         </div>
         <div class="links-div">
