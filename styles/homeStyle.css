@@ -7,7 +7,6 @@ body {
   width: 100%;
   background-color: rgba(255,255,255,0.3);
   border: 3px;
-  margin-bottom: 5%;
   border-style: solid;
   border-top: none;
   border-left: none;
@@ -60,29 +59,13 @@ body {
 
 }
 
-.div-objetivos{
-  margin: auto 50% 5% 50%;
+.div-cards {
+  margin: auto;
   display: flex;
-  align-items: center;
-  flex-wrap: nowrap;
   flex-direction: row;
   align-content: space-around;
   justify-content: space-around;
-}
-
-.objetivos{
-  display: flex;
-  grid-template-columns:  repeat(3, 310px);
-}
-
-.propag{
-  height: 150px;
-  width: 300px;
-  border: 3px;
-  border-style: solid;
-  background-color: rgba(255,255,255,0.3);
-  margin: 10px;
-  border-color: white;
+  height: 20rem;
 }
 
 .div-ceos{

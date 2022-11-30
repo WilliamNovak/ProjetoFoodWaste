@@ -68,20 +68,34 @@
   
 </div>
 
-<div class="div-objetivos">
-    <div class="objetivos">
-        <div class="propag">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero, voluptatibus doloremque consequuntur eum, nostrum sunt nihil officia non 
-        </div>
-
-        <div class="propag">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam sapiente, earum beatae labore veritatis hic molestias laboriosam aspernatur 
-        </div>
-
-        <div class="propag">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsa similique maxime asperiores officia consectetur sequi at! Illum voluptatem nulla, voluptates, 
-        </div>
+<div class="row row-cols-1 row-cols-md-3 g-4 w-75 m-auto mb-4">
+  <div class="col d-flex justify-content-center">
+  <div class="card border-success border-1 mb-3 w-100 h-100" style="max-width: 18rem;">
+      <div class="card-header">Quem somos?</div>
+      <div class="card-body text-success">
+        <h5 class="card-title">Success card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
     </div>
+  </div>
+  <div class="col d-flex justify-content-center">
+    <div class="card border-success border-1 mb-3 w-100 h-100" style="max-width: 18rem;">
+      <div class="card-header">O que fazemos?</div>
+      <div class="card-body text-success">
+        <h5 class="card-title">Success card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col d-flex justify-content-center">
+    <div class="card border-success border-1 mb-3 w-100 h-100" style="max-width: 18rem;">
+      <div class="card-header">Por que fazemos?</div>
+      <div class="card-body text-success">
+        <h5 class="card-title">Success card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+    </div>
+  </div>
 </div>
 
 <h2>COMO FUNCIONA?</h2>
