@@ -26,32 +26,32 @@
     <button type="button" data-bs-target="#carouselRegion" data-bs-slide-to="3" aria-label="Slide 4"></button>
   </div>
   <div class="carousel-inner">
-    <div class="carousel-item active crs">
-      <img src="imgs/inseguranca_alimentar" class="d-block w-100 crs-inseguranca" alt="Imagem insegurança alimentar">
+    <div class="carousel-item active crs dark-div">
+      <img src="imgs/inseguranca_alimentar" class="d-block w-100 dark-img crs-inseguranca" alt="Imagem insegurança alimentar">
       <div class="carousel-caption d-none d-md-block">
-        <h5>Insegurança Alimentar</h5>
-        <p>Teste slide sobre inseguranca alimentar</p>
+        <h2 class="text-start crs-content fs-1">Insegurança Alimentar</h2>
+        <p class="text-start crs-content fs-3">Teste slide sobre inseguranca alimentar</p>
       </div>
     </div>
-    <div class="carousel-item crs">
-      <img src="imgs/desperdicio" class="d-block w-100" alt="Imagem desperdício de alimentos">
+    <div class="carousel-item crs dark-div">
+      <img src="imgs/desperdicio" class="d-block w-100 dark-img" alt="Imagem desperdício de alimentos">
       <div class="carousel-caption d-none d-md-block">
-        <h5>Desperdício de Alimentos</h5>
-        <p>Teste slide sobre desperdicio de alimentos</p>
+        <h2 class="text-start crs-content fs-1">Desperdício de Alimentos</h2>
+        <p class="text-start crs-content fs-3">Teste slide sobre desperdicio de alimentos</p>
       </div>
     </div>
-    <div class="carousel-item crs">
-      <img src="imgs/lei_img" class="d-block w-100 crs-lei" alt="Imagem sobre lei">
+    <div class="carousel-item crs dark-div">
+      <img src="imgs/lei_img" class="d-block w-100 dark-img crs-lei" alt="Imagem sobre lei">
       <div class="carousel-caption d-none d-md-block">
-        <h5>Lei nº 14.016/20</h5>
-        <p>Teste slide sobre lei nº 14.016/20</p>
+        <h2 class="text-start crs-content fs-1">Lei nº 14.016/20</h2>
+        <p class="text-start crs-content fs-3">Teste slide sobre lei nº 14.016/20</p>
       </div>
     </div>
-    <div class="carousel-item crs">
-      <img src="imgs/algorithm_img" class="d-block w-100 crs-algorithm" alt="Imagem algoritmo">
+    <div class="carousel-item crs dark-div">
+      <img src="imgs/algorithm_img" class="d-block w-100 dark-img crs-algorithm" alt="Imagem algoritmo">
       <div class="carousel-caption d-none d-md-block">
-        <h5>Algoritmo</h5>
-        <p>Teste slide sobre algoritmo</p>
+        <h2 class="text-start crs-content fs-1">Algoritmo</h2>
+        <p class="text-start crs-content fs-3">Teste slide sobre algoritmo</p>
       </div>
     </div>
   </div>
