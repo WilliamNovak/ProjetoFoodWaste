@@ -1,8 +1,8 @@
-body{
+body {
   background: #D4EDD5 !important;
 }
 
-.banner{
+.banner {
   height: 400px;
   width: 100%;
   background-color: rgba(255,255,255,0.3);
@@ -14,25 +14,25 @@ body{
   border-right: none;
   border-color: white;
 }
-.crs{
-  height: 397px;
+
+.crs {
+  height: 25rem;
   width: 100%;
-  
-}
-.imgBanner{
-  width: 100%;
-}
-.textBanner{
-  position: absolute;
-  height: 400px;
-  background-color: rgba(0,0,0,0.4);
-  color: white;
-  width: 100%;
-  margin: auto;
-  z-index: 1;
 }
 
-.fluxo{
+.crs-inseguranca {
+  margin-top: -8rem;
+}
+
+.crs-lei {
+  margin-top: -15rem;
+}
+
+.crs-algorithm {
+  margin-top: -16rem;
+}
+
+.fluxo {
   height: 400px;
   width: 95%;
   background-color: rgba(255,255,255,0.3);

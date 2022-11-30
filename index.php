@@ -18,37 +18,50 @@
 <?php
     require_once("./navbar.php"); 
 ?>
-<div id="carouselExampleIndicators" class="carousel slide banner " data-bs-ride="carousel">
+<div id="carouselRegion" class="carousel slide banner" data-bs-ride="carousel">
   <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+    <button type="button" data-bs-target="#carouselRegion" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselRegion" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselRegion" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    <button type="button" data-bs-target="#carouselRegion" data-bs-slide-to="3" aria-label="Slide 4"></button>
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active crs">
-      <p class="textBanner">Teste1</p>
-      <img src="imgs/inseguranca_alimentar" class="imgBanner">
+      <img src="imgs/inseguranca_alimentar" class="d-block w-100 crs-inseguranca" alt="Imagem insegurança alimentar">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Insegurança Alimentar</h5>
+        <p>Teste slide sobre inseguranca alimentar</p>
+      </div>
     </div>
-    <div class="carousel-item">
-      <img src="..." class="d-block w-100" alt="...">
+    <div class="carousel-item crs">
+      <img src="imgs/desperdicio" class="d-block w-100" alt="Imagem desperdício de alimentos">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Desperdício de Alimentos</h5>
+        <p>Teste slide sobre desperdicio de alimentos</p>
+      </div>
     </div>
-    <div class="carousel-item">
-      <img src="..." class="d-block w-100" alt="...">
-      <p>Teste3</p>
+    <div class="carousel-item crs">
+      <img src="imgs/lei_img" class="d-block w-100 crs-lei" alt="Imagem sobre lei">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Lei nº 14.016/20</h5>
+        <p>Teste slide sobre lei nº 14.016/20</p>
+      </div>
     </div>
-    <div class="carousel-item">
-      <img src="..." class="d-block w-100" alt="...">
-      <p>Teste4</p>
+    <div class="carousel-item crs">
+      <img src="imgs/algorithm_img" class="d-block w-100 crs-algorithm" alt="Imagem algoritmo">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Algoritmo</h5>
+        <p>Teste slide sobre algoritmo</p>
+      </div>
     </div>
   </div>
 
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselRegion" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Previous</span>
   </button>
 
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselRegion" data-bs-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>
