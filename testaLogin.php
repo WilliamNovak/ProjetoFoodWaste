@@ -36,7 +36,7 @@ if(isset($_POST['submit']) && !empty($_POST['user']) && !empty($_POST['password'
             else {
                 session_unset();
                 $msg = "Usuário ou senha incorretos!";
-                header('Location: login.php');
+                header('Location: login.php?msg='.$msg);
             }
         }
     }

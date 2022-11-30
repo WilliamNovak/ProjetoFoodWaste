@@ -3,7 +3,7 @@ body {
 }
 
 .banner {
-  height: 28rem;
+  height: 26rem;
   width: 100%;
   background-color: rgba(255,255,255,0.3);
   border: 3px;
@@ -24,7 +24,7 @@ body {
 }
 
 .crs {
-  height: 28rem;
+  height: 26rem;
   width: 100%;
 }
 
