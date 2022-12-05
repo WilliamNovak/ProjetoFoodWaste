@@ -103,6 +103,7 @@
           <th scope="col">Prazo de Validade</th>
           <th scope="col">Quantidade</th>
           <th scope="col">Situação</th>
+          <th scope="col">Doação</th>
         </tr>
       </thead>
 
@@ -123,6 +124,7 @@
             echo "<td>".$data['prazo_validade']."</td>";
             echo "<td>".$data['quantidade']."</td>";
             echo "<td>".$data['situacao']."</td>";
+            echo "<td><button class='btn btn-outline-success' value=".$data['idalimento'].">Doar</button></td>";
             echo "</tr>";
           }
         ?>

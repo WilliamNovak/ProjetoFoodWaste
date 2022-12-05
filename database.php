@@ -2,11 +2,11 @@
 
     $dbHost = 'localhost';
     $dbUser = 'root';
-    $dbPassword = 'root';
+    $dbPassword = '';
     $dbName = 'projeto';
 
     setlocale(LC_ALL,'pt_BR.UTF8');
-    mb_internal_encoding('UTF8'); 
+    mb_internal_encoding('UTF8');
     mb_regex_encoding('UTF8');
 
     $escape = 'http://localhost/ProjetoFoodWaste/index.php';

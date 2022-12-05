@@ -3,7 +3,7 @@ body {
 }
 
 .banner {
-  height: 26rem;
+  height: 30rem;
   width: 100%;
   background-color: rgba(255,255,255,0.3);
   border: 3px;
@@ -23,7 +23,7 @@ body {
 }
 
 .crs {
-  height: 26rem;
+  height: 30rem;
   width: 100%;
 }
 
@@ -43,6 +43,12 @@ body {
   margin-top: -16rem;
 }
 
+@media only screen and (max-width: 600px) {
+  .crs-algorithm, .crs-lei, .crs-inseguranca {
+    margin-top: 0;
+  }
+}
+
 .crs-shadow {
   box-shadow: inset 3px 4px 5px #379683;
 }
@@ -56,11 +62,11 @@ body {
   padding:30px;
   border-style: solid;
   border-color: white;
-
 }
 
 .div-cards {
   margin: auto;
+  margin-top: 2rem;
   display: flex;
   flex-direction: row;
   align-content: space-around;
