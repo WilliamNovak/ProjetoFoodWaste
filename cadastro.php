@@ -24,6 +24,40 @@
         $street = $_POST['street'];
         $number = $_POST['num'];
 
+        $existUser = "SELECT 1 FROM usuario WHERE nome_usuario = '$username'";
+        $existCnpj = "SELECT 1 FROM usuario WHERE cnpj = '$cnpj'";
+        $existEmail = "SELECT 1 FROM usuario WHERE email = '$email'";
+        $existTel = "SELECT 1 FROM usuario WHERE telefone = '$telephone'";
+
+        $resUser = $conexao->query($existUser);
+        $resCnpj = $conexao->query($existCnpj);
+        $resEmail = $conexao->query($existEmail);
+        $resTel = $conexao->query($existTel);
+
+        while($dataUser = mysqli_fetch_array($resUser)){
+            if ($dataUser == 1){
+                echo "usuario";
+            }
+        }
+
+        while($dataCnpj = mysqli_fetch_array($resCnpj)){
+            if ($dataCnpj == 1){
+                echo "cnpj";
+            }
+        }
+
+        while($dataEmail = mysqli_fetch_array($resEmail)){
+            if ($dataEmail == 1){
+                echo "email";
+            }
+        }
+
+        while($dataTel = mysqli_fetch_array($resTel)){
+            if ($dataTel == 1){
+                echo "telefone";
+            }
+        }
+        
         $query = @mysqli_query($conexao, "INSERT INTO usuario (tipo_usuario, nome_usuario, senha, nome_fantasia, razao_social, email, telefone, cnpj, estado, cidade, cep, bairro, rua, numero) 
                                             VALUES ('$userType', '$username', '$hashPw', '$fantasyName', '$reason', '$email', '$telephone', '$cnpj', '$state', '$city', '$cep', '$district', '$street', '$number')") or die(
             "<script language='javascript' type='text/javascript'>
@@ -33,6 +67,7 @@
         );
 
         header("Location: login.php");
+        
     }
 
     require_once("./template.php");
@@ -56,6 +91,9 @@
                     <div class="row">
                         <input type="text" name="username" id="username" placeholder="Nome de usúario" class="inputs mx-auto" required>
                     </div>
+                    <div class="row">
+                        <div id="error_username" class="error_msg">Nome de usuário já utilizado por outro usuário!</div>
+                    </div>
                 
                     <div class="row">
                         <input type="password" name="password" placeholder="Senha" class="inputs mx-auto" id="pw1" required>
@@ -78,7 +116,7 @@
                                 <input type="text" name="cnpj" id="cnpj" placeholder="CNPJ" class="inputs mx-auto" required>
                             </div>
                             <div class="row">
-                                <div id="error_cnpj" class="error_msg">CNPJ inválido</div>
+                                <div id="error_cnpj" class="error_msg">CNPJ inválido ou já cadastrado!</div>
                             </div>
                         </div>
                     </div>
@@ -108,9 +146,15 @@
                     <div class="row">
                         <input type="email" name="email" id="email" placeholder="E-mail" class="inputs mx-auto" required>
                     </div>
+                    <div class="row">
+                        <div id="error_cnpj" class="error_msg">Email já utilizado por outro usuário!</div>
+                    </div>
             
                     <div class="row">
                         <input type="tel" name="tel" id="tel" placeholder="Telefone" class="inputs mx-auto" maxlength="15" required>
+                    </div>
+                    <div class="row">
+                        <div id="error_cnpj" class="error_msg">Telefone já utilizado por outro usuário!</div>
                     </div>
 
                     <div class="row">
