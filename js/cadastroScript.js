@@ -156,9 +156,7 @@ function my_callback(content) {
         document.getElementById('state').value=(content.uf);
     } else {
         clearCepForm(cep);
-        $('#error_cepE').hide();
         $('#error_cepI').hide();
-        // alert("CEP não encontrado.");
         showError(1, 'cep');
         $('#error_cepE').show();
 
@@ -193,8 +191,6 @@ function pesquisacep(valor) {
         } else {
             clearCepForm();
             $('#error_cepE').hide();
-            $('#error_cepI').hide();
-            // alert("Formato de CEP inválido.");
             showError(1, 'cep');
             $('#error_cepI').show();
 
