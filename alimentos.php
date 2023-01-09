@@ -64,6 +64,7 @@
                   <option value="6">Leite e derivados</option>
                   <option value="7">Óleos e gorduras</option>
                   <option value="8">Açúcares e doces</option>
+                  <option value="9">Bebidas</option>
                 </select>
               </div>
             </div>
