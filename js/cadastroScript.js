@@ -24,6 +24,9 @@ $(document).ready(function() {
         const pw1 = $('#pw1').val();
         const pw2 = $('#pw2').val();
         const cnpj = $('#cnpj').val();
+        const username = $('username').val();
+        const tel = $('tel').val();
+        const email = $('email').val();
 
         for (var i = 0; i < inputs.length; i++) {
             if (inputs[i].value === '') {
@@ -33,6 +36,44 @@ $(document).ready(function() {
                 showError(2, inputs[i].id);
             }
         }
+
+        $.ajax({
+            url: 'validaCadastro.php',
+            type: "POST",
+            dataType: 'json',
+            data: ({username: username, tel: tel, email: email}),
+            success: function(data) {
+              e.preventDefault();
+              console.log("entrou");
+              if (data.errors > 0){
+                e.preventDefault();
+
+                if (data.userError > 0) {
+                    showError(1,'username');
+                    $('#user_error').show();
+                } else {
+                    showError(2,'username');
+                    $('#user_error').hide();
+                }
+
+                if (data.telError > 0) {
+                    showError(1,'tel');
+                    $('#tel_error').show();
+                } else {
+                    showError(2,'tel');
+                    $('#tel_error').hide();
+                }
+
+                if (data.emailError > 0) {
+                    showError(1,'email');
+                    $('#email_error').show();
+                } else {
+                    showError(2,'email');
+                    $('#email_error').hide();
+                }
+              }
+            }
+        });
 
         if (pw1 != '' || pw2 != ''){
             if(!passwordValidation(pw1,pw2)){
