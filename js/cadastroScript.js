@@ -66,7 +66,7 @@ function validaForm() {
     $.ajax({
         url: 'validaCadastro.php',
         method: 'POST',
-        data: {username: username, tel: tel, email: email},
+        data: {username: username, tel: tel, email: email, cnpj: cnpj},
         dataType: 'json'
     }).done(function(data) {
         if (data.errors > 0){
@@ -94,6 +94,14 @@ function validaForm() {
           } else {
               showError(2,'email');
               $('#email_error').hide();
+          }
+
+          if (data.cnpjError > 0) {
+              showError(1,'cnpj');
+              $('#error_cnpj').show();
+          } else {
+              showError(2,'cnpj');
+              $('#error_cnpj').hide();
           }
         }
 
