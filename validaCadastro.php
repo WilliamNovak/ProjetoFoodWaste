@@ -1,12 +1,9 @@
 <?php
-    require_once("./template.php");
-
-    // echo "<script language='javascript' type='text/javascript'>
-    //     alert('ooooooooo!');
-    // </script>";
+    header('Content-Type: application/json');
+    include_once('database.php');
 
     $username = $_POST['username'];
-    $tel = $_POST['tel'];
+    $tel = preg_replace("/[^0-9]/", "", $_POST['tel']);
     $email = $_POST['email'];
     $errors = 0;
     $user_error = 0;
@@ -35,5 +32,5 @@
     }
 
     $arr = array('errors' => $errors, 'userError' => $user_error, 'telError' => $tel_error, 'emailError' => $email_error);
-    json_encode($arr);
+    echo json_encode($arr);
 ?>

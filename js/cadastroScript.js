@@ -18,92 +18,94 @@ $(document).ready(function() {
         e.target.value = !x[2] ? x[1] : x[1] + '.' + x[2] + '.' + x[3] + '/' + x[4] + (x[5] ? '-' + x[5] : '');
     });
 
-    $('#formCadastro').submit(function(e) {
-        var inputs = document.getElementsByClassName('inputs');
-        var errors = 0;
-        const pw1 = $('#pw1').val();
-        const pw2 = $('#pw2').val();
-        const cnpj = $('#cnpj').val();
-        const username = $('username').val();
-        const tel = $('tel').val();
-        const email = $('email').val();
+})
 
-        for (var i = 0; i < inputs.length; i++) {
-            if (inputs[i].value === '') {
-                showError(1, inputs[i].id);
-                errors++;
-            } else {
-                showError(2, inputs[i].id);
-            }
+function validaForm() {
+    var inputs = document.getElementsByClassName('inputs');
+    var errors = 0;
+    const pw1 = $('#pw1').val();
+    const pw2 = $('#pw2').val();
+    const cnpj = $('#cnpj').val();
+    const username = $('#username').val();
+    const tel = $('#tel').val();
+    const email = $('#email').val();
+
+    for (var i = 0; i < inputs.length; i++) {
+        if (inputs[i].value === '') {
+            showError(1, inputs[i].id);
+            errors++;
+        } else {
+            showError(2, inputs[i].id);
+        }
+    }
+
+    if (pw1 != '' || pw2 != ''){
+        if(!passwordValidation(pw1,pw2)){
+            showError(1,'pw1');
+            showError(1,'pw2');
+            $('#pwError').show();
+            errors++;
+        } else {
+            showError(2,'pw1');
+            showError(2,'pw2');
+            $('#pwError').hide();
+        }
+    }
+
+    if (cnpj != ''){
+        if (!cnpjValidation(cnpj)) {
+            showError(1, 'cnpj');
+            $('#error_cnpj').show();
+            errors++;
+        } else {
+            $('#error_cnpj').hide();
+            showError(2, 'cnpj');
+        }
+    }
+
+    $.ajax({
+        url: 'validaCadastro.php',
+        method: 'POST',
+        data: {username: username, tel: tel, email: email},
+        dataType: 'json'
+    }).done(function(data) {
+        if (data.errors > 0){
+            errors++;
+
+          if (data.userError > 0) {
+              showError(1,'username');
+              $('#user_error').show();
+          } else {
+              showError(2,'username');
+              $('#user_error').hide();
+          }
+
+          if (data.telError > 0) {
+              showError(1,'tel');
+              $('#tel_error').show();
+          } else {
+              showError(2,'tel');
+              $('#tel_error').hide();
+          }
+
+          if (data.emailError > 0) {
+              showError(1,'email');
+              $('#email_error').show();
+          } else {
+              showError(2,'email');
+              $('#email_error').hide();
+          }
         }
 
-        $.ajax({
-            url: 'validaCadastro.php',
-            type: "POST",
-            dataType: 'json',
-            data: ({username: username, tel: tel, email: email}),
-            success: function(data) {
-              e.preventDefault();
-              console.log("entrou");
-              if (data.errors > 0){
-                e.preventDefault();
-
-                if (data.userError > 0) {
-                    showError(1,'username');
-                    $('#user_error').show();
-                } else {
-                    showError(2,'username');
-                    $('#user_error').hide();
-                }
-
-                if (data.telError > 0) {
-                    showError(1,'tel');
-                    $('#tel_error').show();
-                } else {
-                    showError(2,'tel');
-                    $('#tel_error').hide();
-                }
-
-                if (data.emailError > 0) {
-                    showError(1,'email');
-                    $('#email_error').show();
-                } else {
-                    showError(2,'email');
-                    $('#email_error').hide();
-                }
-              }
-            }
-        });
-
-        if (pw1 != '' || pw2 != ''){
-            if(!passwordValidation(pw1,pw2)){
-                showError(1,'pw1');
-                showError(1,'pw2');
-                $('#pwError').show();
-                errors++;
-            } else {
-                showError(2,'pw1');
-                showError(2,'pw2');
-                $('#pwError').hide();
-            }
-        }
-
-        if (cnpj != ''){
-            if (!cnpjValidation(cnpj)) {
-                showError(1, 'cnpj');
-                $('#error_cnpj').show();
-                errors++;
-            } else {
-                $('#error_cnpj').hide();
-                showError(2, 'cnpj');
-            }
-        }
-
-        if (errors > 0) {
-            e.preventDefault();
+        if (errors == 0){
+            $('#formCadastro').submit();
         }
     });
-})
+
+    // if (errors > 0) {
+    //     e.preventDefault();
+    // }
+};
 
 function showError(type, id) {
     var inputId = '#' + id;

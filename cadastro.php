@@ -6,7 +6,7 @@
         header('Location: index.php');
     }
 
-    if(isset($_POST['submit'])){
+    if(isset($_POST['cnpj'])){
 
         include_once('database.php');
 
@@ -26,30 +26,15 @@
         $street = $_POST['street'];
         $number = $_POST['num'];
 
-        $errors = 0;
+        $query = @mysqli_query($conexao, "INSERT INTO usuario (tipo_usuario, nome_usuario, senha, nome_fantasia, razao_social, email, telefone, cnpj, estado, cidade, cep, bairro, rua, numero) 
+                                            VALUES ('$userType', '$username', '$hashPw', '$fantasyName', '$reason', '$email', '$telephone', '$cnpj', '$state', '$city', '$cep', '$district', '$street', '$number')") or die(
+            "<script language='javascript' type='text/javascript'>
+                alert('Erro cadastrar usuário!');
+                window.location.href='cadastro.php';
+            </script>"
+        );
 
-        $userExist = "SELECT * FROM usuario WHERE nome_usuario = '{$username}'";
-        $userResult = mysqli_query($conexao,$userExist);
-
-        if(mysqli_num_rows($userResult) > 0) {
-            echo "<script language='javascript' type='text/javascript'>
-                    $('username').css({ 'border-color': ' #f65959' });
-                    $('#user_error').show();
-                  </script>";
-            $errors++;
-        }
-
-        if ($errors == 0) {
-            $query = @mysqli_query($conexao, "INSERT INTO usuario (tipo_usuario, nome_usuario, senha, nome_fantasia, razao_social, email, telefone, cnpj, estado, cidade, cep, bairro, rua, numero) 
-                                                VALUES ('$userType', '$username', '$hashPw', '$fantasyName', '$reason', '$email', '$telephone', '$cnpj', '$state', '$city', '$cep', '$district', '$street', '$number')") or die(
-                "<script language='javascript' type='text/javascript'>
-                    alert('Erro cadastrar usuário!');
-                    window.location.href='cadastro.php';
-                </script>"
-            );
-
-            header("Location: login.php");
-        }
+        header("Location: login.php");
     }
 ?>
     <link rel="stylesheet" type="text/css" href="styles/style.css" >
@@ -214,7 +199,7 @@
                 </div>
             </div>
 
-            <input class="buttonform" type="submit" name="submit" id="btnSubmit" value="Finalizar Cadastro">
+            <button class="buttonform" type="button" onclick="validaForm()" name="btnSubmit" id="btnSubmit">Finalizar Cadastro</button>
         </div>
     </form>
     </div>
