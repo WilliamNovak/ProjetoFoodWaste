@@ -101,10 +101,6 @@ function validaForm() {
             $('#formCadastro').submit();
         }
     });
-
-    // if (errors > 0) {
-    //     e.preventDefault();
-    // }
 };
 
 function showError(type, id) {
