@@ -35,6 +35,7 @@
         );
 
         header("Location: login.php");
+        
     }
 ?>
     <link rel="stylesheet" type="text/css" href="styles/style.css" >
@@ -85,7 +86,7 @@
                                 <input type="text" name="cnpj" id="cnpj" placeholder="CNPJ" class="inputs mx-auto" required>
                             </div>
                             <div class="row">
-                                <div id="error_cnpj" class="error_msg">CNPJ inválido</div>
+                                <div id="error_cnpj" class="error_msg">CNPJ inválido ou já cadastrado!</div>
                             </div>
                         </div>
                     </div>
@@ -115,15 +116,9 @@
                     <div class="row">
                         <input type="email" name="email" id="email" placeholder="E-mail" class="inputs mx-auto" required>
                     </div>
-                    <div class="row">
-                        <div id="email_error" class="error_msg">Endereço de email já cadastrado</div>
-                    </div>
             
                     <div class="row">
                         <input type="tel" name="tel" id="tel" placeholder="Telefone" class="inputs mx-auto" maxlength="15" required>
-                    </div>
-                    <div class="row">
-                        <div id="tel_error" class="error_msg">Número de telefone já cadastrado</div>
                     </div>
 
                     <div class="row">
