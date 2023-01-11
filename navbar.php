@@ -12,57 +12,54 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
 
-                <?php 
-                    if((!isset($_SESSION['user']) == true) and (!isset($_SESSION['password']) == true)){
-                ?>
-                <li class="nav-item active">
-                    <a class="nav-link" id="cadastro-link" href="cadastro.php">Cadastro</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" id="login-link" href="login.php">
-                        Login
-                    </a>
-                </li>
+                    <?php 
+                        if((!isset($_SESSION['user']) == true) and (!isset($_SESSION['password']) == true)){
+                    ?>
+                    <li class="nav-item active">
+                        <a class="nav-link" id="cadastro-link" href="cadastro.php">Cadastro</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" id="login-link" href="login.php">
+                            Login
+                        </a>
+                    </li>
 
-                <?php
-                    } else {
-                        if($_SESSION['userType'] == "D"){
-                ?>
-                <li class="nav-item active">
-                    <a class="nav-link" id="alimento-link" href="alimentos.php">
-                        Alimentos
-                    </a>
-                </li>
-
-                <?php
+                    <?php
                         } else {
-                ?>
-                <li class="nav-item active">
-                    <a class="nav-link" id="doacao-link" href="doacoes.php">
-                        Doações
-                    </a>
-                </li>
-                <?php
-                        }
-                ?>
+                            if($_SESSION['userType'] == "D"){
+                    ?>
+                    <li class="nav-item active">
+                        <a class="nav-link" id="alimento-link" href="alimentos.php">
+                            Alimentos
+                        </a>
+                    </li>
 
-                <div class="menu-div">
-                    <button onclick="openMenu()" class="btnMenu">
-                        <i class="fa fa-user"></i>
-                        <?php
-                        print_r($_SESSION['user']);
-                        ?>
-                        <i class="fa fa-chevron-down"></i>
-                    </button>
-                    <div id="userMenu" class="menu-content">
-                        <li class="nav-item">
-                            <a href="logout.php" id="logout-link" class="nav-link"><i class="fa fa-arrow-right-from-bracket"></i>Sair</a>
-                        </li>
-                    </div>
-                </div>
-                <?php
-                    }
-                ?>
+                    <?php
+                            } else {
+                    ?>
+                    <li class="nav-item active">
+                        <a class="nav-link" id="doacao-link" href="doacoes.php">
+                            Doações
+                        </a>
+                    </li>
+                    <?php
+                            }
+                    ?>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarUserMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-user"></i>
+                            <?php
+                                print_r($_SESSION['user']);
+                            ?>
+                        </a>
+                        <ul class="dropdown-menu menu-content">
+                            <li><a class="dropdown-item" href="logout.php"><i class="fa fa-arrow-right-from-bracket"></i>Sair</a></li>
+                        </ul>
+                    </li>
+                    <?php
+                        }
+                    ?>
                 </ul>
             </div>
         </div>

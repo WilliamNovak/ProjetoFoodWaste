@@ -1,5 +1,4 @@
 <?php
-
     session_start();
     if((!isset($_SESSION['user']) == true) and (!isset($_SESSION['password']) == true)){
         session_unset();
@@ -56,12 +55,12 @@
     </div>
   </div>
 
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselRegion" data-bs-slide="prev">
+  <button class="carousel-control-prev z-min" type="button" data-bs-target="#carouselRegion" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Previous</span>
   </button>
 
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselRegion" data-bs-slide="next">
+  <button class="carousel-control-next z-min" type="button" data-bs-target="#carouselRegion" data-bs-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>
@@ -117,8 +116,6 @@
         </div>
     </div>
 </div>
-
-<script src="js/script.js"></script>
 
 <?php
     require_once("./footer.php");

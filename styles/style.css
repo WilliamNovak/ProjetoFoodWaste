@@ -29,11 +29,12 @@ body{
   background-image: linear-gradient(to right, #379683, #8EE4AF);
   display: flex;
   justify-content: space-between;
-  padding: 12px;
+  padding: 0.7rem 1rem;
 }
 
 #nav {
-  position: sticky;
+  position: fixed;
+  width: 100%;
   top: 0px;
   z-index: 1;
 }
@@ -117,31 +118,36 @@ form {
 
 .menu-content {
   display: none;
-  position: absolute;
   border-radius: 8px;
   background-color: #EDF5E1;
+  margin-left: -1rem;
   min-width: 120px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }
 
 .menu-content a {
-  color: black;
+  color: #379683;
+  font-weight: 500;
   text-decoration: none;
   display: block;
+  text-align: center;
+}
+
+.menu-content a i {
+  margin-right: 0.3rem;
 }
 
 .menu-content a:hover {
-  border-radius: 8px;
-  background-color: rgb(221,221,221);
-}
-
-#logout-link {
   color: #379683;
-  font-weight: 500;
+  background-color: rgb(221,221,221);
 }
 
 .flex-div {
   display: flex;
   justify-content: center;
+}
+
+.z-min {
+  z-index: 0;
 }
