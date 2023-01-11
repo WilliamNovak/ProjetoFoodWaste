@@ -2,6 +2,10 @@ body {
   background: #D4EDD5 !important;
 }
 
+#nav {
+  position: fixed;
+}
+
 .banner {
   height: 30rem;
   width: 100%;
@@ -14,39 +18,36 @@ body {
   border-color: white;
 }
 
-.dark-div {
-  background-color: black;
-}
-
 .dark-img {
   opacity: 0.5;
+  min-height: 100%;
 }
 
 .crs {
   height: 30rem;
   width: 100%;
+  background-color: black;
 }
 
 .crs-content {
   text-shadow: 2px 2px 8px white;
 }
 
-.crs-inseguranca {
-  margin-top: -8rem;
+.crs img {
+  height: 30rem;
+  object-fit: cover;
+}
+
+.crs-inseguranca, .crs-desperdicio {
+  object-position: 10% 10%;
 }
 
 .crs-lei {
-  margin-top: -15rem;
+  object-position: 10% 35%;
 }
 
 .crs-algorithm {
-  margin-top: -16rem;
-}
-
-@media only screen and (max-width: 600px) {
-  .crs-algorithm, .crs-lei, .crs-inseguranca {
-    margin-top: 0;
-  }
+  object-position: 10% 20%;
 }
 
 .crs-shadow {

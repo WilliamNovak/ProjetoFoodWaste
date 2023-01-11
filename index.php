@@ -17,7 +17,7 @@
 <?php
     require_once("./navbar.php"); 
 ?>
-<div id="carouselRegion" class="carousel slide banner" data-bs-ride="carousel">
+<div id="carouselRegion" class="carousel slide banner" data-bs-interval="10000" data-bs-ride="carousel">
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#carouselRegion" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
     <button type="button" data-bs-target="#carouselRegion" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -25,30 +25,30 @@
     <button type="button" data-bs-target="#carouselRegion" data-bs-slide-to="3" aria-label="Slide 4"></button>
   </div>
   <div class="carousel-inner">
-    <div class="carousel-item active crs dark-div">
+    <div class="carousel-item active crs">
       <img src="imgs/inseguranca_alimentar" class="d-block w-100 dark-img crs-inseguranca" alt="Imagem insegurança alimentar">
-      <div class="carousel-caption d-none d-md-block">
+      <div class="carousel-caption d-md-block">
         <h2 class="text-start crs-content fs-1">Insegurança Alimentar</h2>
         <p class="text-start crs-content fs-3">10,3 milhões de brasileiros sofriam com insegurança alimentar em 2018, segundo IBGE. Aumento de 41,5% em relação a 2013.</p>
       </div>
     </div>
-    <div class="carousel-item crs dark-div">
-      <img src="imgs/desperdicio" class="d-block w-100 dark-img" alt="Imagem desperdício de alimentos">
-      <div class="carousel-caption d-none d-md-block">
+    <div class="carousel-item crs">
+      <img src="imgs/desperdicio" class="d-block w-100 dark-img crs-desperdicio" alt="Imagem desperdício de alimentos">
+      <div class="carousel-caption d-md-block">
         <h2 class="text-start crs-content fs-1">Desperdício de Alimentos</h2>
         <p class="text-start crs-content fs-3">Cerca de 17% a um terço da produção diária de alimentos no mundo acaba como desperdício, segundo a FAO. 13% dos alimentos descartados são do comércio.</p>
       </div>
     </div>
-    <div class="carousel-item crs dark-div">
+    <div class="carousel-item crs">
       <img src="imgs/lei_img" class="d-block w-100 dark-img crs-lei" alt="Imagem sobre lei">
-      <div class="carousel-caption d-none d-md-block">
+      <div class="carousel-caption d-md-block">
         <h2 class="text-start crs-content fs-1">Lei nº 14.016/20</h2>
         <p class="text-start crs-content fs-3">A Lei nº 14.016, de 23 de junho de 2020, dispõe sobre o combate ao desperdício de alimentos e a doação de excedentes de alimentos para o consumo humano. </p>
       </div>
     </div>
-    <div class="carousel-item crs dark-div">
+    <div class="carousel-item crs">
       <img src="imgs/algorithm_img" class="d-block w-100 dark-img crs-algorithm" alt="Imagem algoritmo">
-      <div class="carousel-caption d-none d-md-block">
+      <div class="carousel-caption d-md-block">
         <h2 class="text-start crs-content fs-1">Algoritmo</h2>
         <p class="text-start crs-content fs-3">Teste slide sobre algoritmo</p>
       </div>
