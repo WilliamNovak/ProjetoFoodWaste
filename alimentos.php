@@ -31,19 +31,69 @@
     require_once("./navbar.php");
 ?>
 
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#foodModal">
-    <i class="fa-solid fa-plus"></i> 
-    Cadastrar Alimento
-  </button>
+  <div class="container">
+    <div class="table-wrapper">
+      <div class="table-title">
+        <div class="row">
+          <div class="col-sm-6">
+            <h2>Alimentos</h2>
+          </div>
+          <div class="col-sm-6">
+            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#foodModal">
+              <i class="fa-solid fa-plus"></i> 
+              Cadastrar Alimento
+            </button>
+          </div>
+        </div>
+      </div>
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Alimento</th>
+            <th scope="col">Tipo de Alimento</th>
+            <th scope="col">Prazo de Validade</th>
+            <th scope="col">Quantidade</th>
+            <th scope="col">Situação</th>
+            <th scope="col">Ações</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <?php
+              while($data = mysqli_fetch_array($res)){
+
+                $typeId = $data['idtipo'];
+                $sql_food_type = "SELECT descricao_alimento FROM tipo_alimento WHERE idtipo_alimento = '$typeId'";
+                $typeRes = $conexao->query($sql_food_type);
+                while($typeData = mysqli_fetch_array($typeRes)){
+                  $foodType = $typeData['descricao_alimento'];
+                }
+
+                echo "<td>".$data['descricao']."</td>";
+                echo "<td>".$foodType."</td>";
+                echo "<td>".$data['prazo_validade']."</td>";
+                echo "<td>".$data['quantidade']."</td>";
+                echo "<td>".$data['situacao']."</td>";
+                echo "<td>
+                        <button class='btn btn-outline-dark' value=".$data['idalimento'].">Editar</button>
+                        <button class='btn btn-outline-success' value=".$data['idalimento'].">Doar</button>
+                        <button class='btn btn-outline-danger' value=".$data['idalimento'].">Excluir</button>
+                      </td>";
+              }
+            ?>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
   <div class="modal fade" id="foodModal" tabindex="-1" aria-labelledby="foodModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="foodModalLabel">Cadastrar Alimento</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-            <i class="fa-solid fa-xmark"></i> 
-          </button>
+          <h5 class="modal-title" id="foodModalLabel">Cadastro de Alimento</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
 
         <div class="modal-body">
@@ -93,44 +143,6 @@
         </div>
       </div>
     </div>
-  </div>
-
-  <div>
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Alimento</th>
-          <th scope="col">Tipo de Alimento</th>
-          <th scope="col">Prazo de Validade</th>
-          <th scope="col">Quantidade</th>
-          <th scope="col">Situação</th>
-          <th scope="col">Doação</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <?php
-          while($data = mysqli_fetch_array($res)){
-
-            $typeId = $data['idtipo'];
-            $sql_food_type = "SELECT descricao_alimento FROM tipo_alimento WHERE idtipo_alimento = '$typeId'";
-            $typeRes = $conexao->query($sql_food_type);
-            while($typeData = mysqli_fetch_array($typeRes)){
-              $foodType = $typeData['descricao_alimento'];
-            }
-
-            echo "<tr>";
-            echo "<td>".$data['descricao']."</td>";
-            echo "<td>".$foodType."</td>";
-            echo "<td>".$data['prazo_validade']."</td>";
-            echo "<td>".$data['quantidade']."</td>";
-            echo "<td>".$data['situacao']."</td>";
-            echo "<td><button class='btn btn-outline-success' value=".$data['idalimento'].">Doar</button></td>";
-            echo "</tr>";
-          }
-        ?>
-      </tbody>
-    </table>
   </div>
 
   <script src="./js/alimentosScript.js"></script>
