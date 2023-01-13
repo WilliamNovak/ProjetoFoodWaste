@@ -3,9 +3,13 @@ body {
     background-color: rgb(240, 240, 240);
 }
 
-.modal-content {
+#foodModal .modal-content {
     width: 600px;
-    transform: translate(-8%, 34%);
+    transform: translate(-8%, 45%);
+}
+
+#deleteModal .modal-content {
+    transform: translate(5%, 65%);
 }
 
 .btnFormat {

@@ -101,7 +101,7 @@
               echo "<td>
                       <button class='btn btn-outline-dark' value=".$data['idalimento'].">Editar</button>
                       <button class='btn btn-outline-success' value=".$data['idalimento'].">Doar</button>
-                      <button class='btn btn-outline-danger' value=".$data['idalimento'].">Excluir</button>
+                      <button class='btn btn-outline-danger' data-bs-toggle='modal' data-bs-target='#deleteModal' value=".$data['idalimento'].">Excluir</button>
                     </td>";
               echo "</tr>";
             }
@@ -178,6 +178,30 @@
           <button type="submit" form="foodForm" class="btn btnFormat">
             <i class="fa-solid fa-plus"></i> 
             Adicionar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="deleteModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content text-start fs-6">
+        <div class="modal-header">
+          <h5 class="modal-title">Excluir alimento</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Deseja mesmo excluir este alimento?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            <i class="fa-solid fa-chevron-left"></i> 
+              Voltar
+          </button>
+          <button type="button" class="btn btn-danger">
+            <i class="fa fa-trash"></i> 
+            Excluir
           </button>
         </div>
       </div>
