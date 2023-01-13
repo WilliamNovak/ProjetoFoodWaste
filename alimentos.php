@@ -103,7 +103,7 @@
               echo "<td>".$data['quantidade'].$um."</td>";
               echo "<td>".$data['situacao']."</td>";
               echo "<td>
-                      <button class='btn btn-outline-dark' value=".$data['idalimento']." data-bs-toggle='modal' data-bs-target='#foodModal' onclick='novoAlimento(false)'>Editar</button>
+                      <button class='btn btn-outline-dark' value=".$data['idalimento']." data-bs-toggle='modal' data-bs-target='#foodModal' onclick='novoAlimento(false,this.value)'>Editar</button>
                       <button class='btn btn-outline-success' value=".$data['idalimento'].">Doar</button>
                       <button class='btn btn-outline-danger' data-bs-toggle='modal' data-bs-target='#deleteModal' value=".$data['idalimento']." onclick='setaIdExcluir(this.value)'>Excluir</button>
                     </td>";

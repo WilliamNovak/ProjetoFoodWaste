@@ -38,12 +38,21 @@ function excluiAlimento(){
     });
 }
 
-function novoAlimento(val) {
+function novoAlimento(val, id) {
     if(val){
         $('#addButton').show();
         $('#saveButton').hide();
     } else {
         $('#addButton').hide();
         $('#saveButton').show();
+
+        $.ajax({
+            url: 'buscaAlimento.php',
+            method: 'POST',
+            data: {id: id},
+            dataType: 'json'
+        }).done(function(data) {
+            console.log(data);
+        });
     }
 }
