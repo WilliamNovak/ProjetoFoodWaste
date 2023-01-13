@@ -1,24 +1,28 @@
 <?php
     session_start();
+    $request = md5(implode($_POST));
 
     include_once('database.php');
     $userId = $_SESSION['userId'];
 
-    if(isset($_POST['food'])){
+    if(!isset($_SESSION['last_request']) || $_SESSION['last_request'] != $request) {
+      $_SESSION['last_request'] = $request;
 
-      $food = $_POST['food'];
-      $foodType = $_POST['foodType'];
-      $amount = $_POST['amount'];
-      $unit = $_POST['unit'];
-      $validity = $_POST['validity'];
+      if(isset($_POST['food'])){
 
-      $query = mysqli_query($conexao, "INSERT INTO alimentos (idproprietario, idtipo, descricao, prazo_validade, quantidade, unidade_medida, situacao)
-                                            VALUES ('$userId', '$foodType', '$food', '$validity', '$amount', '$unit', 'E')");
+        $food = $_POST['food'];
+        $foodType = $_POST['foodType'];
+        $amount = $_POST['amount'];
+        $unit = $_POST['unit'];
+        $validity = $_POST['validity'];
 
+        $query = mysqli_query($conexao, "INSERT INTO alimentos (idproprietario, idtipo, descricao, prazo_validade, quantidade, unidade_medida, situacao)
+                                              VALUES ('$userId', '$foodType', '$food', '$validity', '$amount', '$unit', 'E')");
+
+      }
     }
 
     $sql = "SELECT * FROM alimentos WHERE idproprietario = '$userId' ORDER BY prazo_validade ASC";
-
     $res = $conexao->query($sql);
 
     require_once("./template.php");
@@ -101,7 +105,7 @@
               echo "<td>
                       <button class='btn btn-outline-dark' value=".$data['idalimento'].">Editar</button>
                       <button class='btn btn-outline-success' value=".$data['idalimento'].">Doar</button>
-                      <button class='btn btn-outline-danger' data-bs-toggle='modal' data-bs-target='#deleteModal' value=".$data['idalimento'].">Excluir</button>
+                      <button class='btn btn-outline-danger' data-bs-toggle='modal' data-bs-target='#deleteModal' value=".$data['idalimento']." onclick='setaIdExcluir(this.value)'>Excluir</button>
                     </td>";
               echo "</tr>";
             }
@@ -199,7 +203,7 @@
             <i class="fa-solid fa-chevron-left"></i> 
               Voltar
           </button>
-          <button type="button" class="btn btn-danger">
+          <button type="button" class="btn btn-danger" onclick="excluiAlimento()">
             <i class="fa fa-trash"></i> 
             Excluir
           </button>

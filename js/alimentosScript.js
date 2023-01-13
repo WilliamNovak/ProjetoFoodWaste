@@ -1,3 +1,5 @@
+var idExcluir;
+
 function setUnit(val) {
     switch (val){
         case '1':
@@ -17,4 +19,21 @@ function setUnit(val) {
             $('#unit').val('L');
             break;
     }
+}
+
+function setaIdExcluir(val) {
+    idExcluir = val;
+}
+
+function excluiAlimento(){
+    $.ajax({
+        url: 'excluirAlimento.php',
+        method: 'POST',
+        data: {id: idExcluir},
+        dataType: 'json'
+    }).done(function(data) {
+        if(data){
+            document.location.reload(true);
+        }
+    });
 }
