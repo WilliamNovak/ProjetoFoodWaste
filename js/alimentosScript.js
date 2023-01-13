@@ -37,3 +37,13 @@ function excluiAlimento(){
         }
     });
 }
+
+function novoAlimento(val) {
+    if(val){
+        $('#addButton').show();
+        $('#saveButton').hide();
+    } else {
+        $('#addButton').hide();
+        $('#saveButton').show();
+    }
+}

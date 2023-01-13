@@ -44,7 +44,7 @@
             <h2>Alimentos</h2>
           </div>
           <div class="col-sm-6 text-end">
-            <button type="button" class="btn btn-success mt-1" data-bs-toggle="modal" data-bs-target="#foodModal">
+            <button type="button" class="btn btn-success mt-1" data-bs-toggle="modal" data-bs-target="#foodModal" onclick="novoAlimento(true)">
               <i class="fa-solid fa-plus"></i> 
               Cadastrar Alimento
             </button>
@@ -103,7 +103,7 @@
               echo "<td>".$data['quantidade'].$um."</td>";
               echo "<td>".$data['situacao']."</td>";
               echo "<td>
-                      <button class='btn btn-outline-dark' value=".$data['idalimento'].">Editar</button>
+                      <button class='btn btn-outline-dark' value=".$data['idalimento']." data-bs-toggle='modal' data-bs-target='#foodModal' onclick='novoAlimento(false)'>Editar</button>
                       <button class='btn btn-outline-success' value=".$data['idalimento'].">Doar</button>
                       <button class='btn btn-outline-danger' data-bs-toggle='modal' data-bs-target='#deleteModal' value=".$data['idalimento']." onclick='setaIdExcluir(this.value)'>Excluir</button>
                     </td>";
@@ -140,6 +140,8 @@
         <div class="modal-body">
           <form action="alimentos.php" method="POST" id="foodForm">
             <div class="flex-container">
+              <input type="number" class="inputs d-none" name="id" placeholder="id">
+
               <div class="flex-child">
                 <input type="text" class="inputs" name="food" placeholder="Alimento" required>
               </div>
@@ -179,9 +181,13 @@
           <i class="fa-solid fa-chevron-left"></i> 
             Voltar
           </button>
-          <button type="submit" form="foodForm" class="btn btnFormat">
+          <button type="submit" id="addButton" form="foodForm" class="btn btnFormat">
             <i class="fa-solid fa-plus"></i> 
             Adicionar
+          </button>
+          <button type="submit" id="saveButton" form="foodForm" class="btn btnFormat">
+            <i class="fa fa-save"></i> 
+            Salvar Alterações
           </button>
         </div>
       </div>
@@ -201,7 +207,7 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
             <i class="fa-solid fa-chevron-left"></i> 
-              Voltar
+            Voltar
           </button>
           <button type="button" class="btn btn-danger" onclick="excluiAlimento()">
             <i class="fa fa-trash"></i> 
