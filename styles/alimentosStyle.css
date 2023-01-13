@@ -1,6 +1,6 @@
 body {
     background: none;
-    background-color: #EDF5E1;
+    background-color: rgb(240, 240, 240);
 }
 
 .modal-content {
@@ -67,4 +67,34 @@ body {
 
 .pagination li a:hover {
     color: rgb(110, 110, 110);
+}
+
+.modal-body form {
+    padding: 0;
+    font-size: 1rem;
+    background-color: transparent;
+}
+
+option:nth-child(n):hover {
+    background: #379683;
+    color: rgb(255, 255, 255);
+}
+
+.amount-input {
+    width: 65%;
+    border-bottom-right-radius: 0px;
+    border-top-right-radius: 0px;
+    border-right: 1px solid rgb(190, 190, 190);
+}
+
+.unit-input {
+    width: 25%;
+    padding: 22px 1rem;
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+    border-left: 1px solid rgb(190, 190, 190);
+}
+
+.amount-input, .unit-input {
+    margin: 0;
 }

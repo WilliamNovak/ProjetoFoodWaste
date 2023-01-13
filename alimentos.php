@@ -9,10 +9,11 @@
       $food = $_POST['food'];
       $foodType = $_POST['foodType'];
       $amount = $_POST['amount'];
+      $unit = $_POST['unit'];
       $validity = $_POST['validity'];
 
-      $query = mysqli_query($conexao, "INSERT INTO alimentos (idproprietario, idtipo, descricao, prazo_validade, quantidade, situacao)
-                                            VALUES ('$userId', '$foodType', '$food', '$validity', '$amount', 'E')");
+      $query = mysqli_query($conexao, "INSERT INTO alimentos (idproprietario, idtipo, descricao, prazo_validade, quantidade, unidade_medida, situacao)
+                                            VALUES ('$userId', '$foodType', '$food', '$validity', '$amount', '$unit', 'E')");
 
     }
 
@@ -63,17 +64,39 @@
             while($data = mysqli_fetch_array($res)){
 
               $typeId = $data['idtipo'];
+              $um;
+
               $sql_food_type = "SELECT descricao_alimento FROM tipo_alimento WHERE idtipo_alimento = '$typeId'";
               $typeRes = $conexao->query($sql_food_type);
               while($typeData = mysqli_fetch_array($typeRes)){
                 $foodType = $typeData['descricao_alimento'];
               }
 
+              switch($data['unidade_medida']){
+                case 'Un':
+                  if ($data['quantidade'] >= 2) {
+                    $um = ' unidades';
+                  } else {
+                    $um = ' unidade';
+                  }
+                  break;
+                case 'Kg':
+                  $um = ' kg';
+                  break;
+                case 'L':
+                  if ($data['quantidade'] >= 2) {
+                    $um = ' litros';
+                  } else {
+                    $um = ' litro';
+                  }
+                  break;
+              }
+
               echo "<tr>";
               echo "<td>".$data['descricao']."</td>";
               echo "<td>".$foodType."</td>";
               echo "<td>".$data['prazo_validade']."</td>";
-              echo "<td>".$data['quantidade']."</td>";
+              echo "<td>".$data['quantidade'].$um."</td>";
               echo "<td>".$data['situacao']."</td>";
               echo "<td>
                       <button class='btn btn-outline-dark' value=".$data['idalimento'].">Editar</button>
@@ -118,28 +141,30 @@
               </div>
 
               <div class="flex-child">
-                <select name="foodType" class="inputs foodTypeInput" placeholder="Tipo de alimento" required>
+                <select name="foodType" class="inputs foodTypeInput" placeholder="Tipo de alimento" onchange="setUnit(this.value)" required>
                   <option value="" selected>Tipo de alimento</option>
                   <option value="1">Cereais, pães e tubérculos</option>
                   <option value="2">Hortaliças</option>
                   <option value="3">Frutas</option>
                   <option value="4">Leguminosas</option>
-                  <option value="5">Carnes e ovos</option>
-                  <option value="6">Leite e derivados</option>
-                  <option value="7">Óleos e gorduras</option>
-                  <option value="8">Açúcares e doces</option>
-                  <option value="9">Bebidas</option>
+                  <option value="5">Carnes</option>
+                  <option value="6">Ovos e derivados do leite</option>
+                  <option value="7">Leite e bebidas lácteas</option>
+                  <option value="8">Óleos e gorduras</option>
+                  <option value="9">Açúcares e doces</option>
+                  <option value="10">Bebidas</option>
                 </select>
               </div>
             </div>
 
             <div class="flex-container">
-              <div class="flex-child">
-                <input type="number" class="inputs" name="amount" placeholder="Quantidade" min="1" max="1000" required>
+              <div class="flex-child d-flex justify-content-center">
+                <input type="number" class="inputs amount-input" name="amount" placeholder="Quantidade" min="1" max="1000" required>
+                <input type="text" class="inputs unit-input text-center" id="unit" name="unit" placeholder="UM" readonly="true" required>
               </div>
 
               <div class="flex-child">
-                <input type="date" class="inputs" name="validity" placeholder="Validade" required>
+                <input type="date" max="9999-12-31" class="inputs" name="validity" placeholder="Validade" required>
               </div>
             </div>
           </form>
