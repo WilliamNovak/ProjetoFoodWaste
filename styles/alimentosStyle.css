@@ -31,3 +31,40 @@ body {
     padding: 0 8px;
     height: 48px;
 }
+
+.table-wrapper {
+    padding: 1rem 1.25rem;
+    margin: 2rem 0;
+    border-radius: 0.25rem;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+}
+
+.table-title {
+    background: linear-gradient(to right, #379683, #8EE4AF);
+    color: rgb(255, 255, 255);
+    margin: -1rem -1.25rem 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.25rem 0.25rem 0 0;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
+}
+
+.pagination {
+    float: right;
+    margin: 0 0 0.25rem;
+}
+
+.pagination li a {
+    border: none;
+    font-size: 0.75rem;
+    min-width: 1.5rem;
+    min-height: 1.5rem;
+    color: rgb(160, 160, 160);
+    margin: 0 2px;
+    border-radius: 1px;
+    text-align: center;
+    line-height: 1.25rem;
+}
+
+.pagination li a:hover {
+    color: rgb(110, 110, 110);
+}
