@@ -8,7 +8,7 @@
     if(!isset($_SESSION['last_request']) || $_SESSION['last_request'] != $request) {
       $_SESSION['last_request'] = $request;
 
-      if(isset($_POST['food'])){
+      if (isset($_POST['food'])) {
 
         $food = $_POST['food'];
         $foodType = $_POST['foodType'];
@@ -16,8 +16,15 @@
         $unit = $_POST['unit'];
         $validity = $_POST['validity'];
 
-        $query = mysqli_query($conexao, "INSERT INTO alimentos (idproprietario, idtipo, descricao, prazo_validade, quantidade, unidade_medida, situacao)
+        if (isset($_POST['id']) && !empty($_POST['id'])) {
+          $foodId = $_POST['id'];
+
+          $query = mysqli_query($conexao, "UPDATE alimentos SET idtipo = '$foodType', descricao = '$food', prazo_validade = '$validity', quantidade = '$amount', unidade_medida = '$unit' WHERE idalimento = '$foodId'");
+
+        } else {
+          $query = mysqli_query($conexao, "INSERT INTO alimentos (idproprietario, idtipo, descricao, prazo_validade, quantidade, unidade_medida, situacao)
                                               VALUES ('$userId', '$foodType', '$food', '$validity', '$amount', '$unit', 'E')");
+        }
 
       }
     }
@@ -140,14 +147,14 @@
         <div class="modal-body">
           <form action="alimentos.php" method="POST" id="foodForm">
             <div class="flex-container">
-              <input type="number" class="inputs d-none" name="id" placeholder="id">
+              <input type="number" class="inputs d-none" name="id" placeholder="id" id="foodId">
 
               <div class="flex-child">
-                <input type="text" class="inputs" name="food" placeholder="Alimento" required>
+                <input type="text" class="inputs" name="food" id="foodDesc" placeholder="Alimento" required>
               </div>
 
               <div class="flex-child">
-                <select name="foodType" class="inputs foodTypeInput" placeholder="Tipo de alimento" onchange="setUnit(this.value)" required>
+                <select name="foodType" id="foodType" class="inputs foodTypeInput" placeholder="Tipo de alimento" onchange="setUnit(this.value)" required>
                   <option value="" selected>Tipo de alimento</option>
                   <option value="1">Cereais, pães e tubérculos</option>
                   <option value="2">Hortaliças</option>
@@ -165,12 +172,12 @@
 
             <div class="flex-container">
               <div class="flex-child d-flex justify-content-center">
-                <input type="number" class="inputs amount-input" name="amount" placeholder="Quantidade" min="1" max="1000" required>
+                <input type="number" class="inputs amount-input" name="amount" id="amount" placeholder="Quantidade" min="1" max="1000" required>
                 <input type="text" class="inputs unit-input text-center" id="unit" name="unit" placeholder="UM" readonly="true" required>
               </div>
 
               <div class="flex-child">
-                <input type="date" max="9999-12-31" class="inputs" name="validity" placeholder="Validade" required>
+                <input type="date" max="9999-12-31" class="inputs" name="validity" id="validity" placeholder="Validade" required>
               </div>
             </div>
           </form>

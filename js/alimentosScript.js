@@ -52,7 +52,12 @@ function novoAlimento(val, id) {
             data: {id: id},
             dataType: 'json'
         }).done(function(data) {
-            console.log(data);
+            $('#foodId').val(id);
+            $('#foodDesc').val(data.descricao);
+            $('#foodType').val(data.tipo);
+            $('#amount').val(data.quantidade);
+            $('#unit').val(data.unidade);
+            $('#validity').val(data.validade);
         });
     }
 }
