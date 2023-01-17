@@ -27,9 +27,9 @@
         $number = $_POST['num'];
 
         $query = "INSERT INTO usuario (tipo_usuario, nome_usuario, senha, nome_fantasia, razao_social, email, telefone, cnpj, estado, cidade, cep, bairro, rua, numero) 
-                       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                       VALUES (:usertype, :username, :pw, :fantasyname, :reason, :email, :tel, :cnpj, :uf, :city, :cep, :district, :street, :num)";
         $res = $conexao->prepare($query);
-        $res->execute([$userType, $username, $hashPw, $fantasyName, $reason, $email, $telephone, $cnpj, $state, $city, $cep, $district, $street, $number]);
+        $res->execute(array(":usertype" => $userType, ":username" => $username, ":pw" => $hashPw, ":fantasyname" => $fantasyName, ":reason" => $reason, ":email" => $email, ":tel" => $telephone, ":cnpj" => $cnpj, ":uf" => $state, ":city" => $city, ":cep" => $cep, ":district" => $district, ":street" => $street, ":num" => $number));
         // or die(
         //     "<script language='javascript' type='text/javascript'>
         //         alert('Erro cadastrar usuário!');

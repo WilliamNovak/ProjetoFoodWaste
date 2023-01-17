@@ -8,9 +8,10 @@ if(isset($_POST['submit']) && !empty($_POST['user']) && !empty($_POST['password'
     $user = $_POST['user'];
     $password = $_POST['password'];
 
-    $sql_rows = "SELECT count(*) FROM usuario WHERE nome_usuario = ?"; 
+    $sql_rows = "SELECT count(*) FROM usuario WHERE nome_usuario = :user"; 
     $res_rows = $conexao->prepare($sql_rows); 
-    $res_rows->execute([$user]); 
+    $res_rows->bindParam(':user', $user);
+    $res_rows->execute(); 
     $count = $res_rows->fetchColumn(); 
 
     // or die("<script language='javascript' type='text/javascript'>
@@ -25,22 +26,18 @@ if(isset($_POST['submit']) && !empty($_POST['user']) && !empty($_POST['password'
         header('Location: login.php?msg='.$msg);
     }
     else{
-        $queryDados = "SELECT nome_usuario, senha FROM usuario WHERE nome_usuario = ?";
+        $queryDados = "SELECT nome_usuario, senha, idusuario, tipo_usuario FROM usuario WHERE nome_usuario = :user";
         $res = $conexao->prepare($queryDados);
-        $res->execute([$user]);
+        $res->bindParam(':user', $user);
+        $res->execute();
         $data = $res->fetch(PDO::FETCH_ASSOC);
         
         if (password_verify($password, $data['senha'])) {
             $_SESSION['user'] = $user;
             $_SESSION['password'] = $password;
 
-            $query = "SELECT idusuario, tipo_usuario FROM usuario WHERE nome_usuario = ?";
-            $userRes = $conexao->prepare($query);
-            $userRes->execute([$user]);
-            $row = $userRes->fetch(PDO::FETCH_ASSOC);
-
-            $_SESSION['userId'] = $row['idusuario'];
-            $_SESSION['userType'] = $row['tipo_usuario'];
+            $_SESSION['userId'] = $data['idusuario'];
+            $_SESSION['userType'] = $data['tipo_usuario'];
 
             header('Location: index.php');
         }

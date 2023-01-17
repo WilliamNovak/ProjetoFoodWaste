@@ -37,10 +37,6 @@ if (!empty($page)){
         $typeArray = $typeRes->fetch(PDO::FETCH_ASSOC);
         $foodType = $typeArray['descricao_alimento'];
 
-        // while($typeData = mysqli_fetch_array($typeRes)){
-        //     $foodType = $typeData['descricao_alimento'];
-        // }
-
         switch($data['unidade_medida']){
             case 'Un':
             if ($data['quantidade'] >= 2) {
@@ -78,11 +74,10 @@ if (!empty($page)){
     $list .= "</tbody>
             </table>";
 
-    $sql_num_rows = "SELECT COUNT(id) as num_rows FROM alimentos WHERE idproprietario = '$userId'";
+    $sql_num_rows = "SELECT COUNT(idalimento) as total FROM alimentos WHERE idproprietario = ?";
     $res_rows = $conexao->prepare($sql_num_rows);
-    $res_rows->execute();
+    $res_rows->execute([$userId]);
     $num_rows = $res_rows->fetch(PDO::FETCH_ASSOC);
-    //$res_rows = $conexao->query($sql_num_rows);
 
     $list.= "<div class='clearfix'>
                 <div class='hint-text d-flex justify-content-between'>
@@ -93,7 +88,7 @@ if (!empty($page)){
                         <li class='page-item'><a href='#' class='page-link'>2</a></li>
                         <li class='page-item active'><a href='#' class='page-link'>3</a></li>
                         <li class='page-item'><a href='#' class='page-link'>4</a></li>
-                        <li class='page-item'><a href='#' class='page-link'>".$num_rows."</a></li>
+                        <li class='page-item'><a href='#' class='page-link'>5</a></li>
                         <li class='page-item'><a href='#' class='page-link'>Next</a></li>
                     </ul>
                 </div>
