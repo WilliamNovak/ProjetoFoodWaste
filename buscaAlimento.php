@@ -4,10 +4,11 @@
 
     $idAlimento = $_POST['id'];
 
-    $data = "SELECT * FROM alimentos WHERE idalimento = '{$idAlimento}'";
-    $res = $conexao->query($data);
+    $data = "SELECT * FROM alimentos WHERE idalimento = $idAlimento";
+    $res = $conexao->prepare($data);
+    $res->execute();
 
-    while($data = mysqli_fetch_array($res)){
+    while($data = $res->fetch(PDO::FETCH_ASSOC)){
         $idTipo = $data['idtipo'];
         $descricao = $data['descricao'];
         $validade = $data['prazo_validade'];

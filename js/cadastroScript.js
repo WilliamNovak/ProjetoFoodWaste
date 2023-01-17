@@ -99,10 +99,11 @@ function validaForm() {
           if (data.cnpjError > 0) {
               showError(1,'cnpj');
               $('#error_cnpj').show();
-          } else {
-              showError(2,'cnpj');
-              $('#error_cnpj').hide();
-          }
+          } 
+        //   else {
+        //       showError(2,'cnpj');
+        //       $('#error_cnpj').hide();
+        //   }
         }
 
         if (errors == 0){

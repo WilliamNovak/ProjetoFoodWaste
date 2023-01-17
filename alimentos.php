@@ -19,11 +19,14 @@
         if (isset($_POST['id']) && !empty($_POST['id'])) {
           $foodId = $_POST['id'];
 
-          $query = mysqli_query($conexao, "UPDATE alimentos SET idtipo = '$foodType', descricao = '$food', prazo_validade = '$validity', quantidade = '$amount', unidade_medida = '$unit' WHERE idalimento = '$foodId'");
+          $query = "UPDATE alimentos SET idtipo = ?, descricao = ?, prazo_validade = ?, quantidade = ?, unidade_medida = ? WHERE idalimento = ?";
+          $res = $conexao->prepare($query);
+          $res->execute([$foodType, $food, $validity, $amount, $unit, $foodId]);
 
         } else {
-          $query = mysqli_query($conexao, "INSERT INTO alimentos (idproprietario, idtipo, descricao, prazo_validade, quantidade, unidade_medida, situacao)
-                                              VALUES ('$userId', '$foodType', '$food', '$validity', '$amount', '$unit', 'E')");
+          $query = "INSERT INTO alimentos (idproprietario, idtipo, descricao, prazo_validade, quantidade, unidade_medida, situacao) VALUES (?, ?, ?, ?, ?, ?, 'E')";
+          $res = $conexao->prepare($query);
+          $res->execute([$userId, $foodType, $food, $validity, $amount, $unit]);
         }
 
       }

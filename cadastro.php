@@ -26,13 +26,16 @@
         $street = $_POST['street'];
         $number = $_POST['num'];
 
-        $query = @mysqli_query($conexao, "INSERT INTO usuario (tipo_usuario, nome_usuario, senha, nome_fantasia, razao_social, email, telefone, cnpj, estado, cidade, cep, bairro, rua, numero) 
-                                            VALUES ('$userType', '$username', '$hashPw', '$fantasyName', '$reason', '$email', '$telephone', '$cnpj', '$state', '$city', '$cep', '$district', '$street', '$number')") or die(
-            "<script language='javascript' type='text/javascript'>
-                alert('Erro cadastrar usuário!');
-                window.location.href='cadastro.php';
-            </script>"
-        );
+        $query = "INSERT INTO usuario (tipo_usuario, nome_usuario, senha, nome_fantasia, razao_social, email, telefone, cnpj, estado, cidade, cep, bairro, rua, numero) 
+                       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $res = $conexao->prepare($query);
+        $res->execute([$userType, $username, $hashPw, $fantasyName, $reason, $email, $telephone, $cnpj, $state, $city, $cep, $district, $street, $number]);
+        // or die(
+        //     "<script language='javascript' type='text/javascript'>
+        //         alert('Erro cadastrar usuário!');
+        //         window.location.href='cadastro.php';
+        //     </script>"
+        // );
 
         header("Location: login.php");
         

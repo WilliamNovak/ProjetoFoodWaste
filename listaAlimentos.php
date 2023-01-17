@@ -9,8 +9,9 @@ if (!empty($page)){
     $max_rows_pg = 10;
     $first_row = ($page * $max_rows_pg) - $max_rows_pg;
 
-    $sql = "SELECT * FROM alimentos WHERE idproprietario = '$userId' ORDER BY prazo_validade ASC LIMIT $first_row, $max_rows_pg";
-    $res = $conexao->query($sql);
+    $sql = "SELECT * FROM alimentos WHERE idproprietario = $userId ORDER BY prazo_validade ASC LIMIT $first_row, $max_rows_pg";
+    $res = $conexao->prepare($sql);
+    $res->execute();
 
     $list = "<table class='table table-striped table-hover text-center align-middle'>
                 <thead>
@@ -25,17 +26,20 @@ if (!empty($page)){
                 </thead>
                 <tbody>";
 
-    while($data = mysqli_fetch_array($res)){
+    while($data = $res->fetch(PDO::FETCH_ASSOC)){
 
         $typeId = $data['idtipo'];
         $um;
 
-        $sql_food_type = "SELECT descricao_alimento FROM tipo_alimento WHERE idtipo_alimento = '$typeId'";
-        $typeRes = $conexao->query($sql_food_type);
+        $sql_food_type = "SELECT descricao_alimento FROM tipo_alimento WHERE idtipo_alimento = $typeId";
+        $typeRes = $conexao->prepare($sql_food_type);
+        $typeRes->execute();
+        $typeArray = $typeRes->fetch(PDO::FETCH_ASSOC);
+        $foodType = $typeArray['descricao_alimento'];
 
-        while($typeData = mysqli_fetch_array($typeRes)){
-            $foodType = $typeData['descricao_alimento'];
-        }
+        // while($typeData = mysqli_fetch_array($typeRes)){
+        //     $foodType = $typeData['descricao_alimento'];
+        // }
 
         switch($data['unidade_medida']){
             case 'Un':
@@ -74,6 +78,12 @@ if (!empty($page)){
     $list .= "</tbody>
             </table>";
 
+    $sql_num_rows = "SELECT COUNT(id) as num_rows FROM alimentos WHERE idproprietario = '$userId'";
+    $res_rows = $conexao->prepare($sql_num_rows);
+    $res_rows->execute();
+    $num_rows = $res_rows->fetch(PDO::FETCH_ASSOC);
+    //$res_rows = $conexao->query($sql_num_rows);
+
     $list.= "<div class='clearfix'>
                 <div class='hint-text d-flex justify-content-between'>
                     <p>Showing <b>5</b> out of <b>100</b> entries</p>
@@ -83,7 +93,7 @@ if (!empty($page)){
                         <li class='page-item'><a href='#' class='page-link'>2</a></li>
                         <li class='page-item active'><a href='#' class='page-link'>3</a></li>
                         <li class='page-item'><a href='#' class='page-link'>4</a></li>
-                        <li class='page-item'><a href='#' class='page-link'>5</a></li>
+                        <li class='page-item'><a href='#' class='page-link'>".$num_rows."</a></li>
                         <li class='page-item'><a href='#' class='page-link'>Next</a></li>
                     </ul>
                 </div>
