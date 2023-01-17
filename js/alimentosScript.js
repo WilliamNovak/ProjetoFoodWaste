@@ -1,3 +1,13 @@
+const list = document.querySelector(".food-list");
+
+const listarAlimentos = async (page) => {
+    const data = await fetch("./listaAlimentos.php?page=" + page);
+    const res = await data.text();
+    list.innerHTML = res;
+}
+
+listarAlimentos(1);
+
 var idExcluir;
 
 function setUnit(val) {

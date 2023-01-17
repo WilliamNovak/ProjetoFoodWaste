@@ -29,9 +29,6 @@
       }
     }
 
-    $sql = "SELECT * FROM alimentos WHERE idproprietario = '$userId' ORDER BY prazo_validade ASC";
-    $res = $conexao->query($sql);
-
     require_once("./template.php");
 ?>
     <link rel="stylesheet" type="text/css" href="styles/style.css" >
@@ -58,81 +55,7 @@
           </div>
         </div>
       </div>
-      <table class="table table-striped table-hover text-center align-middle">
-        <thead>
-          <tr>
-            <th scope="col">Alimento</th>
-            <th scope="col">Tipo de Alimento</th>
-            <th scope="col">Prazo de Validade</th>
-            <th scope="col">Quantidade</th>
-            <th scope="col">Situação</th>
-            <th scope="col">Ações</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <?php
-            while($data = mysqli_fetch_array($res)){
-
-              $typeId = $data['idtipo'];
-              $um;
-
-              $sql_food_type = "SELECT descricao_alimento FROM tipo_alimento WHERE idtipo_alimento = '$typeId'";
-              $typeRes = $conexao->query($sql_food_type);
-              while($typeData = mysqli_fetch_array($typeRes)){
-                $foodType = $typeData['descricao_alimento'];
-              }
-
-              switch($data['unidade_medida']){
-                case 'Un':
-                  if ($data['quantidade'] >= 2) {
-                    $um = ' unidades';
-                  } else {
-                    $um = ' unidade';
-                  }
-                  break;
-                case 'Kg':
-                  $um = ' kg';
-                  break;
-                case 'L':
-                  if ($data['quantidade'] >= 2) {
-                    $um = ' litros';
-                  } else {
-                    $um = ' litro';
-                  }
-                  break;
-              }
-
-              echo "<tr>";
-              echo "<td>".$data['descricao']."</td>";
-              echo "<td>".$foodType."</td>";
-              echo "<td>".$data['prazo_validade']."</td>";
-              echo "<td>".$data['quantidade'].$um."</td>";
-              echo "<td>".$data['situacao']."</td>";
-              echo "<td>
-                      <button class='btn btn-outline-dark' value=".$data['idalimento']." data-bs-toggle='modal' data-bs-target='#foodModal' onclick='novoAlimento(false,this.value)'>Editar</button>
-                      <button class='btn btn-outline-success' value=".$data['idalimento'].">Doar</button>
-                      <button class='btn btn-outline-danger' data-bs-toggle='modal' data-bs-target='#deleteModal' value=".$data['idalimento']." onclick='setaIdExcluir(this.value)'>Excluir</button>
-                    </td>";
-              echo "</tr>";
-            }
-          ?>
-        </tbody>
-      </table>
-      <div class="clearfix">
-        <div class="hint-text d-flex justify-content-between">
-          <p>Showing <b>5</b> out of <b>100</b> entries</p>
-          <ul class="pagination lh-1">
-            <li class="page-item disabled"><a href="#" class="page-link">Previous</a></li>
-            <li class="page-item"><a href="#" class="page-link">1</a></li>
-            <li class="page-item"><a href="#" class="page-link">2</a></li>
-            <li class="page-item active"><a href="#" class="page-link">3</a></li>
-            <li class="page-item"><a href="#" class="page-link">4</a></li>
-            <li class="page-item"><a href="#" class="page-link">5</a></li>
-            <li class="page-item"><a href="#" class="page-link">Next</a></li>
-          </ul>
-        </div>
-      </div>
+      <span class="food-list"></span>
     </div>
   </div>
 
