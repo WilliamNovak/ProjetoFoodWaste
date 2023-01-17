@@ -6,7 +6,7 @@ $page = filter_input(INPUT_GET, "page", FILTER_SANITIZE_NUMBER_INT);
 
 if (!empty($page)){
 
-    $max_rows_pg = 10;
+    $max_rows_pg = 5;
     $first_row = ($page * $max_rows_pg) - $max_rows_pg;
 
     $sql = "SELECT * FROM alimentos WHERE idproprietario = $userId ORDER BY prazo_validade ASC LIMIT $first_row, $max_rows_pg";
@@ -79,20 +79,33 @@ if (!empty($page)){
     $res_rows->execute([$userId]);
     $num_rows = $res_rows->fetch(PDO::FETCH_ASSOC);
 
+    $qtd_pages = ceil($num_rows['total'] / $max_rows_pg);
+    $max_links = 2;
+
     $list.= "<div class='clearfix'>
                 <div class='hint-text d-flex justify-content-between'>
                     <p>Showing <b>5</b> out of <b>100</b> entries</p>
                     <ul class='pagination lh-1'>
-                        <li class='page-item disabled'><a href='#' class='page-link'>Previous</a></li>
-                        <li class='page-item'><a href='#' class='page-link'>1</a></li>
-                        <li class='page-item'><a href='#' class='page-link'>2</a></li>
-                        <li class='page-item active'><a href='#' class='page-link'>3</a></li>
-                        <li class='page-item'><a href='#' class='page-link'>4</a></li>
-                        <li class='page-item'><a href='#' class='page-link'>5</a></li>
-                        <li class='page-item'><a href='#' class='page-link'>Next</a></li>
-                    </ul>
-                </div>
-            </div>";
+                        <li class='page-item'><a href='#' onclick='listarAlimentos(1)' class='page-link'>Primeira</a></li>";
+    
+    for($pg_anterior = $page - $max_links; $pg_anterior <= $page - 1; $pg_anterior++){
+        if($pg_anterior >= 1){
+            $list.= "<li class='page-item'><a href='#' onclick='listarAlimentos($pg_anterior)' class='page-link'>$pg_anterior</a></li>";
+        }
+    }
+
+    $list.= "<li class='page-item active'><a href='#' class='page-link'>$page</a></li>";
+
+    for($pg_posterior = $page + 1; $pg_posterior <= $page + $max_links; $pg_posterior++){
+        if($pg_posterior <= $qtd_pages){
+            $list.= "<li class='page-item'><a href='#' onclick='listarAlimentos($pg_posterior)' class='page-link'>$pg_posterior</a></li>";
+        }
+    }
+
+    $list.= "<li class='page-item'><a href='#' onclick='listarAlimentos($qtd_pages)' class='page-link'>Última</a></li>
+          </ul>
+        </div>
+      </div>";
 
     echo $list;
 } else {
