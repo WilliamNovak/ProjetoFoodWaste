@@ -77,14 +77,15 @@ if (!empty($page)){
     $sql_num_rows = "SELECT COUNT(idalimento) as total FROM alimentos WHERE idproprietario = ?";
     $res_rows = $conexao->prepare($sql_num_rows);
     $res_rows->execute([$userId]);
-    $num_rows = $res_rows->fetch(PDO::FETCH_ASSOC);
+    $rows = $res_rows->fetch(PDO::FETCH_ASSOC);
+    $num_rows = $rows['total'];
 
-    $qtd_pages = ceil($num_rows['total'] / $max_rows_pg);
+    $qtd_pages = ceil($num_rows / $max_rows_pg);
     $max_links = 2;
 
     $list.= "<div class='clearfix'>
                 <div class='hint-text d-flex justify-content-between'>
-                    <p>Showing <b>5</b> out of <b>100</b> entries</p>
+                    <p>Mostrando <b>$max_rows_pg</b> de <b>$num_rows</b> registros</p>
                     <ul class='pagination lh-1'>
                         <li class='page-item'><a href='#' onclick='listarAlimentos(1)' class='page-link'>Primeira</a></li>";
     
