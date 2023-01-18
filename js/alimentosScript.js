@@ -50,6 +50,7 @@ function excluiAlimento(){
 
 function novoAlimento(val, id) {
     if(val){
+        document.getElementById('foodForm').reset();
         $('#addButton').show();
         $('#saveButton').hide();
     } else {

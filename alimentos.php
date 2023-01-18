@@ -98,7 +98,7 @@
 
             <div class="flex-container">
               <div class="flex-child d-flex justify-content-center">
-                <input type="number" class="inputs amount-input" name="amount" id="amount" placeholder="Quantidade" min="1" max="1000" required>
+                <input type="number" step="any" class="inputs amount-input" name="amount" id="amount" placeholder="Quantidade" min="0" max="1000" required>
                 <input type="text" class="inputs unit-input text-center" id="unit" name="unit" placeholder="UM" readonly="true" required>
               </div>
 
