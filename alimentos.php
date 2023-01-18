@@ -82,8 +82,8 @@
               <div class="flex-child">
                 <select name="foodType" id="foodType" class="inputs foodTypeInput" placeholder="Tipo de alimento" onchange="setUnit(this.value)" required>
                   <option value="" selected>Tipo de alimento</option>
-                  <option value="1">Cereais, pães e tubérculos</option>
-                  <option value="2">Hortaliças</option>
+                  <option value="1">Carboidratos</option>
+                  <option value="2">Verduras e Legumes</option>
                   <option value="3">Frutas</option>
                   <option value="4">Leguminosas</option>
                   <option value="5">Carnes</option>

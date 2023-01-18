@@ -4,7 +4,13 @@ include_once('database.php');
 $userId = $_SESSION['userId'];
 $page = filter_input(INPUT_GET, "page", FILTER_SANITIZE_NUMBER_INT);
 
-if (!empty($page)){
+$sql_num_rows = "SELECT COUNT(idalimento) as total FROM alimentos WHERE idproprietario = ?";
+$res_rows = $conexao->prepare($sql_num_rows);
+$res_rows->execute([$userId]);
+$rows = $res_rows->fetch(PDO::FETCH_ASSOC);
+$num_rows = $rows['total'];
+
+if (!empty($page) && $num_rows > 0){
 
     $max_rows_pg = 5;
     $first_row = ($page * $max_rows_pg) - $max_rows_pg;
@@ -74,20 +80,20 @@ if (!empty($page)){
     $list .= "</tbody>
             </table>";
 
-    $sql_num_rows = "SELECT COUNT(idalimento) as total FROM alimentos WHERE idproprietario = ?";
-    $res_rows = $conexao->prepare($sql_num_rows);
-    $res_rows->execute([$userId]);
-    $rows = $res_rows->fetch(PDO::FETCH_ASSOC);
-    $num_rows = $rows['total'];
-
     $qtd_pages = ceil($num_rows / $max_rows_pg);
     $max_links = 2;
 
     $list.= "<div class='clearfix'>
-                <div class='hint-text d-flex justify-content-between align-items-center'>
-                    <p>Mostrando <b>$max_rows_pg</b> de <b>$num_rows</b> registros</p>
-                    <ul class='pagination lh-1'>
-                        <li class='page-item'><a href='#' onclick='listarAlimentos(1)' class='page-link'>Primeira</a></li>";
+                <div class='hint-text d-flex justify-content-between align-items-center'>";
+    
+    if ($num_rows < $max_rows_pg) {
+        $list.= "<p>Mostrando <b>$num_rows</b> de <b>$num_rows</b> registros</p>";
+    } else {
+        $list.= "<p>Mostrando <b>$max_rows_pg</b> de <b>$num_rows</b> registros</p>";
+    }
+
+    $list.= "<ul class='pagination lh-1'>
+                <li class='page-item'><a href='#' onclick='listarAlimentos(1)' class='page-link'>Primeira</a></li>";
     
     for($pg_anterior = $page - $max_links; $pg_anterior <= $page - 1; $pg_anterior++){
         if($pg_anterior >= 1){
