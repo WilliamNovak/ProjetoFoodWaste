@@ -161,14 +161,14 @@
         <div class="modal-body">
           <form action="doar.php" method="POST" id="donateForm">
             <div class="flex-container">
-              <input type="number" class="inputs d-none" name="id" placeholder="id" id="foodId">
+              <input type="number" class="inputs d-none" name="donateId" placeholder="id" id="donateId">
 
               <div class="flex-child d-flex justify-content-center">
                 <input type="text" class="inputs" name="donateFood" id="donateDesc" placeholder="Alimento" readonly="true">
               </div>
 
               <div class="flex-child d-flex justify-content-center">
-                <input type="number" step="any" class="inputs amount-input" min="0" max="1000" name="donateAmount" id="donateAmount" placeholder="Quantidade">
+                <input type="number" step="any" class="inputs amount-input" min="0" max="1000" name="donateAmount" id="donateAmount" placeholder="Quantidade" required>
 
                 <input type="text" class="inputs unit-input text-center" id="donateUnit" name="donateUnit" placeholder="UM" readonly="true">
               </div>

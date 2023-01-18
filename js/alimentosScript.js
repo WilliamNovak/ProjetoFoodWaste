@@ -1,14 +1,15 @@
 const list = document.querySelector(".food-list");
+var currentPage = 1;
+var idExcluir;
 
 const listarAlimentos = async (page) => {
     const data = await fetch("./listaAlimentos.php?page=" + page);
     const res = await data.text();
     list.innerHTML = res;
+    currentPage = page;
 }
 
-listarAlimentos(1);
-
-var idExcluir;
+listarAlimentos(currentPage);
 
 function setUnit(val) {
     switch (val){
@@ -43,7 +44,8 @@ function excluiAlimento(){
         dataType: 'json'
     }).done(function(data) {
         if(data){
-            document.location.reload(true);
+            listarAlimentos(currentPage);
+            $('#deleteModal').modal('hide');
         }
     });
 }
@@ -71,4 +73,36 @@ function novoAlimento(val, id) {
             $('#validity').val(data.validade);
         });
     }
+}
+
+function setaDoacao(id){
+    $.ajax({
+        url: 'buscaAlimento.php',
+        method: 'POST',
+        data: {id: id},
+        dataType: 'json'
+    }).done(function(data) {
+        $('#donateId').val(id);
+        $('#donateDesc').val(data.descricao);
+        $('#donateUnit').val(data.unidade);
+        $('#donateAmount').val("");
+    });
+}
+
+function doarAlimento() {
+    var id = $('#donateId').val();
+    var amount = $('#donateAmount').val();
+
+    $.ajax({
+        url: 'doar.php',
+        method: 'POST',
+        data: {id: id, amount: amount},
+        dataType: 'json'
+    }).done(function(data) {
+        if(data){
+            listarAlimentos(currentPage);
+            $('#donateModal').modal('hide');
+            //console.log(data.id + ' - ' + data.amount);
+        }
+    });
 }
