@@ -151,6 +151,44 @@
     </div>
   </div>
 
+  <div class="modal" id="donateModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content text-start fs-6">
+        <div class="modal-header">
+          <h5 class="modal-title">Doar alimento</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="doar.php" method="POST" id="donateForm">
+            <div class="flex-container">
+              <input type="number" class="inputs d-none" name="id" placeholder="id" id="foodId">
+
+              <div class="flex-child d-flex justify-content-center">
+                <input type="text" class="inputs" name="donateFood" id="donateDesc" placeholder="Alimento" readonly="true">
+              </div>
+
+              <div class="flex-child d-flex justify-content-center">
+                <input type="number" step="any" class="inputs amount-input" min="0" max="1000" name="donateAmount" id="donateAmount" placeholder="Quantidade">
+
+                <input type="text" class="inputs unit-input text-center" id="donateUnit" name="donateUnit" placeholder="UM" readonly="true">
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            <i class="fa-solid fa-chevron-left"></i> 
+            Voltar
+          </button>
+          <button type="button" class="btn btn-success" onclick="doarAlimento()">
+            <i class="fa-solid fa-utensils"></i> 
+            Doar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script src="./js/alimentosScript.js"></script>
 <?php
     require_once("./footer.php");

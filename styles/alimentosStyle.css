@@ -3,13 +3,24 @@ body {
     background-color: rgb(240, 240, 240);
 }
 
-#foodModal .modal-content {
-    width: 600px;
-    transform: translate(-8%, 45%);
+#deleteModal .modal-content {
+    width: 500px;
 }
 
-#deleteModal .modal-content {
-    transform: translate(5%, 65%);
+#donateModal .modal-content {
+    width: 550px;
+}
+
+.modal.show .modal-dialog, .modal.fade .modal-dialog, .modal-dialog {
+    width: 600px;
+    position: absolute;
+    margin: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 600px;
+    display: flex;
+    justify-content: center;
 }
 
 .btnFormat {
