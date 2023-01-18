@@ -84,7 +84,7 @@ if (!empty($page)){
     $max_links = 2;
 
     $list.= "<div class='clearfix'>
-                <div class='hint-text d-flex justify-content-between'>
+                <div class='hint-text d-flex justify-content-between align-items-center'>
                     <p>Mostrando <b>$max_rows_pg</b> de <b>$num_rows</b> registros</p>
                     <ul class='pagination lh-1'>
                         <li class='page-item'><a href='#' onclick='listarAlimentos(1)' class='page-link'>Primeira</a></li>";

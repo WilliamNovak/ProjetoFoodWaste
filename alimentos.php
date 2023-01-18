@@ -43,7 +43,7 @@
     require_once("./navbar.php");
 ?>
 
-  <div class="container text-start fs-6">
+  <div class="container text-start fs-6 d-flex flex-column justify-content-center">
     <div class="table-wrapper">
       <div class="table-title">
         <div class="row">

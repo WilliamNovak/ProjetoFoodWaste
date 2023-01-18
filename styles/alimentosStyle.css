@@ -36,9 +36,12 @@ body {
     height: 48px;
 }
 
+.container {
+    height: 85vh;
+}
+
 .table-wrapper {
     padding: 1rem 1.25rem;
-    margin: 2rem 0;
     border-radius: 0.25rem;
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
 }
@@ -52,9 +55,15 @@ body {
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
 }
 
+.clearfix p {
+    margin: 0;
+    margin-left: 0.5rem;
+}
+
 .pagination {
     float: right;
-    margin: 0 0 0.25rem;
+    margin-bottom: 0;
+    margin-right: 0.5rem;
 }
 
 .pagination li a {
@@ -62,15 +71,24 @@ body {
     font-size: 0.75rem;
     min-width: 1.5rem;
     min-height: 1.5rem;
-    color: rgb(160, 160, 160);
-    margin: 0 2px;
+    background-color: transparent;
+    color: #379683;
+    border: 1px solid #379683;
     border-radius: 1px;
     text-align: center;
     line-height: 1.25rem;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
 }
 
 .pagination li a:hover {
-    color: rgb(110, 110, 110);
+    color: #379683;
+    background-color: #cee0d6;
+    border: 1px solid #379683;
+}
+
+.page-item.active .page-link {
+    background-color: #379683;
+    border-color: #379683;
 }
 
 .modal-body form {
