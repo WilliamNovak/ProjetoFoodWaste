@@ -100,9 +100,38 @@ function doarAlimento() {
         dataType: 'json'
     }).done(function(data) {
         if(data){
-            listarAlimentos(currentPage);
             $('#donateModal').modal('hide');
-            //console.log(data.id + ' - ' + data.amount);
+
+            if (data.errors != 0){
+                
+                if (data.receivers == 0) {
+                    document.getElementById("alertMsg").innerHTML = "Não é possível realizar a doação, pois não há mais receptores diponíveis.";
+                } else {
+                    document.getElementById("alertMsg").innerHTML = "A quantidade informada para doação é superior à quantidade em estoque.";
+                }
+
+                $("#errorAlert").fadeIn("fast", function(){
+                    $(this).show();
+                });
+                setTimeout(function(){
+                    $("#errorAlert").fadeOut("slow", function(){
+                        $(this).hide();
+                    });
+                }, 3000);
+
+            } else {
+                listarAlimentos(currentPage);
+
+                $("#successAlert").fadeIn("fast", function(){
+                    $(this).show();
+                });
+                setTimeout(function(){
+                    $("#successAlert").fadeOut("slow", function(){
+                        $(this).hide();
+                    });
+                }, 3000);
+            }
+            console.log(data.id + ' - ' + data.receivers);
         }
     });
 }

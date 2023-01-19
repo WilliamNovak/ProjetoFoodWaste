@@ -131,3 +131,15 @@ option:nth-child(n):hover {
 .amount-input, .unit-input {
     margin: 0;
 }
+
+.alert {
+    top: 0;
+    right: 0;
+    margin-top: 5rem;
+    margin-right: 0.5rem;
+    z-index: 1;
+    max-width: 45%;
+    text-align: start;
+    font-size: 1rem;
+    display: none;
+}
