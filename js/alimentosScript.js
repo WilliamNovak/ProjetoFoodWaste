@@ -106,6 +106,8 @@ function doarAlimento() {
                 
                 if (data.receivers == 0) {
                     document.getElementById("alertMsg").innerHTML = "Não é possível realizar a doação, pois não há mais receptores diponíveis.";
+                } else if (amount == 0) {
+                    document.getElementById("alertMsg").innerHTML = "Para realizar a doação a quantidade doada deve ser maior que 0.";
                 } else {
                     document.getElementById("alertMsg").innerHTML = "A quantidade informada para doação é superior à quantidade em estoque.";
                 }
@@ -131,7 +133,7 @@ function doarAlimento() {
                     });
                 }, 3000);
             }
-            console.log(data.id + ' - ' + data.receivers);
+            console.log(data.id);
         }
     });
 }
