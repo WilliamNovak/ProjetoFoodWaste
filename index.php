@@ -70,48 +70,50 @@
 <div class="row row-cols-1 row-cols-md-3 g-4 w-75 m-auto mb-4">
   <div class="col d-flex justify-content-center">
   <div class="card border-success border-1 mb-3 w-100 h-100" style="max-width: 18rem;">
-      <div class="card-header">Quem somos?</div>
       <div class="card-body text-success">
-        <h5 class="card-title">Success card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <h5 class="card-title">Quem somos?</h5>
+        <p class="card-text">Nossa startup tem como objetivo reduzir o desperdício de alimentos nos mercados.</p>
       </div>
     </div>
   </div>
+  
   <div class="col d-flex justify-content-center">
     <div class="card border-success border-1 mb-3 w-100 h-100" style="max-width: 18rem;">
-      <div class="card-header">O que fazemos?</div>
       <div class="card-body text-success">
-        <h5 class="card-title">Success card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <h5 class="card-title">O que fazemos?</h5>
+        <p class="card-text">Nós intermediamos doações para instituições caritativas através de um algoritmo de redistribuição automática que equilibra as doações para garantir a igualdade.</p>
       </div>
     </div>
   </div>
+
   <div class="col d-flex justify-content-center">
     <div class="card border-success border-1 mb-3 w-100 h-100" style="max-width: 18rem;">
-      <div class="card-header">Por que fazemos?</div>
       <div class="card-body text-success">
-        <h5 class="card-title">Success card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <h5 class="card-title">Por que fazemos?</h5>
+        <p class="card-text">Criamos este projeto para preencher a necessidade de um sistema que redistribua doações de forma justa e equitativa, tendo em vista que atualmente não existe algo semelhante no mercado.</p>
       </div>
     </div>
   </div>
 </div>
 
-<h2>COMO FUNCIONA?</h2>
+<h2>FLUXOGRAMA</h2>
 
 <img src="imgs/teste.svg" class="fluxo">
 
 <div class="div-ceos">
     <div class="ceos">
         <div class="card">
+          <img src="imgs/djow.png" alt="">
             Dionatan Jocemar de Souza de Lima
         </div>
         
         <div class="card">
+          <img src="imgs/lalo.png" alt="">
             Lázaro Engel Fernandes
         </div>
 
         <div class="card">
+          <img src="imgs/will.png" alt="">
             William Renan Novak
         </div>
     </div>

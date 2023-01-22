@@ -72,11 +72,11 @@ body {
   flex-direction: row;
   align-content: space-around;
   justify-content: space-around;
-  height: 20rem;
+  height: 50rem;
 }
 
 .div-ceos{
-  margin: 50% 50% auto 50%;
+  margin: 5% 50% 20px 50%;
   display: flex;
   align-items: center;
   flex-wrap: nowrap;
@@ -91,11 +91,21 @@ body {
 }
 
 .card{
-  height: 200px;
-  width: 150px;
+  height: 350px;
+  width: 200px;
   border: 3px;
+  align-items: center;
   border-style: solid;
   background-color: rgba(255,255,255,0.3);
   margin: 10px;
   border-color: white;
+}
+.card img{
+  margin-top: 10px;
+  border: 2px;
+  border-style: solid;
+  border-radius: 5px;
+  border-color: #379683;
+  height: 250px;
+  width: 90%;
 }
