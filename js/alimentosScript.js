@@ -32,6 +32,30 @@ function setUnit(val) {
     }
 }
 
+function atualizaAlimentos() {
+    var id = $('#foodId').val();
+    var food = $('#foodDesc').val();
+    var type = $('#foodType').val();
+    var amount = $('#amount').val();
+    var unit = $('#unit').val();
+    var validity = $('#validity').val();
+
+    $.ajax({
+        url: 'cadastroAlimentos.php',
+        method: 'POST',
+        data: {id: id, food: food, foodType: type, amount: amount, unit: unit, validity: validity},
+        dataType: 'json'
+    }).done(function(data) {
+        $('#foodModal').modal('hide');
+
+        listarAlimentos(currentPage);
+
+        document.getElementById("successMsg").innerHTML = data;
+
+        alert(1);
+    });
+}
+
 function setaIdExcluir(val) {
     idExcluir = val;
 }
@@ -46,6 +70,10 @@ function excluiAlimento(){
         if(data){
             listarAlimentos(currentPage);
             $('#deleteModal').modal('hide');
+
+            document.getElementById("successMsg").innerHTML = "Alimento excluído com sucesso!";
+
+            alert(1);
         }
     });
 }
@@ -112,28 +140,43 @@ function doarAlimento() {
                     document.getElementById("alertMsg").innerHTML = "A quantidade informada para doação é superior à quantidade em estoque.";
                 }
 
-                $("#errorAlert").fadeIn("fast", function(){
-                    $(this).show();
-                });
-                setTimeout(function(){
-                    $("#errorAlert").fadeOut("slow", function(){
-                        $(this).hide();
-                    });
-                }, 3000);
+                alert(2);
 
             } else {
                 listarAlimentos(currentPage);
 
-                $("#successAlert").fadeIn("fast", function(){
-                    $(this).show();
-                });
-                setTimeout(function(){
-                    $("#successAlert").fadeOut("slow", function(){
-                        $(this).hide();
-                    });
-                }, 3000);
+                document.getElementById("successMsg").innerHTML = "Doação encaminhada com sucesso!";
+
+                alert(1);
             }
             //console.log(data.id);
         }
     });
+}
+
+function alert(val){
+
+    if(val == 1) {
+
+        $("#successAlert").fadeIn("fast", function(){
+            $(this).show();
+        });
+        setTimeout(function(){
+            $("#successAlert").fadeOut("slow", function(){
+                $(this).hide();
+            });
+        }, 3000);
+
+    } else if (val == 2) {
+
+        $("#errorAlert").fadeIn("fast", function(){
+            $(this).show();
+        });
+        setTimeout(function(){
+            $("#errorAlert").fadeOut("slow", function(){
+                $(this).hide();
+            });
+        }, 3000);
+        
+    }
 }

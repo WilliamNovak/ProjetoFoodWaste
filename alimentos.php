@@ -1,37 +1,5 @@
 <?php
     session_start();
-    $request = md5(implode($_POST));
-
-    include_once('database.php');
-    $userId = $_SESSION['userId'];
-
-    if(!isset($_SESSION['last_request']) || $_SESSION['last_request'] != $request) {
-      $_SESSION['last_request'] = $request;
-
-      if (isset($_POST['food'])) {
-
-        $food = $_POST['food'];
-        $foodType = $_POST['foodType'];
-        $amount = $_POST['amount'];
-        $unit = $_POST['unit'];
-        $validity = $_POST['validity'];
-
-        if (isset($_POST['id']) && !empty($_POST['id'])) {
-          $foodId = $_POST['id'];
-
-          $query = "UPDATE alimentos SET idtipo = ?, descricao = ?, prazo_validade = ?, quantidade = ?, unidade_medida = ? WHERE idalimento = ?";
-          $res = $conexao->prepare($query);
-          $res->execute([$foodType, $food, $validity, $amount, $unit, $foodId]);
-
-        } else {
-          $query = "INSERT INTO alimentos (idproprietario, idtipo, descricao, prazo_validade, quantidade, unidade_medida, situacao) VALUES (?, ?, ?, ?, ?, ?, 'E')";
-          $res = $conexao->prepare($query);
-          $res->execute([$userId, $foodType, $food, $validity, $amount, $unit]);
-        }
-
-      }
-    }
-
     require_once("./template.php");
 ?>
     <link rel="stylesheet" type="text/css" href="styles/style.css" >
@@ -114,11 +82,11 @@
           <i class="fa-solid fa-chevron-left"></i> 
             Voltar
           </button>
-          <button type="submit" id="addButton" form="foodForm" class="btn btnFormat">
+          <button type="button" id="addButton" class="btn btnFormat" onclick="atualizaAlimentos()">
             <i class="fa-solid fa-plus"></i> 
             Adicionar
           </button>
-          <button type="submit" id="saveButton" form="foodForm" class="btn btnFormat">
+          <button type="button" id="saveButton" class="btn btnFormat" onclick="atualizaAlimentos()">
             <i class="fa fa-save"></i> 
             Salvar Alterações
           </button>
@@ -199,9 +167,7 @@
   <div id="successAlert" class="alert alert-success position-absolute" role="alert">
     <div class="d-flex align-items-center">
       <i class="fa-solid fa-circle-check bi flex-shrink-0 me-3 ms-1 fs-4"></i>
-      <div>
-        Doação encaminhada com sucesso!
-      </div>
+      <div id="successMsg"></div>
     </div>
   </div>
 
