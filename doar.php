@@ -56,19 +56,22 @@
 
         } else {
 
+            $query_type = "SELECT idtipo FROM alimentos WHERE idalimento = ?";
+            $res_type = $conexao->prepare($query_type);
+            $res_type->execute([$idAlimento]);
+            $row_type = $res_type->fetch(PDO::FETCH_ASSOC);
+            $foodType = $row_type['idtipo'];
+
+            $idReceiver;
+            $maxMed;
+
+            $currentDate = new DateTime($today);
+
             $query_receivers = "SELECT u.idusuario FROM usuario u WHERE u.status = 'A' AND u.tipo_usuario = 'R'";
             $res = $conexao->prepare($query_receivers);
             $res->execute();
 
             while($data = $res->fetch(PDO::FETCH_ASSOC)){
-
-                $query_type = "SELECT idtipo FROM alimentos WHERE idalimento = ?";
-                $res_type = $conexao->prepare($query_type);
-                $res_type->execute([$idAlimento]);
-                $row_type = $res_type->fetch(PDO::FETCH_ASSOC);
-                $foodType = $row_type['idtipo'];
-
-                $currentDate = new DateTime($today);
 
                 $query_data = "SELECT max(d.data_doacao) as data_doacao FROM doacao d WHERE idreceptor = ?";
                 $res_data = $conexao->prepare($query_data);
@@ -97,7 +100,68 @@
                 $res_donation_type->execute([$foodType, $data['idusuario']]);
                 $rows_donation_type = $res_donation_type->fetch(PDO::FETCH_ASSOC);
                 $totalDonationsType = $rows_donation_type['total'];
+
+                if ($totalDonationsType == 0) {
+                    $daysType = 31;
+                }
+
+                $total_amount = 0;
+                
+                $query_amount = "SELECT d.quantidade, a.unidade_medida FROM doacao d, alimentos a WHERE d.idalimento = a.idalimento AND d.idreceptor = ?";
+                $res_amount = $conexao->prepare($query_amount);
+                $res_amount->execute([$data['idusuario']]);
+
+                while($data_amount = $res_amount->fetch(PDO::FETCH_ASSOC)){
+
+                    if ($data_amount['unidade_medida'] == 'Un') {
+
+                        $total_amount += $data_amount['quantidade'] * 0.1;
+
+                    } else if ($data_amount['unidade_medida'] == 'L') {
+
+                        $total_amount += $data_amount['quantidade'] * 0.95;
+
+                    } else {
+
+                        $total_amount += $data_amount['quantidade'];
+
+                    }
+                }
+
+                $total_amount_type = 0;
+                
+                $query_amount_type = "SELECT d.quantidade, a.unidade_medida FROM doacao d, alimentos a WHERE d.idalimento = a.idalimento AND a.idtipo = ? AND d.idreceptor = ?";
+                $res_amount_type = $conexao->prepare($query_amount_type);
+                $res_amount_type->execute([$foodType, $data['idusuario']]);
+
+                while($data_amount_type = $res_amount_type->fetch(PDO::FETCH_ASSOC)){
+
+                    if ($data_amount_type['unidade_medida'] == 'Un') {
+
+                        $total_amount_type += $data_amount_type['quantidade'] * 0.1;
+
+                    } else if ($data_amount_type['unidade_medida'] == 'L') {
+
+                        $total_amount_type += $data_amount_type['quantidade'] * 0.95;
+
+                    } else {
+
+                        $total_amount_type += $data_amount_type['quantidade'];
+
+                    }
+                }
+
+                $media = ($totalDonations * 0.5) + $totalDonationsType + ($total_amount * 1.5) + ($total_amount_type * 3) - $days - ($daysType * 2);
+
+                if (empty($maxMed) || $media < $maxMed) {
+                    $maxMed = $media;
+                    $idReceiver = $data['idusuario'];
+                }
             }
+
+            $query_donation = "INSERT INTO doacao (iddoador, idreceptor, idalimento, quantidade, data_doacao, situacao) VALUES (?, ?, ?, ?, ?, 'E')";
+            $res = $conexao->prepare($query_donation);
+            $res->execute([$userId, $idReceiver, $idAlimento, $amount, $today]);
         }
 
         $query_update = "UPDATE alimentos SET quantidade = quantidade - ? WHERE idalimento = ?";

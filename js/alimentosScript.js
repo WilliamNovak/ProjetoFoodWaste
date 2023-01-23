@@ -133,7 +133,7 @@ function doarAlimento() {
                     });
                 }, 3000);
             }
-            console.log(data.id);
+            //console.log(data.id);
         }
     });
 }
