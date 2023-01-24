@@ -35,7 +35,11 @@ if (!empty($page) && $num_rows > 0){
     while($data = $res->fetch(PDO::FETCH_ASSOC)){
 
         $typeId = $data['idtipo'];
+        $today = date('y-m-d');
+        $validity = date('y-m-d', strtotime($data['prazo_validade']));
+        $dataValidade = date('d/m/Y', strtotime($data['prazo_validade']));
         $um;
+        $status;
 
         $sql_food_type = "SELECT descricao_alimento FROM tipo_alimento WHERE idtipo_alimento = $typeId";
         $typeRes = $conexao->prepare($sql_food_type);
@@ -45,36 +49,70 @@ if (!empty($page) && $num_rows > 0){
 
         switch($data['unidade_medida']){
             case 'Un':
-            if ($data['quantidade'] >= 2) {
-                $um = ' unidades';
-            } else {
-                $um = ' unidade';
-            }
-            break;
+                if ($data['quantidade'] >= 2) {
+                    $um = ' unidades';
+                } else {
+                    $um = ' unidade';
+                }
+                break;
             case 'Kg':
-            $um = ' kg';
-            break;
+                $um = ' kg';
+                break;
             case 'L':
-            if ($data['quantidade'] >= 2) {
-                $um = ' litros';
-            } else {
-                $um = ' litro';
-            }
-            break;
+                if ($data['quantidade'] >= 2) {
+                    $um = ' litros';
+                } else {
+                    $um = ' litro';
+                }
+                break;
+        }
+
+        switch($data['situacao']){
+            case 'E':
+                $status = 'Em estoque';
+                break;
+            case 'F':
+                $status = 'Em falta';
+                break;
+            case 'V':
+                $status = 'Vencido';
+                break;
+        }
+
+        if($validity <= $today) {
+
+            $query_update = "UPDATE alimentos SET situacao = 'V' WHERE idalimento = ?";
+            $res_update = $conexao->prepare($query_update);
+            $res_update->execute([$data['idalimento']]);
+            $status = 'Vencido';
+
+        } else if($data['quantidade'] <= 0) {
+
+            $query_update = "UPDATE alimentos SET situacao = 'F' WHERE idalimento = ?";
+            $res_update = $conexao->prepare($query_update);
+            $res_update->execute([$data['idalimento']]);
+            $status = 'Em falta';
+
         }
 
         $list.= "<tr>
                     <td>".$data['descricao']."</td>
                     <td>".$foodType."</td>
-                    <td>".$data['prazo_validade']."</td>
+                    <td>".$dataValidade."</td>
                     <td>".$data['quantidade'].$um."</td>
-                    <td>".$data['situacao']."</td>
+                    <td>".$status."</td>
                     <td>
-                        <button class='btn btn-outline-dark' value=".$data['idalimento']." data-bs-toggle='modal' data-bs-target='#foodModal' onclick='novoAlimento(false,this.value)'>Editar</button>
-                        <button class='btn btn-outline-success' data-bs-toggle='modal' data-bs-target='#donateModal' value=".$data['idalimento']." onclick='setaDoacao(this.value)'>Doar</button>
-                        <button class='btn btn-outline-danger' data-bs-toggle='modal' data-bs-target='#deleteModal' value=".$data['idalimento']." onclick='setaIdExcluir(this.value)'>Excluir</button>
-                    </td>
-                </tr>";
+                        <button class='btn btn-outline-dark' value=".$data['idalimento']." data-bs-toggle='modal' data-bs-target='#foodModal' onclick='novoAlimento(false,this.value)'>Editar</button>";
+
+        if($data['situacao'] == 'V' || $validity <= $today || $data['quantidade'] <= 0){
+            $list.= "<button class='btn btn-outline-success mx-1' data-bs-toggle='modal' data-bs-target='#donateModal' value=".$data['idalimento']." disabled onclick='setaDoacao(this.value)'>Doar</button>";
+        } else {
+            $list.= "<button class='btn btn-outline-success mx-1' data-bs-toggle='modal' data-bs-target='#donateModal' value=".$data['idalimento']." onclick='setaDoacao(this.value)'>Doar</button>";
+        }
+                        
+        $list.= "<button class='btn btn-outline-danger' data-bs-toggle='modal' data-bs-target='#deleteModal' value=".$data['idalimento']." onclick='setaIdExcluir(this.value)'>Excluir</button>
+            </td>
+        </tr>";
     }
 
     $list .= "</tbody>

@@ -15,7 +15,7 @@
 
     if (!empty($foodId)) {
 
-        $query = "UPDATE alimentos SET idtipo = ?, descricao = ?, prazo_validade = ?, quantidade = ?, unidade_medida = ? WHERE idalimento = ?";
+        $query = "UPDATE alimentos SET idtipo = ?, descricao = ?, prazo_validade = ?, quantidade = ?, unidade_medida = ?, situacao = 'E' WHERE idalimento = ?";
         $res = $conexao->prepare($query);
         $res->execute([$foodType, $food, $validity, $amount, $unit, $foodId]);
 
