@@ -11,7 +11,7 @@ $rows = $res_rows->fetch(PDO::FETCH_ASSOC);
 $num_rows = $rows['total'];
 
 if (!empty($page) && $num_rows > 0){
-
+    
     $max_rows_pg = 5;
     $first_row = ($page * $max_rows_pg) - $max_rows_pg;
 
@@ -117,7 +117,7 @@ if (!empty($page) && $num_rows > 0){
                     <td>".$data['quantidade'].$um."</td>
                     <td>".$foodType."</td>
                     <td>".$dataDoacao."</td>
-                    <td>".$status."</td>=
+                    <td>".$status."</td>
                 </tr>";
     }
 
