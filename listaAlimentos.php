@@ -154,8 +154,11 @@ if (!empty($page) && $num_rows > 0){
 
     echo $list;
 } else {
-    echo "<div class='alert alert-secondary' role='alert'>
-            A simple secondary alert—check it out!
+    echo "<div class='alert alert-secondary bg-transparent border-0' role='alert'>
+            <div class='d-flex flex-column justify-content-center text-center'>
+                <i class='fa-solid fa-magnifying-glass fs-4 p-1'></i>
+                Nenhum alimento encontrado.
+            </div>
           </div>";
 }
 ?>

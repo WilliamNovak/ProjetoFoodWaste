@@ -132,7 +132,7 @@ option:nth-child(n):hover {
     margin: 0;
 }
 
-.alert {
+.alert-success, .alert-danger {
     top: 0;
     right: 0;
     margin-top: 5rem;

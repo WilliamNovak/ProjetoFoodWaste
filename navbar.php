@@ -29,6 +29,11 @@
                             if($_SESSION['userType'] == "D"){
                     ?>
                     <li class="nav-item active">
+                        <a class="nav-link" id="doacaoLinkD" href="doacoes.php">
+                            Doações
+                        </a>
+                    </li>
+                    <li class="nav-item active">
                         <a class="nav-link" id="alimento-link" href="alimentos.php">
                             Alimentos
                         </a>
@@ -38,8 +43,13 @@
                             } else {
                     ?>
                     <li class="nav-item active">
-                        <a class="nav-link" id="doacao-link" href="doacoes.php">
+                        <a class="nav-link" id="doacaoLinkR" href="doacoesReceptor.php">
                             Doações
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" id="doacaoEsperaLink" href="doacoesEspera.php">
+                            Recebido
                         </a>
                     </li>
                     <?php
