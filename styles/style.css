@@ -14,11 +14,8 @@ html, body {
 }
 
 body{
-  background: linear-gradient(to right, #379683A0, #8EE4AFA0),
-  url("../imgs/background.png");
-  background-position: center;
-  background-repeat: repeat;
-  background-size: cover;
+  background: none;
+  background-color: rgb(240, 240, 240);
   position: relative;
   text-align: center;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -150,4 +147,67 @@ form {
 
 .z-min {
   z-index: 0;
+}
+
+.table-wrapper {
+  padding: 1rem 1.25rem;
+  border-radius: 0.25rem;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+}
+
+.table-title {
+  background: linear-gradient(to right, #379683, #8EE4AF);
+  color: rgb(255, 255, 255);
+  margin: -1rem -1.25rem 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.25rem 0.25rem 0 0;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
+}
+
+.clearfix p {
+  margin: 0;
+  margin-left: 0.5rem;
+}
+
+.pagination {
+  float: right;
+  margin-bottom: 0;
+  margin-right: 0.5rem;
+}
+
+.pagination li a {
+  border: none;
+  font-size: 0.75rem;
+  min-width: 1.5rem;
+  min-height: 1.5rem;
+  background-color: transparent;
+  color: #379683;
+  border: 1px solid #379683;
+  border-radius: 1px;
+  text-align: center;
+  line-height: 1.25rem;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
+}
+
+.pagination li a:hover {
+  color: #379683;
+  background-color: #cee0d6;
+  border: 1px solid #379683;
+}
+
+.page-item.active .page-link {
+  background-color: #379683;
+  border-color: #379683;
+}
+
+.alert-success, .alert-danger {
+  top: 0;
+  right: 0;
+  margin-top: 5rem;
+  margin-right: 0.5rem;
+  z-index: 1;
+  max-width: 45%;
+  text-align: start;
+  font-size: 1rem;
+  display: none;
 }

@@ -1,3 +1,10 @@
+body {
+    background: linear-gradient(to right, #379683A0, #8EE4AFA0),url("../imgs/background.png") !important;
+    background-position: center;
+    background-repeat: repeat;
+    background-size: cover;
+}
+
 form {
     width: 70rem;
     height: auto;
