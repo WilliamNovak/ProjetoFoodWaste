@@ -105,8 +105,8 @@ if (!empty($page) && $num_rows > 0){
                     <td>".$foodType."</td>
                     <td>".$dataDoacao."</td>
                     <td>
-                        <button class='btn btn-outline-success' value=".$data['iddoacao']." data-bs-toggle='modal' data-bs-target='#aceiteModal' onclick='novoAlimento(false,this.value)'>Aceitar</button>
-                        <button class='btn btn-outline-danger' value=".$data['iddoacao']." data-bs-toggle='modal' data-bs-target='#recusaModal' onclick='novoAlimento(false,this.value)'>Recusar</button>
+                        <button class='btn btn-outline-success' value=".$data['iddoacao']." data-bs-toggle='modal' data-bs-target='#acceptModal' onclick='setDonationId(this.value)'>Aceitar</button>
+                        <button class='btn btn-outline-danger' value=".$data['iddoacao']." data-bs-toggle='modal' data-bs-target='#refuseModal' onclick='setDonationId(this.value)'>Recusar</button>
                     </td>
                 </tr>";
     }

@@ -200,6 +200,18 @@ form {
   border-color: #379683;
 }
 
+.modal.show .modal-dialog, .modal.fade .modal-dialog, .modal-dialog {
+  width: 600px;
+  position: absolute;
+  margin: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 600px;
+  display: flex;
+  justify-content: center;
+}
+
 .alert-success, .alert-danger {
   top: 0;
   right: 0;

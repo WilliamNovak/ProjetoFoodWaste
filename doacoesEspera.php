@@ -24,6 +24,54 @@
     </div>
   </div>
 
+  <div class="modal" id="acceptModal" tabindex="-1">
+    <div class="modal-dialog" style="width: 500px;">
+      <div class="modal-content text-start fs-6">
+        <div class="modal-header">
+          <h5 class="modal-title">Aceitar doação</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Deseja aceitar o recebimento dessa doação?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            <i class="fa-solid fa-chevron-left"></i> 
+            Voltar
+          </button>
+          <button type="button" class="btn btn-success" onclick="acceptDonation()">
+            <i class="fa-solid fa-check"></i>
+            Aceitar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="refuseModal" tabindex="-1">
+    <div class="modal-dialog" style="width: 500px;">
+      <div class="modal-content text-start fs-6">
+        <div class="modal-header">
+          <h5 class="modal-title">Recusar doação</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Deseja mesmo recusar o recebimento dessa doação?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            <i class="fa-solid fa-chevron-left"></i> 
+            Voltar
+          </button>
+          <button type="button" class="btn btn-danger" onclick="refuseDonation()">
+            <i class="fa-solid fa-x"></i>
+            Recusar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div id="errorAlert" class="alert alert-danger position-absolute" role="alert">
     <div class="d-flex align-items-center">
       <i class="fa-solid fa-triangle-exclamation bi flex-shrink-0 me-3 ms-1 fs-4"></i>
