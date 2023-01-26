@@ -18,13 +18,21 @@
         $idDoacao = $_POST['iddoacao'];
         $msg = "Doação recusada com sucesso!";
 
-        $query_exist_doacao = "SELECT idalimento, quantidade FROM doacao WHERE iddoacao = ?";
+        $query_exist_doacao = "SELECT iddoador, idalimento, quantidade FROM doacao WHERE iddoacao = ?";
         $res_doacao = $conexao->prepare($query_exist_doacao);
         $res_doacao->execute([$idDoacao]);
         $row_doacao = $res_doacao->fetch(PDO::FETCH_ASSOC);
 
         $idAlimento = $row_doacao['idalimento'];
         $amount = $row_doacao['quantidade'];
+        $userId = $row_doacao['iddoador'];
+
+        $query_validade = "SELECT prazo_validade FROM alimentos WHERE idalimento = ?";
+        $res_validade = $conexao->prepare($query_validade);
+        $res_validade->execute([$idAlimento]);
+        $row_validade = $res_validade->fetch(PDO::FETCH_ASSOC);
+
+        $validity = date('y-m-d', strtotime($row_validade['prazo_validade']));
     }
 
     $query_amount = "SELECT quantidade FROM alimentos WHERE idalimento = ?";
@@ -43,6 +51,19 @@
             $errors++;
             $msg = "Para realizar a doação a quantidade doada deve ser maior que 0.";
         } 
+    } else {
+        if ($validity <= $today) {
+            $query_update = "UPDATE alimentos SET quantidade = quantidade + ? WHERE idalimento = ?";
+            $res = $conexao->prepare($query_update);
+            $res->execute([$amount, $idAlimento]);
+
+            $query_recusado = "UPDATE doacao SET situacao = 'R' WHERE iddoacao = ?";
+            $res = $conexao->prepare($query_recusado);
+            $res->execute([$idDoacao]);
+
+            $errors++;
+            $msg = "Alimento vencido. Doação retornada para o doador!";
+        }
     }
     
     if ($errors == 0) {

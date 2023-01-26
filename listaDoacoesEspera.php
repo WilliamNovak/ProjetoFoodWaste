@@ -15,7 +15,7 @@ if (!empty($page) && $num_rows > 0){
     $max_rows_pg = 5;
     $first_row = ($page * $max_rows_pg) - $max_rows_pg;
 
-    $sql = "SELECT * FROM doacao WHERE idreceptor = $userId AND situacao = 'E' ORDER BY data_doacao DESC LIMIT $first_row, $max_rows_pg";
+    $sql = "SELECT * FROM doacao WHERE idreceptor = $userId AND situacao = 'E' ORDER BY data_doacao ASC LIMIT $first_row, $max_rows_pg";
     $res = $conexao->prepare($sql);
     $res->execute();
 
@@ -26,6 +26,7 @@ if (!empty($page) && $num_rows > 0){
                         <th scope='col'>Doador</th>
                         <th scope='col'>Quantidade</th>
                         <th scope='col'>Tipo de Alimento</th>
+                        <th scope='col'>Data Validade</th>
                         <th scope='col'>Data Doação</th>
                         <th scope='col'>Ações</th>
                     </tr>
@@ -47,13 +48,14 @@ if (!empty($page) && $num_rows > 0){
         $typeArray = $typeRes->fetch(PDO::FETCH_ASSOC);
         $foodType = $typeArray['descricao_alimento'];
 
-        $sql_alimento = "SELECT descricao, unidade_medida FROM alimentos WHERE idalimento = $idAlimento";
+        $sql_alimento = "SELECT descricao, unidade_medida, prazo_validade FROM alimentos WHERE idalimento = $idAlimento";
         $resAlimento = $conexao->prepare($sql_alimento);
         $resAlimento->execute();
         $alimentoArray = $resAlimento->fetch(PDO::FETCH_ASSOC);
 
         $unidade_medida = $alimentoArray['unidade_medida'];
         $alimento = $alimentoArray['descricao'];
+        $dataValidade = date('d/m/Y', strtotime($alimentoArray['prazo_validade']));
 
         $sql_receiver = "SELECT nome_usuario FROM usuario WHERE idusuario = $idDoador";
         $resReceiver = $conexao->prepare($sql_receiver);
@@ -103,6 +105,7 @@ if (!empty($page) && $num_rows > 0){
                     <td>".$username."</td>
                     <td>".$data['quantidade'].$um."</td>
                     <td>".$foodType."</td>
+                    <td>".$dataValidade."</td>
                     <td>".$dataDoacao."</td>
                     <td>
                         <button class='btn btn-outline-success' value=".$data['iddoacao']." data-bs-toggle='modal' data-bs-target='#acceptModal' onclick='setDonationId(this.value)'>Aceitar</button>
