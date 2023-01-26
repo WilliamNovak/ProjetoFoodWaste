@@ -4,7 +4,7 @@ include_once('database.php');
 $userId = $_SESSION['userId'];
 $page = filter_input(INPUT_GET, "page", FILTER_SANITIZE_NUMBER_INT);
 
-$sql_num_rows = "SELECT COUNT(iddoacao) as total FROM doacao WHERE idreceptor = ? AND situacao = 'E'";
+$sql_num_rows = "SELECT COUNT(iddoacao) as total FROM doacao WHERE idreceptor = ? AND situacao != 'E'";
 $res_rows = $conexao->prepare($sql_num_rows);
 $res_rows->execute([$userId]);
 $rows = $res_rows->fetch(PDO::FETCH_ASSOC);
@@ -15,7 +15,7 @@ if (!empty($page) && $num_rows > 0){
     $max_rows_pg = 5;
     $first_row = ($page * $max_rows_pg) - $max_rows_pg;
 
-    $sql = "SELECT * FROM doacao WHERE idreceptor = $userId AND situacao = 'E' ORDER BY data_doacao ASC LIMIT $first_row, $max_rows_pg";
+    $sql = "SELECT * FROM doacao WHERE idreceptor = $userId AND situacao != 'E' ORDER BY data_doacao DESC LIMIT $first_row, $max_rows_pg";
     $res = $conexao->prepare($sql);
     $res->execute();
 
@@ -26,9 +26,8 @@ if (!empty($page) && $num_rows > 0){
                         <th scope='col'>Doador</th>
                         <th scope='col'>Quantidade</th>
                         <th scope='col'>Tipo de Alimento</th>
-                        <th scope='col'>Data Validade</th>
                         <th scope='col'>Data Doação</th>
-                        <th scope='col'>Ações</th>
+                        <th scope='col'>Situação</th>
                     </tr>
                 </thead>
                 <tbody>";
@@ -46,14 +45,13 @@ if (!empty($page) && $num_rows > 0){
         $typeArray = $typeRes->fetch(PDO::FETCH_ASSOC);
         $foodType = $typeArray['descricao_alimento'];
 
-        $sql_alimento = "SELECT descricao, unidade_medida, prazo_validade FROM alimentos WHERE idalimento = $idAlimento";
+        $sql_alimento = "SELECT descricao, unidade_medida FROM alimentos WHERE idalimento = $idAlimento";
         $resAlimento = $conexao->prepare($sql_alimento);
         $resAlimento->execute();
         $alimentoArray = $resAlimento->fetch(PDO::FETCH_ASSOC);
 
         $unidade_medida = $alimentoArray['unidade_medida'];
         $alimento = $alimentoArray['descricao'];
-        $dataValidade = date('d/m/Y', strtotime($alimentoArray['prazo_validade']));
 
         $sql_receiver = "SELECT nome_usuario FROM usuario WHERE idusuario = $idDoador";
         $resReceiver = $conexao->prepare($sql_receiver);
@@ -87,13 +85,20 @@ if (!empty($page) && $num_rows > 0){
                     <td>".$username."</td>
                     <td>".$data['quantidade'].$um."</td>
                     <td>".$foodType."</td>
-                    <td>".$dataValidade."</td>
                     <td>".$dataDoacao."</td>
-                    <td>
-                        <button class='btn btn-outline-success' value=".$data['iddoacao']." data-bs-toggle='modal' data-bs-target='#acceptModal' onclick='setDonationId(this.value)'>Aceitar</button>
-                        <button class='btn btn-outline-danger' value=".$data['iddoacao']." data-bs-toggle='modal' data-bs-target='#refuseModal' onclick='setDonationId(this.value)'>Recusar</button>
-                    </td>
-                </tr>";
+                    <td>";
+        
+        switch($data['situacao']){
+            case 'R':
+                $list.= "<i class='fa-solid fa-square-xmark' style='color: #BB2D3B;'></i> Recusada";
+                break;
+            case 'A':
+                $list.= "<i class='fa-solid fa-square-check' style='color: #198754;'></i> Aceita";
+                break;
+        }
+                    
+        $list.= "</td>
+              </tr>";
     }
 
     $list .= "</tbody>
@@ -112,11 +117,11 @@ if (!empty($page) && $num_rows > 0){
     }
 
     $list.= "<ul class='pagination lh-1'>
-                <li class='page-item'><a href='#' onclick='listarDoacoesEspera(1)' class='page-link'>Primeira</a></li>";
+                <li class='page-item'><a href='#' onclick='listarDoacoes(1)' class='page-link'>Primeira</a></li>";
 
     for($pg_anterior = $page - $max_links; $pg_anterior <= $page - 1; $pg_anterior++){
         if($pg_anterior >= 1){
-            $list.= "<li class='page-item'><a href='#' onclick='listarDoacoesEspera($pg_anterior)' class='page-link'>$pg_anterior</a></li>";
+            $list.= "<li class='page-item'><a href='#' onclick='listarDoacoes($pg_anterior)' class='page-link'>$pg_anterior</a></li>";
         }
     }
 
@@ -124,11 +129,11 @@ if (!empty($page) && $num_rows > 0){
 
     for($pg_posterior = $page + 1; $pg_posterior <= $page + $max_links; $pg_posterior++){
         if($pg_posterior <= $qtd_pages){
-            $list.= "<li class='page-item'><a href='#' onclick='listarDoacoesEspera($pg_posterior)' class='page-link'>$pg_posterior</a></li>";
+            $list.= "<li class='page-item'><a href='#' onclick='listarDoacoes($pg_posterior)' class='page-link'>$pg_posterior</a></li>";
         }
     }
 
-    $list.= "<li class='page-item'><a href='#' onclick='listarDoacoesEspera($qtd_pages)' class='page-link'>Última</a></li>
+    $list.= "<li class='page-item'><a href='#' onclick='listarDoacoes($qtd_pages)' class='page-link'>Última</a></li>
           </ul>
         </div>
       </div>";

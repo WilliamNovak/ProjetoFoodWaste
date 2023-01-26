@@ -3,7 +3,6 @@
     require_once("./template.php");
 ?>
     <link rel="stylesheet" type="text/css" href="styles/style.css" >
-    <link rel="stylesheet" type="text/css" href="styles/doacoesStyle.css">
     <title>Food Waste - Recebido</title>
 </head>
 <body>

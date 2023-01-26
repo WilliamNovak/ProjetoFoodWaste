@@ -3,6 +3,7 @@
     require_once("./template.php");
 ?>
     <link rel="stylesheet" type="text/css" href="styles/style.css" >
+    <link rel="stylesheet" type="text/css" href="styles/doacoesStyle.css">
     <title>Food Waste - Doações</title>
 </head>
 <body>
@@ -19,11 +20,11 @@
           </div>
         </div>
       </div>
-      <span class="donation-list"></span>
+      <span class="donations-list"></span>
     </div>
   </div>
 
-  <script src="./js/doacoesScript.js"></script>
+  <script src="./js/doacoesReceptorScript.js"></script>
 <?php
     require_once("./footer.php");
 ?>
