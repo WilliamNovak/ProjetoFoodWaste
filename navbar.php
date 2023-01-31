@@ -26,6 +26,14 @@
 
                     <?php
                         } else {
+                    ?>
+                    <li class="nav-item active">
+                        <a class="nav-link" id="chartsLink" href="charts.php">
+                            Dashboard
+                        </a>
+                    </li>
+
+                    <?php
                             if($_SESSION['userType'] == "D"){
                     ?>
                     <li class="nav-item active">
