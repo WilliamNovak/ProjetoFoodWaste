@@ -6,6 +6,7 @@
     $today = date('y-m-d');
     $errors = 0;
     $msg;
+    $new_receivers = 1;
 
     if (isset($_POST['id']) && isset($_POST['amount'])){
 
@@ -33,6 +34,12 @@
         $row_validade = $res_validade->fetch(PDO::FETCH_ASSOC);
 
         $validity = date('y-m-d', strtotime($row_validade['prazo_validade']));
+
+        $sql_new_receivers = "SELECT COUNT(u.idusuario) as total FROM usuario u WHERE u.status = 'A' AND u.tipo_usuario = 'R' AND NOT EXISTS (SELECT 1 FROM doacao d WHERE d.idreceptor = u.idusuario AND d.idalimento = ? AND d.iddoador = ? AND d.data_doacao >= DATE(CURDATE() - 10))";
+        $res_new_receivers = $conexao->prepare($sql_new_receivers);
+        $res_new_receivers->execute();
+        $rows_new_receivers = $res_new_receivers->fetch(PDO::FETCH_ASSOC);
+        $new_receivers = $rows_new_receivers['total'];
     }
 
     $query_amount = "SELECT quantidade FROM alimentos WHERE idalimento = ?";
@@ -44,7 +51,7 @@
     $newAmount = $existAmount - $amount;
 
     if (!isset($idDoacao)) {
-        if ($newAmount <= 0) {
+        if ($newAmount < 0) {
             $errors++;
             $msg = "A quantidade informada para doação é superior à quantidade em estoque.";
         } else if ($amount == 0) {
@@ -63,10 +70,21 @@
 
             $errors++;
             $msg = "Alimento vencido. Doação retornada para o doador!";
+        } else if ($new_receivers == 0) {
+
+            $query_recusado = "UPDATE doacao SET situacao = 'R' WHERE iddoacao = ?";
+            $res = $conexao->prepare($query_recusado);
+            $res->execute([$idDoacao]);
+            
+            $query_update = "UPDATE alimentos SET quantidade = quantidade + ? WHERE idalimento = ?";
+            $res = $conexao->prepare($query_update);
+            $res->execute([$amount, $idAlimento]);
+
+            $msg = "Doação recusada e retornada ao doador!";
         }
     }
     
-    if ($errors == 0) {
+    if ($errors == 0 && $new_receivers > 0) {
 
         $sql_total_receivers = "SELECT COUNT(u.idusuario) as total FROM usuario u WHERE u.status = 'A' AND u.tipo_usuario = 'R'";
         $res_total_receivers = $conexao->prepare($sql_total_receivers);
@@ -120,7 +138,7 @@
 
                 $currentDate = new DateTime($today);
 
-                $query_receivers = "SELECT u.idusuario FROM usuario u WHERE u.status = 'A' AND u.tipo_usuario = 'R' AND NOT EXISTS (SELECT 1 FROM doacao d WHERE d.idreceptor = u.idusuario AND d.idalimento = ? AND d.data_doacao >= DATE(CURDATE() - 5));";
+                $query_receivers = "SELECT u.idusuario FROM usuario u WHERE u.status = 'A' AND u.tipo_usuario = 'R' AND NOT EXISTS (SELECT 1 FROM doacao d WHERE d.idreceptor = u.idusuario AND d.idalimento = ? AND d.data_doacao >= DATE(CURDATE() - 10));";
                 $res = $conexao->prepare($query_receivers);
                 $res->execute([$idAlimento]);
 
