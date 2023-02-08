@@ -35,9 +35,9 @@
 
         $validity = date('y-m-d', strtotime($row_validade['prazo_validade']));
 
-        $sql_new_receivers = "SELECT COUNT(u.idusuario) as total FROM usuario u WHERE u.status = 'A' AND u.tipo_usuario = 'R' AND NOT EXISTS (SELECT 1 FROM doacao d WHERE d.idreceptor = u.idusuario AND d.idalimento = ? AND d.iddoador = ? AND d.data_doacao >= DATE(CURDATE() - 10))";
+        $sql_new_receivers = "SELECT COUNT(u.idusuario) as total FROM usuario u WHERE u.status = 'A' AND u.tipo_usuario = 'R' AND NOT EXISTS (SELECT 1 FROM doacao d WHERE d.idreceptor = u.idusuario AND d.idalimento = ? AND d.iddoador = ? AND d.data_doacao >= DATE(DATE_SUB(CURDATE(), INTERVAL 10 DAY)))";
         $res_new_receivers = $conexao->prepare($sql_new_receivers);
-        $res_new_receivers->execute();
+        $res_new_receivers->execute([$idAlimento,$userId]);
         $rows_new_receivers = $res_new_receivers->fetch(PDO::FETCH_ASSOC);
         $new_receivers = $rows_new_receivers['total'];
     }
@@ -138,7 +138,7 @@
 
                 $currentDate = new DateTime($today);
 
-                $query_receivers = "SELECT u.idusuario FROM usuario u WHERE u.status = 'A' AND u.tipo_usuario = 'R' AND NOT EXISTS (SELECT 1 FROM doacao d WHERE d.idreceptor = u.idusuario AND d.idalimento = ? AND d.data_doacao >= DATE(CURDATE() - 10));";
+                $query_receivers = "SELECT u.idusuario FROM usuario u WHERE u.status = 'A' AND u.tipo_usuario = 'R' AND NOT EXISTS (SELECT 1 FROM doacao d WHERE d.idreceptor = u.idusuario AND d.idalimento = ? AND d.data_doacao >= DATE(DATE_SUB(CURDATE(), INTERVAL 10 DAY)));";
                 $res = $conexao->prepare($query_receivers);
                 $res->execute([$idAlimento]);
 
