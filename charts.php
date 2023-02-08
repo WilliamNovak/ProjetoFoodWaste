@@ -66,7 +66,7 @@
 
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-          ['Mês', 'Doações'],
+          ['Mês', 'Doações']
 
           <?php
             while($data = $res_months->fetch(PDO::FETCH_ASSOC)){
@@ -80,9 +80,7 @@
               $maxAxis = ($total > $maxAxis) ? $total : $maxAxis;
 
           ?>
-
-            ['<?php echo $data['mes'].'. '.$data['ano'] ?>', '<?php echo $total ?>'],
-
+            ,['<?php echo $data['mes'].'. '.$data['ano'] ?>', <?php echo $total ?>]
           <?php
             }
           ?>
@@ -149,7 +147,12 @@
     </div>
   </div>
 
-  <div id="donationsChart" style="width: 40rem; height: 20rem;"></div>
+  <div class="row row-cols-1 row-cols-md-2 g-4 w-100 m-auto">
+    <div id="donationsChart" style="height: 20rem;"></div>
+    <div id="chart2" style="height: 20rem;"></div>
+    <div id="chart3" style="height: 20rem;"></div>
+    <div id="chart4" style="height: 20rem;"></div>
+  </div>
 
 <?php
     require_once("./footer.php");
