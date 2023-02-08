@@ -3,6 +3,8 @@
     include_once('database.php');
     require_once("./template.php");
 
+    $maxAxis = 0;
+
     $sql_total_year = "SELECT COUNT(*) as total_year FROM doacao WHERE year(data_doacao) = year(curdate())";
     $yearRes = $conexao->prepare($sql_total_year);
     $yearRes->execute();
@@ -28,10 +30,34 @@
     $receiverRes->execute();
     $receiverArray = $receiverRes->fetch(PDO::FETCH_ASSOC);
     $totalReceiver = $receiverArray['total_receiver'];
-    $receiver = $receiverArray['nome_usuario']
+    $receiver = $receiverArray['nome_usuario'];
+
+    $sql_months = "WITH calendar AS (
+      SELECT NOW() - INTERVAL x.month_number MONTH AS date
+      FROM (
+        SELECT 0 AS month_number
+        UNION SELECT 1
+        UNION SELECT 2
+        UNION SELECT 3
+        UNION SELECT 4
+        UNION SELECT 5
+        UNION SELECT 6
+        UNION SELECT 7
+        UNION SELECT 8
+        UNION SELECT 9
+        UNION SELECT 10
+        UNION SELECT 11
+        UNION SELECT 12
+      ) x
+      WHERE x.month_number < 12
+    )
+    SELECT DISTINCT DATE_FORMAT(date, '%b') AS mes, YEAR(date) AS ano
+      FROM calendar
+    ORDER BY date";
+    $res_months = $conexao->prepare($sql_months);
+    $res_months->execute();
 ?>
     <link rel="stylesheet" type="text/css" href="styles/style.css" >
-    <link rel="stylesheet" type="text/css" href="styles/doacoesStyle.css">
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
@@ -43,15 +69,19 @@
           ['Mês', 'Doações'],
 
           <?php
-            $sql = "SELECT concat(date_format(data_doacao, '%b'), '. ', YEAR(data_doacao)) as mes, COUNT(*) as total FROM doacao WHERE data_doacao BETWEEN date_add(last_day(date_sub(curdate(), interval 1 year)), interval 1 day) and curdate() GROUP BY month(data_doacao), year(data_doacao)";
-            $res = $conexao->prepare($sql);
-            $res->execute();
+            while($data = $res_months->fetch(PDO::FETCH_ASSOC)){
 
-            while($data = $res->fetch(PDO::FETCH_ASSOC)){
-            
+              $sql_total = "SELECT COUNT(*) as total FROM doacao WHERE DATE_FORMAT(data_doacao, '%b') = ? AND YEAR(data_doacao) = ?";
+              $res_total = $conexao->prepare($sql_total);
+              $res_total->execute([$data['mes'],$data['ano']]);
+              $totalArray = $res_total->fetch(PDO::FETCH_ASSOC);
+              $total = $totalArray['total'];
+
+              $maxAxis = ($total > $maxAxis) ? $total : $maxAxis;
+
           ?>
 
-            ['<?php echo $data['mes'] ?>', '<?php echo $data['total'] ?>'],
+            ['<?php echo $data['mes'].'. '.$data['ano'] ?>', '<?php echo $total ?>'],
 
           <?php
             }
@@ -79,7 +109,7 @@
 
   <div class="row row-cols-1 row-cols-md-4 g-4 w-100 m-auto mb-4">
     <div class="col d-flex justify-content-center">
-      <div class="card text-bg-primary border-1 w-100" style="max-width: 18rem;">
+      <div class="card text-bg-green border-1 w-100" style="max-width: 18rem;">
         <div class="card-header text-start">Total Doações / Ano</div>
         <div class="card-body d-flex justify-content-center">
           <h5 class="card-title fs-2 my-auto me-1"><?php echo $totalYear ?></h5>
@@ -89,7 +119,7 @@
     </div>
     
     <div class="col d-flex justify-content-center">
-      <div class="card text-bg-success border-1 w-100" style="max-width: 18rem;">
+      <div class="card text-bg-light-green border-1 w-100" style="max-width: 18rem;">
         <div class="card-header text-start">Tipo de Alimento +Doado</div>
         <div class="card-body d-flex justify-content-center">
           <h5 class="card-title fs-2 my-auto me-1"><?php echo $type ?></h5>
@@ -99,7 +129,7 @@
     </div>
 
     <div class="col d-flex justify-content-center">
-      <div class="card text-bg-danger w-100" style="max-width: 18rem;">
+      <div class="card text-bg-green w-100" style="max-width: 18rem;">
         <div class="card-header text-start">Doador do Ano</div>
         <div class="card-body d-flex justify-content-center">
           <h5 class="card-title fs-2 my-auto me-1"><?php echo $donor ?></h5>
@@ -109,7 +139,7 @@
     </div>
 
     <div class="col d-flex justify-content-center">
-      <div class="card text-bg-dark border-1 w-100" style="max-width: 18rem;">
+      <div class="card text-bg-light-green border-1 w-100" style="max-width: 18rem;">
         <div class="card-header text-start">Receptor do Ano</div>
         <div class="card-body d-flex justify-content-center">
           <h5 class="card-title fs-2 my-auto me-1"><?php echo $receiver ?></h5>

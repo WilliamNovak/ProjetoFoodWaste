@@ -223,3 +223,13 @@ form {
   font-size: 1rem;
   display: none;
 }
+
+.text-bg-green {
+  background-color: #379683;
+  color: #ffff;
+}
+
+.text-bg-light-green {
+  background-color: #56c290;
+  color: #ffff;
+}
