@@ -89,8 +89,7 @@
 
         var options = {
           chart: {
-            title: 'Doações por mês',
-            subtitle: 'Total de doações enviadas em cada mês do último ano',
+            title: ''
           }
         };
 
@@ -146,8 +145,6 @@
         ]);
 
         var options = {
-          title: 'Tipos de alimento por mês',
-          subtitle: 'Total de doações por tipo de alimento em cada mês do último ano',
           legend: { position: 'top', maxLines: 3 },
           bar: { groupWidth: '75%' },
           isStacked: true,
@@ -208,10 +205,22 @@
   </div>
 
   <div class="row row-cols-1 row-cols-md-2 g-4 w-100 m-auto">
-    <div id="donationsChart" style="height: 20rem;"></div>
-    <div id="typeChart" style="height: 20rem;"></div>
-    <div id="chart3" style="height: 20rem;"></div>
-    <div id="chart4" style="height: 20rem;"></div>
+    <div class="row row-cols-1 row-cols-md-1 text-start">
+      <h2>Doações por mês</h2>
+      <div id="donationsChart" style="height: 20rem;"></div>
+    </div>
+    <div class="row row-cols-1 row-cols-md-1 text-start">
+      <h2>Doações do tipo por mês</h2>
+      <div id="typeChart" style="height: 20rem;"></div>
+    </div>
+    <div class="row row-cols-1 row-cols-md-1 text-start">
+      <h2>Maiores doadores por mês</h2>
+      <div id="chart3" style="height: 20rem;"></div>
+    </div>
+    <div class="row row-cols-1 row-cols-md-1 text-start">
+      <h2>Maiores receptores por mês</h2>
+      <div id="chart4" style="height: 20rem;"></div>
+    </div>
   </div>
 
 <?php
