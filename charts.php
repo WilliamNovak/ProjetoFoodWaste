@@ -3,8 +3,6 @@
     include_once('database.php');
     require_once("./template.php");
 
-    $maxAxis = 0;
-
     $sql_total_year = "SELECT COUNT(*) as total_year FROM doacao WHERE year(data_doacao) = year(curdate())";
     $yearRes = $conexao->prepare($sql_total_year);
     $yearRes->execute();
@@ -31,6 +29,10 @@
     $receiverArray = $receiverRes->fetch(PDO::FETCH_ASSOC);
     $totalReceiver = $receiverArray['total_receiver'];
     $receiver = $receiverArray['nome_usuario'];
+
+    $sql_food_types = "SELECT idtipo_alimento, descricao_alimento FROM tipo_alimento ORDER BY idtipo_alimento";
+    $typesRes = $conexao->prepare($sql_food_types);
+    $typesRes->execute();
 
     $sql_months = "WITH calendar AS (
       SELECT NOW() - INTERVAL x.month_number MONTH AS date
@@ -62,9 +64,10 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
       google.charts.load('current', {'packages':['bar']});
-      google.charts.setOnLoadCallback(drawChart);
+      google.charts.setOnLoadCallback(drawDonationsChart);
+      google.charts.setOnLoadCallback(drawTypeChart);
 
-      function drawChart() {
+      function drawDonationsChart() {
         var data = google.visualization.arrayToDataTable([
           ['Mês', 'Doações']
 
@@ -76,8 +79,6 @@
               $res_total->execute([$data['mes'],$data['ano']]);
               $totalArray = $res_total->fetch(PDO::FETCH_ASSOC);
               $total = $totalArray['total'];
-
-              $maxAxis = ($total > $maxAxis) ? $total : $maxAxis;
 
           ?>
             ,['<?php echo $data['mes'].'. '.$data['ano'] ?>', <?php echo $total ?>]
@@ -94,6 +95,65 @@
         };
 
         var chart = new google.charts.Bar(document.getElementById('donationsChart'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+
+      function drawTypeChart() {
+        var data = google.visualization.arrayToDataTable([
+
+          ['Mês'
+            <?php 
+              while($data = $typesRes->fetch(PDO::FETCH_ASSOC)){
+            ?>
+            ,'<?php
+                echo $data['descricao_alimento'];
+            ?>'
+            <?php
+              }
+            ?>
+          ]
+
+          <?php
+            $res_months2 = $conexao->prepare($sql_months);
+            $res_months2->execute();
+
+            while($data = $res_months2->fetch(PDO::FETCH_ASSOC)){
+          ?>
+            ,['<?php echo $data['mes'].'. '.$data['ano'] ?>'
+            
+            <?php
+              $typesRes2 = $conexao->prepare($sql_food_types);
+              $typesRes2->execute();
+
+              while($typeData = $typesRes2->fetch(PDO::FETCH_ASSOC)){
+
+                $sql_totals = "SELECT COUNT(*) as total FROM doacao d, tipo_alimento t, alimentos a WHERE d.idalimento = a.idalimento AND a.idtipo = t.idtipo_alimento AND DATE_FORMAT(d.data_doacao, '%b') = ? AND YEAR(d.data_doacao) = ? AND t.idtipo_alimento = ?";
+                $res_totals = $conexao->prepare($sql_totals);
+                $res_totals->execute([$data['mes'],$data['ano'],$typeData['idtipo_alimento']]);
+
+                while($totals = $res_totals->fetch(PDO::FETCH_ASSOC)){
+            ?>
+            ,<?php
+                  echo $totals['total'];
+                }
+              }
+            ?>]
+
+          <?php
+            }
+          ?>
+        ]);
+
+        var options = {
+          title: 'Tipos de alimento por mês',
+          subtitle: 'Total de doações por tipo de alimento em cada mês do último ano',
+          legend: { position: 'top', maxLines: 3 },
+          bar: { groupWidth: '75%' },
+          isStacked: true,
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('typeChart'));
 
         chart.draw(data, google.charts.Bar.convertOptions(options));
       }
@@ -118,7 +178,7 @@
     
     <div class="col d-flex justify-content-center">
       <div class="card text-bg-light-green border-1 w-100" style="max-width: 18rem;">
-        <div class="card-header text-start">Tipo de Alimento +Doado</div>
+        <div class="card-header text-start">Tipo de Alimento / Ano</div>
         <div class="card-body d-flex justify-content-center">
           <h5 class="card-title fs-2 my-auto me-1"><?php echo $type ?></h5>
           <p class="card-text fs-4 my-auto">(<?php echo $totalType ?>)</p>
@@ -149,7 +209,7 @@
 
   <div class="row row-cols-1 row-cols-md-2 g-4 w-100 m-auto">
     <div id="donationsChart" style="height: 20rem;"></div>
-    <div id="chart2" style="height: 20rem;"></div>
+    <div id="typeChart" style="height: 20rem;"></div>
     <div id="chart3" style="height: 20rem;"></div>
     <div id="chart4" style="height: 20rem;"></div>
   </div>
@@ -157,13 +217,6 @@
 <?php
     require_once("./footer.php");
 ?>
-
-<!-- Cards -->
-
-<!-- Instituição que mais doou no ano -->
-<!-- Instituição que mais recebeu no ano -->
-<!-- Tipo alimento mais doado no ano -->
-<!-- Total doacoes no ano -->
 
 <!-- Charts -->
 
