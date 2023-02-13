@@ -37,7 +37,7 @@
         </div>
 
         <div class="forgot-div">
-            <a href="" class="linkPw">Esqueceu sua senha?</a>
+            <a href="./recuperarSenha.php" class="linkPw">Esqueceu sua senha?</a>
         </div>
 
         <input class="buttonform" type="submit" name="submit" value="Entrar" tabindex=3>
