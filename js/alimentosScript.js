@@ -68,12 +68,21 @@ function excluiAlimento(){
         dataType: 'json'
     }).done(function(data) {
         if(data){
-            listarAlimentos(currentPage);
             $('#deleteModal').modal('hide');
 
-            document.getElementById("successMsg").innerHTML = "Alimento excluído com sucesso!";
+            if (data.errors != 0){
+                
+                document.getElementById("alertMsg").innerHTML = data.msg;
 
-            alert(1);
+                alert(2);
+
+            } else {
+                listarAlimentos(currentPage);
+
+                document.getElementById("successMsg").innerHTML = data.msg;
+
+                alert(1);
+            }
         }
     });
 }
