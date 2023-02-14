@@ -52,6 +52,17 @@ function validaForm() {
         }
     }
 
+    if (email != ''){
+        if (!validateEmail(email)) {
+            showError(1,'email');
+            $('#email_error').show();
+            errors++;
+        } else {
+            showError(2,'email');
+            $('#email_error').hide();
+        }
+    }
+
     if (cnpj != ''){
         if (!cnpjValidation(cnpj)) {
             showError(1, 'cnpj');
@@ -120,6 +131,11 @@ function showError(type, id) {
     } else if (type == 2) {
         $(inputId).css({ 'border-color': ' #ced4da' });
     }
+}
+
+function validateEmail(email) {
+    const pattern = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+    return pattern.test(email);
 }
 
 function cnpjValidation(cnpj) {

@@ -120,7 +120,7 @@
                         <input type="email" name="email" id="email" placeholder="E-mail" class="inputs mx-auto" required>
                     </div>
                     <div class="row">
-                        <div id="email_error" class="error_msg">Endereço de email já cadastrado</div>
+                        <div id="email_error" class="error_msg">Endereço de email inválido ou já cadastrado</div>
                     </div>
             
                     <div class="row">
