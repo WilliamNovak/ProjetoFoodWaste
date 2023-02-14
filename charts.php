@@ -8,27 +8,42 @@
     $yearRes->execute();
     $yearArray = $yearRes->fetch(PDO::FETCH_ASSOC);
     $totalYear = $yearArray['total_year'];
-    
-    $sql_total_type = "SELECT t.descricao_alimento, COUNT(*) as total_type FROM doacao d, alimentos a, tipo_alimento t WHERE year(d.data_doacao) = year(curdate()) AND d.idalimento = a.idalimento AND a.idtipo = t.idtipo_alimento GROUP BY t.descricao_alimento ORDER BY COUNT(*) DESC LIMIT 1";
-    $typeRes = $conexao->prepare($sql_total_type);
-    $typeRes->execute();
-    $typeArray = $typeRes->fetch(PDO::FETCH_ASSOC);
-    $totalType = $typeArray['total_type'];
-    $type = $typeArray['descricao_alimento'];
 
-    $sql_donor = "SELECT u.nome_usuario, COUNT(*) as total_donor FROM doacao d, usuario u WHERE year(d.data_doacao) = year(curdate()) AND d.iddoador = u.idusuario GROUP BY u.idusuario ORDER BY COUNT(*) DESC LIMIT 1";
-    $donorRes = $conexao->prepare($sql_donor);
-    $donorRes->execute();
-    $donorArray = $donorRes->fetch(PDO::FETCH_ASSOC);
-    $totalDonor = $donorArray['total_donor'];
-    $donor = $donorArray['nome_usuario'];
+    $sql_tot_donations = "SELECT COUNT(*) as total FROM doacao WHERE year(data_doacao) = year(curdate())";
+    $totRes = $conexao->prepare($sql_tot_donations);
+    $totRes->execute();
+    $totArray = $totRes->fetch(PDO::FETCH_ASSOC);
+    $tot = $totArray['total'];
 
-    $sql_receptor = "SELECT u.nome_usuario, COUNT(*) as total_receiver FROM doacao d, usuario u WHERE year(d.data_doacao) = year(curdate()) AND d.idreceptor = u.idusuario GROUP BY u.idusuario ORDER BY COUNT(*) DESC LIMIT 1";
-    $receiverRes = $conexao->prepare($sql_receptor);
-    $receiverRes->execute();
-    $receiverArray = $receiverRes->fetch(PDO::FETCH_ASSOC);
-    $totalReceiver = $receiverArray['total_receiver'];
-    $receiver = $receiverArray['nome_usuario'];
+    if ($tot > 0) {
+      $sql_total_type = "SELECT t.descricao_alimento, COUNT(*) as total_type FROM doacao d, alimentos a, tipo_alimento t WHERE year(d.data_doacao) = year(curdate()) AND d.idalimento = a.idalimento AND a.idtipo = t.idtipo_alimento GROUP BY t.descricao_alimento ORDER BY COUNT(*) DESC LIMIT 1";
+      $typeRes = $conexao->prepare($sql_total_type);
+      $typeRes->execute();
+      $typeArray = $typeRes->fetch(PDO::FETCH_ASSOC);
+      $totalType = $typeArray['total_type'];
+      $type = $typeArray['descricao_alimento'];
+
+      $sql_donor = "SELECT u.nome_usuario, COUNT(*) as total_donor FROM doacao d, usuario u WHERE year(d.data_doacao) = year(curdate()) AND d.iddoador = u.idusuario GROUP BY u.idusuario ORDER BY COUNT(*) DESC LIMIT 1";
+      $donorRes = $conexao->prepare($sql_donor);
+      $donorRes->execute();
+      $donorArray = $donorRes->fetch(PDO::FETCH_ASSOC);
+      $totalDonor = $donorArray['total_donor'];
+      $donor = $donorArray['nome_usuario'];
+
+      $sql_receptor = "SELECT u.nome_usuario, COUNT(*) as total_receiver FROM doacao d, usuario u WHERE year(d.data_doacao) = year(curdate()) AND d.idreceptor = u.idusuario GROUP BY u.idusuario ORDER BY COUNT(*) DESC LIMIT 1";
+      $receiverRes = $conexao->prepare($sql_receptor);
+      $receiverRes->execute();
+      $receiverArray = $receiverRes->fetch(PDO::FETCH_ASSOC);
+      $totalReceiver = $receiverArray['total_receiver'];
+      $receiver = $receiverArray['nome_usuario'];
+    } else {
+      $totalType = 0;
+      $type = "&ndash;";
+      $totalDonor = 0;
+      $donor = "&ndash;";
+      $totalReceiver = 0;
+      $receiver = "&ndash;";
+    }
 
     $sql_food_types = "SELECT idtipo_alimento, descricao_alimento FROM tipo_alimento ORDER BY idtipo_alimento";
     $typesRes = $conexao->prepare($sql_food_types);
