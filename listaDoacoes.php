@@ -85,31 +85,15 @@ if (!empty($page) && $num_rows > 0){
 
         switch($data['situacao']){
             case 'E':
-                $status = 'Em Andamento';
+                $status = "<i class='fa-regular fa-clock' style='color:#146EBE'></i> Em Andamento";
                 break;
             case 'R':
-                $status = 'Recusada';
+                $status = "<i class='fa-solid fa-square-xmark' style='color: #BB2D3B;'></i> Recusada";
                 break;
             case 'A':
-                $status = 'Aceita';
+                $status = "<i class='fa-solid fa-square-check' style='color: #198754;'></i> Aceita";
                 break;
         }
-
-        // if($validity <= $today) {
-
-        //     $query_update = "UPDATE alimentos SET situacao = 'V' WHERE idalimento = ?";
-        //     $res_update = $conexao->prepare($query_update);
-        //     $res_update->execute([$data['idalimento']]);
-        //     $status = 'Vencido';
-
-        // } else if($data['quantidade'] <= 0) {
-
-        //     $query_update = "UPDATE alimentos SET situacao = 'F' WHERE idalimento = ?";
-        //     $res_update = $conexao->prepare($query_update);
-        //     $res_update->execute([$data['idalimento']]);
-        //     $status = 'Em falta';
-
-        // }
 
         $list.= "<tr>
                     <td>".$alimento."</td>
