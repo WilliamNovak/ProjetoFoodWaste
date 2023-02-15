@@ -138,9 +138,15 @@
 
                 $currentDate = new DateTime($today);
 
-                $query_receivers = "SELECT u.idusuario FROM usuario u WHERE u.status = 'A' AND u.tipo_usuario = 'R' AND NOT EXISTS (SELECT 1 FROM doacao d WHERE d.idreceptor = u.idusuario AND d.idalimento = ? AND d.data_doacao >= DATE(DATE_SUB(CURDATE(), INTERVAL 10 DAY)));";
-                $res = $conexao->prepare($query_receivers);
-                $res->execute([$idAlimento]);
+                if (isset($_POST['iddoacao'])){
+                    $query_receivers = "SELECT u.idusuario FROM usuario u WHERE u.status = 'A' AND u.tipo_usuario = 'R' AND NOT EXISTS (SELECT 1 FROM doacao d WHERE d.idreceptor = u.idusuario AND d.idalimento = ? AND d.data_doacao >= DATE(DATE_SUB(CURDATE(), INTERVAL 10 DAY)));";
+                    $res = $conexao->prepare($query_receivers);
+                    $res->execute([$idAlimento]);
+                } else {
+                    $query_receivers = "SELECT u.idusuario FROM usuario u WHERE u.status = 'A' AND u.tipo_usuario = 'R';";
+                    $res = $conexao->prepare($query_receivers);
+                    $res->execute();
+                }
 
                 while($data = $res->fetch(PDO::FETCH_ASSOC)){
 
