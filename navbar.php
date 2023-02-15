@@ -57,7 +57,7 @@
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" id="doacaoEsperaLink" href="doacoesEspera.php">
-                            Recebido
+                            Disponível
                         </a>
                     </li>
                     <?php
