@@ -31,14 +31,26 @@
                         VALUES (:usertype, :username, :pw, :fantasyname, :reason, :email, :tel, :cnpj, :uf, :city, :cep, :district, :street, :num)";
             $res = $conexao->prepare($query);
             $res->execute(array(":usertype" => $userType, ":username" => $username, ":pw" => $hashPw, ":fantasyname" => $fantasyName, ":reason" => $reason, ":email" => $email, ":tel" => $telephone, ":cnpj" => $cnpj, ":uf" => $state, ":city" => $city, ":cep" => $cep, ":district" => $district, ":street" => $street, ":num" => $number));
-        } catch (PDOException $e) {
-            echo "<script language='javascript' type='text/javascript'>
-                    alert('Erro: ". $e->getMessage() ."');
-                    window.location.href='cadastro.php';
-                  </script>";
-        }
 
-        header("Location: login.php");
+            header("Location: login.php");
+
+        } catch (PDOException $e) {
+            echo '<script type="text/javascript">';
+            echo '  document.addEventListener("DOMContentLoaded", function() {
+
+                        document.getElementById("alertMsg").innerHTML = "'. $e->getMessage() .'";
+
+                        $("#errorAlert").fadeIn("fast", function(){
+                            $(this).show();
+                        });
+                        setTimeout(function(){
+                            $("#errorAlert").fadeOut("slow", function(){
+                                $(this).hide();
+                            });
+                        }, 3000);
+                    });';
+            echo '</script>';
+        }
         
     }
 ?>
