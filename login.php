@@ -7,7 +7,21 @@
     }
 
     if(isset($_GET['msg'])) {
-        echo "<script> alert('{$_GET['msg']}'); </script>";
+        echo '<script type="text/javascript">';
+        echo '  document.addEventListener("DOMContentLoaded", function() {
+
+                    document.getElementById("alertMsg").innerHTML = "'. $_GET['msg'] .'";
+
+                    $("#errorAlert").fadeIn("fast", function(){
+                        $(this).show();
+                    });
+                    setTimeout(function(){
+                        $("#errorAlert").fadeOut("slow", function(){
+                            $(this).hide();
+                        });
+                    }, 3000);
+                });';
+        echo '</script>';
     }
 ?>
     <link rel="stylesheet" type="text/css" href="styles/style.css" >
@@ -50,5 +64,13 @@
     </form>
 </div>
 
-</body>
-</html>
+<div id="errorAlert" class="alert alert-danger position-absolute" role="alert">
+    <div class="d-flex align-items-center">
+        <i class="fa-solid fa-triangle-exclamation bi flex-shrink-0 me-3 ms-1 fs-4"></i>
+        <div id="alertMsg"></div>
+    </div>
+</div>
+
+<?php
+    require_once("./footer.php");
+?>

@@ -223,8 +223,8 @@
 
     <div id="errorAlert" class="alert alert-danger position-absolute" role="alert">
         <div class="d-flex align-items-center">
-        <i class="fa-solid fa-triangle-exclamation bi flex-shrink-0 me-3 ms-1 fs-4"></i>
-        <div id="alertMsg"></div>
+            <i class="fa-solid fa-triangle-exclamation bi flex-shrink-0 me-3 ms-1 fs-4"></i>
+            <div id="alertMsg"></div>
         </div>
     </div>
     
