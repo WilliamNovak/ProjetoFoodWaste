@@ -11,39 +11,45 @@
     $tel_error = 0;
     $email_error = 0;
     $cnpj_error = 0;
+    $database_error = "";
 
-    $userExist = $conexao->prepare("SELECT count(*) FROM usuario WHERE nome_usuario = ?");
-    $userExist->execute([$username]);
-    $userResult = $userExist->fetchColumn();
-    if($userResult > 0) {
+    try {
+        $userExist = $conexao->prepare("SELECT count(*) FROM usuario WHERE nome_usuario = ?");
+        $userExist->execute([$username]);
+        $userResult = $userExist->fetchColumn();
+        if($userResult > 0) {
+            $errors++;
+            $user_error++;
+        }
+
+        $telExist = $conexao->prepare("SELECT count(*) FROM usuario WHERE telefone = ?");
+        $telExist->execute([$tel]);
+        $telResult = $telExist->fetchColumn();
+        if($telResult > 0) {
+            $errors++;
+            $tel_error++;
+        }
+
+        $emailExist = $conexao->prepare("SELECT count(*) FROM usuario WHERE email = ?");
+        $emailExist->execute([$email]);
+        $emailResult = $emailExist->fetchColumn();
+        if($emailResult > 0) {
+            $errors++;
+            $email_error++;
+        }
+
+        $cnpjExist = $conexao->prepare("SELECT count(*) FROM usuario WHERE cnpj = ?");
+        $cnpjExist->execute([$cnpj]);
+        $cnpjResult = $cnpjExist->fetchColumn();
+        if($cnpjResult > 0) {
+            $errors++;
+            $cnpj_error++;
+        }
+    } catch (PDOException $e) {
         $errors++;
-        $user_error++;
+        $database_error = "Erro: " . $e->getMessage();
     }
 
-    $telExist = $conexao->prepare("SELECT count(*) FROM usuario WHERE telefone = ?");
-    $telExist->execute([$tel]);
-    $telResult = $telExist->fetchColumn();
-    if($telResult > 0) {
-        $errors++;
-        $tel_error++;
-    }
-
-    $emailExist = $conexao->prepare("SELECT count(*) FROM usuario WHERE email = ?");
-    $emailExist->execute([$email]);
-    $emailResult = $emailExist->fetchColumn();
-    if($emailResult > 0) {
-        $errors++;
-        $email_error++;
-    }
-
-    $cnpjExist = $conexao->prepare("SELECT count(*) FROM usuario WHERE cnpj = ?");
-    $cnpjExist->execute([$cnpj]);
-    $cnpjResult = $cnpjExist->fetchColumn();
-    if($cnpjResult > 0) {
-        $errors++;
-        $cnpj_error++;
-    }
-
-    $arr = array('errors' => $errors, 'userError' => $user_error, 'telError' => $tel_error, 'emailError' => $email_error, 'cnpjError' => $cnpj_error);
+    $arr = array('errors' => $errors, 'userError' => $user_error, 'telError' => $tel_error, 'emailError' => $email_error, 'cnpjError' => $cnpj_error, 'databaseError' => $database_error);
     echo json_encode($arr);
 ?>

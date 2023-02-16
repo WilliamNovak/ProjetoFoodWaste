@@ -14,22 +14,9 @@
 
     try {
         $conexao = new PDO("mysql:host=$dbHost;dbname=$dbName; charset=utf8", $dbUser , $dbPassword);
+        $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     } catch(PDOException $e) {
-        echo $e->getMessage();
+        echo "Erro:" . $e->getMessage();
     }
-    // or die(
-    //     "<script language='javascript' type='text/javascript'>
-    //         alert('Erro ao se conectar com o banco de dados!');
-    //         window.location.href='{$pg_anterior}';
-    //     </script>");
-
-    // if (!$conexao) {
-    //     echo "<br>ERRO: Falha ao conectar-se com o banco de dados MySQL." . PHP_EOL;
-    //     echo "Debugging errno: " . mysqli_connect_errno() . PHP_EOL;
-    //     echo "Debugging error: " . mysqli_connect_error() . PHP_EOL;
-    //     exit;
-    // }
-
-    //mysqli_set_charset($conexao,'utf8');
 
 ?>

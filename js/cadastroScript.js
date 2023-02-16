@@ -83,38 +83,47 @@ function validaForm() {
         if (data.errors > 0){
             errors++;
 
-          if (data.userError > 0) {
-              showError(1,'username');
-              $('#user_error').show();
-          } else {
-              showError(2,'username');
-              $('#user_error').hide();
-          }
+            if (data.userError > 0) {
+                showError(1,'username');
+                $('#user_error').show();
+            } else {
+                showError(2,'username');
+                $('#user_error').hide();
+            }
 
-          if (data.telError > 0) {
-              showError(1,'tel');
-              $('#tel_error').show();
-          } else {
-              showError(2,'tel');
-              $('#tel_error').hide();
-          }
+            if (data.telError > 0) {
+                showError(1,'tel');
+                $('#tel_error').show();
+            } else {
+                showError(2,'tel');
+                $('#tel_error').hide();
+            }
 
-          if (data.emailError > 0) {
-              showError(1,'email');
-              $('#email_error').show();
-          } else {
-              showError(2,'email');
-              $('#email_error').hide();
-          }
+            if (data.emailError > 0) {
+                showError(1,'email');
+                $('#email_error').show();
+            } else {
+                showError(2,'email');
+                $('#email_error').hide();
+            }
 
-          if (data.cnpjError > 0) {
-              showError(1,'cnpj');
-              $('#error_cnpj').show();
-          } 
-        //   else {
-        //       showError(2,'cnpj');
-        //       $('#error_cnpj').hide();
-        //   }
+            if (data.cnpjError > 0) {
+                showError(1,'cnpj');
+                $('#error_cnpj').show();
+            }
+
+            if (data.databaseError != ""){
+                document.getElementById("alertMsg").innerHTML = data.databaseError;
+
+                $("#errorAlert").fadeIn("fast", function(){
+                    $(this).show();
+                });
+                setTimeout(function(){
+                    $("#errorAlert").fadeOut("slow", function(){
+                        $(this).hide();
+                    });
+                }, 3000);
+            }
         }
 
         if (errors == 0){

@@ -26,16 +26,17 @@
         $street = $_POST['street'];
         $number = $_POST['num'];
 
-        $query = "INSERT INTO usuario (tipo_usuario, nome_usuario, senha, nome_fantasia, razao_social, email, telefone, cnpj, estado, cidade, cep, bairro, rua, numero) 
-                       VALUES (:usertype, :username, :pw, :fantasyname, :reason, :email, :tel, :cnpj, :uf, :city, :cep, :district, :street, :num)";
-        $res = $conexao->prepare($query);
-        $res->execute(array(":usertype" => $userType, ":username" => $username, ":pw" => $hashPw, ":fantasyname" => $fantasyName, ":reason" => $reason, ":email" => $email, ":tel" => $telephone, ":cnpj" => $cnpj, ":uf" => $state, ":city" => $city, ":cep" => $cep, ":district" => $district, ":street" => $street, ":num" => $number));
-        // or die(
-        //     "<script language='javascript' type='text/javascript'>
-        //         alert('Erro cadastrar usuário!');
-        //         window.location.href='cadastro.php';
-        //     </script>"
-        // );
+        try {
+            $query = "INSERT INTO usuario (tipo_usuario, nome_usuario, senha, nome_fantasia, razao_social, email, telefone, cnpj, estado, cidade, cep, bairro, rua, numero) 
+                        VALUES (:usertype, :username, :pw, :fantasyname, :reason, :email, :tel, :cnpj, :uf, :city, :cep, :district, :street, :num)";
+            $res = $conexao->prepare($query);
+            $res->execute(array(":usertype" => $userType, ":username" => $username, ":pw" => $hashPw, ":fantasyname" => $fantasyName, ":reason" => $reason, ":email" => $email, ":tel" => $telephone, ":cnpj" => $cnpj, ":uf" => $state, ":city" => $city, ":cep" => $cep, ":district" => $district, ":street" => $street, ":num" => $number));
+        } catch (PDOException $e) {
+            echo "<script language='javascript' type='text/javascript'>
+                    alert('Erro: ". $e->getMessage() ."');
+                    window.location.href='cadastro.php';
+                  </script>";
+        }
 
         header("Location: login.php");
         
@@ -206,6 +207,13 @@
             <button class="buttonform" type="button" onclick="validaForm()" name="btnSubmit" id="btnSubmit">Finalizar Cadastro</button>
         </div>
     </form>
+    </div>
+
+    <div id="errorAlert" class="alert alert-danger position-absolute" role="alert">
+        <div class="d-flex align-items-center">
+        <i class="fa-solid fa-triangle-exclamation bi flex-shrink-0 me-3 ms-1 fs-4"></i>
+        <div id="alertMsg"></div>
+        </div>
     </div>
     
     <script src="js/cadastroScript.js"></script>
