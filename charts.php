@@ -103,9 +103,9 @@
         ]);
 
         var options = {
-          chart: {
-            title: ''
-          }
+          vAxis: { title: 'Doações' },
+          legend: { position: 'none'},
+          colors: ['#54BD8C'],
         };
 
         var chart = new google.charts.Bar(document.getElementById('donationsChart'));
@@ -160,9 +160,23 @@
         ]);
 
         var options = {
-          legend: { position: 'top', maxLines: 3 },
-          bar: { groupWidth: '75%' },
+          vAxis: { title: 'Doações' },
+          hAxis: { textStyle: {rotation: -45, fontSize: 11} },
+          legend: { textStyle: {fontSize: 11} },
+          bar: { groupWidth: '70%' },
           isStacked: true,
+          series: {
+            0: { color: '#3366CC' },
+            1: { color: '#DC3912' },
+            2: { color: '#FF9900' },
+            3: { color: '#109618' },
+            4: { color: '#990099' },
+            5: { color: '#0099C6' },
+            6: { color: '#FFD700' },
+            7: { color: '#6A5ACD' },
+            8: { color: '#7FFFD4' },
+            9: { color: '#FFA07A' },
+          }
         };
 
         var chart = new google.charts.Bar(document.getElementById('typeChart'));
@@ -170,6 +184,7 @@
         chart.draw(data, google.charts.Bar.convertOptions(options));
       }
     </script>
+    <link rel="stylesheet" type="text/css" href="styles/charts.css">
     <title>Food Waste - Doações</title>
 </head>
 <body>
@@ -180,9 +195,9 @@
   <div class="row row-cols-1 row-cols-md-4 g-4 w-100 m-auto mb-4">
     <div class="col d-flex justify-content-center">
       <div class="card text-bg-green border-1 w-100" style="max-width: 18rem;">
-        <div class="card-header text-start">Total Doações / Ano</div>
+        <div class="card-header text-start fs-5">Total Doações / Ano</div>
         <div class="card-body d-flex justify-content-center">
-          <h5 class="card-title fs-2 my-auto me-1"><?php echo $totalYear ?></h5>
+          <h5 class="card-title fs-3 my-auto me-1"><?php echo $totalYear ?></h5>
           <p class="card-text fs-6 my-auto">/qtd</p>
         </div>
       </div>
@@ -190,9 +205,9 @@
     
     <div class="col d-flex justify-content-center">
       <div class="card text-bg-light-green border-1 w-100" style="max-width: 18rem;">
-        <div class="card-header text-start">Tipo de Alimento / Ano</div>
+        <div class="card-header text-start fs-5">Tipo de Alimento / Ano</div>
         <div class="card-body d-flex justify-content-center">
-          <h5 class="card-title fs-2 my-auto me-1"><?php echo $type ?></h5>
+          <h5 class="card-title fs-3 my-auto me-1"><?php echo $type ?></h5>
           <p class="card-text fs-4 my-auto">(<?php echo $totalType ?>)</p>
         </div>
       </div>
@@ -200,9 +215,9 @@
 
     <div class="col d-flex justify-content-center">
       <div class="card text-bg-green w-100" style="max-width: 18rem;">
-        <div class="card-header text-start">Doador do Ano</div>
+        <div class="card-header text-start fs-5">Doador do Ano</div>
         <div class="card-body d-flex justify-content-center">
-          <h5 class="card-title fs-2 my-auto me-1"><?php echo $donor ?></h5>
+          <h5 class="card-title fs-3 my-auto me-1"><?php echo $donor ?></h5>
           <p class="card-text fs-4 my-auto">(<?php echo $totalDonor ?>)</p>
         </div>
       </div>
@@ -210,29 +225,29 @@
 
     <div class="col d-flex justify-content-center">
       <div class="card text-bg-light-green border-1 w-100" style="max-width: 18rem;">
-        <div class="card-header text-start">Receptor do Ano</div>
+        <div class="card-header text-start fs-5">Receptor do Ano</div>
         <div class="card-body d-flex justify-content-center">
-          <h5 class="card-title fs-2 my-auto me-1"><?php echo $receiver ?></h5>
+          <h5 class="card-title fs-3 my-auto me-1"><?php echo $receiver ?></h5>
           <p class="card-text fs-4 my-auto">(<?php echo $totalReceiver ?>)</p>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="row row-cols-1 row-cols-md-2 g-4 w-100 m-auto">
-    <div class="row row-cols-1 row-cols-md-1 text-start">
+  <div class="row row-cols-1 row-cols-md-2 w-100 m-auto justify-content-center">
+    <div class="row row-cols-1 row-cols-md-1 text-start chart">
       <h2>Doações por mês</h2>
       <div id="donationsChart" style="height: 20rem;"></div>
     </div>
-    <div class="row row-cols-1 row-cols-md-1 text-start">
+    <div class="row row-cols-1 row-cols-md-1 text-start chart">
       <h2>Doações do tipo por mês</h2>
       <div id="typeChart" style="height: 20rem;"></div>
     </div>
-    <div class="row row-cols-1 row-cols-md-1 text-start">
+    <div class="row row-cols-1 row-cols-md-1 text-start chart">
       <h2>Maiores doadores por mês</h2>
       <div id="chart3" style="height: 20rem;"></div>
     </div>
-    <div class="row row-cols-1 row-cols-md-1 text-start">
+    <div class="row row-cols-1 row-cols-md-1 text-start chart">
       <h2>Maiores receptores por mês</h2>
       <div id="chart4" style="height: 20rem;"></div>
     </div>
