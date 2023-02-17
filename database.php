@@ -2,7 +2,7 @@
 
     $dbHost = 'localhost';
     $dbUser = 'root';
-    $dbPassword = 'root';
+    $dbPassword = 'roo';
     $dbName = 'projeto';
 
     setlocale(LC_ALL,'pt_BR.UTF8');
@@ -16,7 +16,7 @@
         $conexao = new PDO("mysql:host=$dbHost;dbname=$dbName; charset=utf8", $dbUser , $dbPassword);
         $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     } catch(PDOException $e) {
-        echo "Erro:" . $e->getMessage();
+        header('Location: error.php?msg='.$e->getMessage());
     }
 
 ?>
