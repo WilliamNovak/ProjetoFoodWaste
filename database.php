@@ -2,7 +2,7 @@
 
     $dbHost = 'localhost';
     $dbUser = 'root';
-    $dbPassword = 'roo';
+    $dbPassword = 'root';
     $dbName = 'projeto';
 
     setlocale(LC_ALL,'pt_BR.UTF8');

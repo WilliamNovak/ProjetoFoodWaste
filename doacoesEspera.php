@@ -15,7 +15,7 @@
       <div class="table-title">
         <div class="row">
           <div class="col-sm-6">
-            <h2>Doações Recebidas</h2>
+            <h2>Doações Disponíveis</h2>
           </div>
         </div>
       </div>
