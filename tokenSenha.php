@@ -1,12 +1,31 @@
 <?php
     include_once('database.php');
 
+    if (isset($_POST['token'])) {
+        $token = $_POST['token'];
+        echo $token;
+
+        $stmt = $conexao->prepare("SELECT * FROM usuario WHERE token_senha = ?");
+        $stmt->execute([$token]);
+        $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($usuario) {
+    
+            header('Location: redefinirSenha.php?token=' . $token);
+            exit;
+        } else {
+            echo 'Token não encontrado';
+        }
+    }
+
     session_start();
     if((isset($_SESSION['user']) == true) and (isset($_SESSION['password']) == true)){
         header('Location: index.php');
     }
 
-    require_once("./template.php");
+    if(isset($_GET['msg'])) {
+        echo "<script> alert('{$_GET['msg']}'); </script>";
+    }
 ?>
 
 <link rel="stylesheet" type="text/css" href="styles/style.css">
@@ -24,23 +43,14 @@
             <h1 class="legend">
                 <img src="imgs/LogoPequena.png" alt="Login Logo" class="login-logo">
             </h1>
-            <h2 class="legend fs-1">E-mail de recuperação</h2>
+            <h2 class="legend fs-1">Verificar token</h2>
             <div class="input-div">
                 <span class="fa fa-user login-icon"></span>
-                <input class="inputs" type="email" id="email" name="email" placeholder="E-mail" tabindex=1 required>
+                <input class="inputs" type="text" name="token" placeholder="Token" tabindex=1 required>
             </div>
-            <button class="buttonform" type="button" name="submit" onclick="validaEnvioEmail()" tabindex=3>Enviar Token</button>
+            <input class="buttonform" type="submit" name="submit" value="Entrar" tabindex=3>
         </form>
     </div>
-
-    <div id="errorAlert" class="alert alert-danger position-absolute" role="alert">
-        <div class="d-flex align-items-center">
-            <i class="fa-solid fa-triangle-exclamation bi flex-shrink-0 me-3 ms-1 fs-4"></i>
-            <div id="alertMsg"></div>
-        </div>
-    </div>
-    
-    <script src="js/password.js"></script>
 
 <?php
     require_once("./footer.php");
