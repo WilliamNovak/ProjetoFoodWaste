@@ -17,7 +17,7 @@ function validaEnvioEmail() {
                 alert();
 
             } else {
-                window.location = "localhost/ProjetoFoodWaste/tokenSenha.php";
+                window.location = "tokenSenha.php";
             }
         }
     });

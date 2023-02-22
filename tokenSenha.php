@@ -26,6 +26,7 @@
     if(isset($_GET['msg'])) {
         echo "<script> alert('{$_GET['msg']}'); </script>";
     }
+    require_once("./template.php");
 ?>
 
 <link rel="stylesheet" type="text/css" href="styles/style.css">

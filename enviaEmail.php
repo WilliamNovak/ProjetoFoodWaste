@@ -2,6 +2,8 @@
     include_once('database.php');
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\Exception;
+    use PHPMailer\PHPMailer\SMTP;
+
     require 'PHPMailer/src/Exception.php';
     require 'PHPMailer/src/PHPMailer.php';
     require 'PHPMailer/src/SMTP.php';
@@ -33,6 +35,13 @@
         $mail->Password = 'wqqjjiqjljbyhqlx';
         $mail->SMTPSecure = 'tls';
         $mail->Port = 587;
+        $mail->SMTPOptions = array(
+            'ssl' => array(
+                'verify_peer' => false,
+                'verify_peer_name' => false,
+                'allow_self_signed' => true
+            )
+        );
 
         $mail->setFrom('foodwastemail@gmail.com', 'Food Waste');
         $mail->addAddress($email);
