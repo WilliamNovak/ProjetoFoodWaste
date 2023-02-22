@@ -51,7 +51,7 @@
 
         if (!$mail->send()){ 
             $errors++;
-            $msg = 'Ocorreu um erro ao enviar o e-mail de recuperação de senha'.$mail->ErrorInfo;
+            $msg = 'Ocorreu um erro ao enviar o e-mail de recuperação de senha';
         }
     } 
     else {

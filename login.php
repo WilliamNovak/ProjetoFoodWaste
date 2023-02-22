@@ -6,6 +6,24 @@
         header('Location: index.php');
     }
 
+    if(isset($_GET['pwMsg'])) {
+        echo '<script type="text/javascript">';
+        echo '  document.addEventListener("DOMContentLoaded", function() {
+
+                    document.getElementById("successMsg").innerHTML = "'. $_GET['pwMsg'] .'";
+
+                    $("#successAlert").fadeIn("fast", function(){
+                        $(this).show();
+                    });
+                    setTimeout(function(){
+                        $("#successAlert").fadeOut("slow", function(){
+                            $(this).hide();
+                        });
+                    }, 3000);
+                });';
+        echo '</script>';
+    }
+
     if(isset($_GET['msg'])) {
         echo '<script type="text/javascript">';
         echo '  document.addEventListener("DOMContentLoaded", function() {
@@ -70,6 +88,13 @@
         <div id="alertMsg"></div>
     </div>
 </div>
+
+<div id="successAlert" class="alert alert-success position-absolute" role="alert">
+    <div class="d-flex align-items-center">
+      <i class="fa-solid fa-circle-check bi flex-shrink-0 me-3 ms-1 fs-4"></i>
+      <div id="successMsg"></div>
+    </div>
+  </div>
 
 <?php
     require_once("./footer.php");

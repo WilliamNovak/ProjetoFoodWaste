@@ -8,8 +8,6 @@ function validaEnvioEmail() {
         dataType: 'json'
     }).done(function(data) {
         if(data){
-            $('#donateModal').modal('hide');
-
             if (data.errors != 0){
                 
                 document.getElementById("alertMsg").innerHTML = data.msg;
@@ -18,6 +16,30 @@ function validaEnvioEmail() {
 
             } else {
                 window.location = "tokenSenha.php";
+            }
+        }
+    });
+}
+
+function validaPw(token) {
+    var pw1 = $('#pw1').val();
+    var pw2 = $('#pw2').val();
+
+    $.ajax({
+        url: 'atualizaSenha.php',
+        method: 'POST',
+        data: {token: token, password: pw1, confirmPassword: pw2},
+        dataType: 'json'
+    }).done(function(data) {
+        if(data){
+            if (data.errors != 0){
+                
+                document.getElementById("alertMsg").innerHTML = data.msg;
+
+                alert();
+
+            } else {
+                window.location = "login.php?pwMsg="+data.msg;
             }
         }
     });
