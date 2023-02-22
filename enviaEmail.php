@@ -27,6 +27,7 @@
 
         // Envia o e-mail com o link de recuperação de senha
         $mail = new PHPMailer();
+        $mail->CharSet = 'UTF-8';
 
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
