@@ -49,30 +49,36 @@
     $typesRes = $conexao->prepare($sql_food_types);
     $typesRes->execute();
 
-    $sql_months = "WITH calendar AS (
-      SELECT NOW() - INTERVAL x.month_number MONTH AS date
-      FROM (
-        SELECT 0 AS month_number
-        UNION SELECT 1
-        UNION SELECT 2
-        UNION SELECT 3
-        UNION SELECT 4
-        UNION SELECT 5
-        UNION SELECT 6
-        UNION SELECT 7
-        UNION SELECT 8
-        UNION SELECT 9
-        UNION SELECT 10
-        UNION SELECT 11
-        UNION SELECT 12
-      ) x
-      WHERE x.month_number < 12
-    )
-    SELECT DISTINCT DATE_FORMAT(date, '%b') AS mes, YEAR(date) AS ano
-      FROM calendar
-    ORDER BY date";
-    $res_months = $conexao->prepare($sql_months);
-    $res_months->execute();
+    // Necessário MySQL 8.0 ou superior para funcionar
+    try {
+      $sql_months = "WITH calendar AS (
+        SELECT NOW() - INTERVAL x.month_number MONTH AS date
+        FROM (
+          SELECT 0 AS month_number
+          UNION SELECT 1
+          UNION SELECT 2
+          UNION SELECT 3
+          UNION SELECT 4
+          UNION SELECT 5
+          UNION SELECT 6
+          UNION SELECT 7
+          UNION SELECT 8
+          UNION SELECT 9
+          UNION SELECT 10
+          UNION SELECT 11
+          UNION SELECT 12
+        ) x
+        WHERE x.month_number < 12
+      )
+      SELECT DISTINCT DATE_FORMAT(date, '%b') AS mes, YEAR(date) AS ano
+        FROM calendar
+      ORDER BY date";
+      $res_months = $conexao->prepare($sql_months);
+      $res_months->execute();
+
+    } catch(PDOException $e) {
+      header('Location: error.php?msg='.'Erro: Versão do MySQL desatualizada. Mínimo necessário: MySQL 8.0');
+    }
 ?>
     <link rel="stylesheet" type="text/css" href="styles/style.css" >
 
