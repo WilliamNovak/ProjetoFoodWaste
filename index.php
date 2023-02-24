@@ -17,6 +17,7 @@
 <?php
     require_once("./navbar.php"); 
 ?>
+
 <div id="carouselRegion" class="carousel slide banner" data-bs-interval="10000" data-bs-ride="carousel">
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#carouselRegion" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -67,57 +68,69 @@
   
 </div>
 
-<div class="row row-cols-1 row-cols-md-3 g-4 w-75 m-auto mb-4">
-  <div class="col d-flex justify-content-center">
-  <div class="card border-success border-1 mb-3 w-100 h-100" style="max-width: 18rem;">
-      <div class="card-body text-success">
-        <h5 class="card-title">Quem somos?</h5>
-        <p class="card-text">Nossa startup tem como objetivo reduzir o desperdício de alimentos nos mercados.</p>
+<div class="row row-cols-1 m-auto mt-4 justify-content-center">
+
+  <div class="row row-cols-2 p-4 mx-3 justify-content-around align-content-center who-div">
+    <div class="row row-cols-1 px-5 info">
+      <h2 class="info-title">Quem Somos?</h2>
+      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ducimus, quibusdam eum, molestiae minus nihil, animi maiores iste delectus sint rerum ut natus officiis molestias. Magnam iusto fuga earum asperiores nobis?</p>
+    </div>
+    <div class="row row-cols-1 py-4">
+      <div class="row row-cols-3 justify-content-around align-content-center">
+        <div class="row justify-content-center align-content-center circle-div">
+          <img src="imgs/william.jpg" alt="" class="circle">
+        </div>
+        <div class="row justify-content-center align-content-center circle-div">
+          <img src="imgs/lazaro.png" alt="" class="circle">
+        </div>
+        <div class="row justify-content-center align-content-center circle-div">
+          <img src="imgs/dionatan.png" alt="" class="circle">
+        </div>
       </div>
     </div>
   </div>
   
-  <div class="col d-flex justify-content-center">
-    <div class="card border-success border-1 mb-3 w-100 h-100" style="max-width: 18rem;">
-      <div class="card-body text-success">
-        <h5 class="card-title">O que fazemos?</h5>
-        <p class="card-text">Nós intermediamos doações para instituições caritativas através de um algoritmo de redistribuição automática que equilibra as doações para garantir a igualdade.</p>
+  <div class="row row-cols-2 justify-content-around align-content-center p-3 mx-3">
+    <div class="row row-cols-1 py-4">
+      <div class="row row-cols-3 justify-content-around align-content-center">
+        <div class="row justify-content-center align-content-center icon-circle">
+          <i class="fa-solid fa-apple-whole icon"></i>
+        </div>
+        <div class="row justify-content-center align-content-center icon-circle">
+          <i class="fa-solid fa-trash-can icon"></i>
+        </div>
+        <div class="row justify-content-center align-content-center icon-circle">
+          <i class="fa-solid fa-hand-holding-heart icon"></i>
+        </div>
       </div>
+    </div>
+    <div class="row row-cols-1 px-5 info">
+      <h2 class="info-title">O que fazemos?</h2>
+      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ducimus, quibusdam eum, molestiae minus nihil, animi maiores iste delectus sint rerum ut natus officiis molestias. Magnam iusto fuga earum asperiores nobis?</p>
     </div>
   </div>
 
-  <div class="col d-flex justify-content-center">
-    <div class="card border-success border-1 mb-3 w-100 h-100" style="max-width: 18rem;">
-      <div class="card-body text-success">
-        <h5 class="card-title">Por que fazemos?</h5>
-        <p class="card-text">Criamos este projeto para preencher a necessidade de um sistema que redistribua doações de forma justa e equitativa, tendo em vista que atualmente não existe algo semelhante no mercado.</p>
+  <div class="row row-cols-1 pb-3 justify-content-center">
+    <div class="row row-cols-1 div-fluxo justify-content-center">
+      <h2>Como funciona?</h2>
+      <div class="row row-cols-1 justify-content-center">
+        <img src="imgs/fluxo.svg" class="fluxo">
       </div>
+    </div>
+  </div>
+  
+  <div class="row row-cols-2 justify-content-around align-items-center p-4 mx-3 mb-4">
+    <div class="row row-cols-1 px-5 info">
+      <h2 class="info-title">Por que fazemos?</h2>
+      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ducimus, quibusdam eum, molestiae minus nihil, animi maiores iste delectus sint rerum ut natus officiis molestias. Magnam iusto fuga earum asperiores nobis?</p>
+    </div>
+    <div class="row row-cols-1">
+      <img src="imgs/fluxo_algoritmo.png" alt="" class="img-algorithm">
     </div>
   </div>
 </div>
 
-<h2>FLUXOGRAMA</h2>
-
-<img src="imgs/teste.svg" class="fluxo">
-
-<div class="div-ceos">
-    <div class="ceos">
-        <div class="card">
-          <img src="imgs/djow.png" alt="">
-            Dionatan Jocemar de Souza de Lima
-        </div>
-        
-        <div class="card">
-          <img src="imgs/lalo.png" alt="">
-            Lázaro Engel Fernandes
-        </div>
-
-        <div class="card">
-          <img src="imgs/will.png" alt="">
-            William Renan Novak
-        </div>
-    </div>
-</div>
+<footer class="footer"></footer>
 
 <?php
     require_once("./footer.php");

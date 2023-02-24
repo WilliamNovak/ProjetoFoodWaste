@@ -1,5 +1,6 @@
 body {
   background: #D4EDD5 !important;
+  height: 100%;
 }
 
 #nav {
@@ -7,7 +8,7 @@ body {
 }
 
 .banner {
-  height: 35rem;
+  height: 80%;
   width: 100%;
   background-color: rgba(255,255,255,0.3);
   border: 3px;
@@ -23,8 +24,13 @@ body {
   min-height: 100%;
 }
 
+.carousel-inner {
+  height: 100%;
+}
+
 .crs {
-  height: 35rem;
+  position: relative;
+  height: 100%;
   width: 100%;
   background-color: black;
 }
@@ -34,7 +40,8 @@ body {
 }
 
 .crs img {
-  height: 35rem;
+  height: 70%;
+  position: absolute;
   object-fit: cover;
 }
 
@@ -54,58 +61,62 @@ body {
   box-shadow: inset 3px 4px 5px #379683;
 }
 
-.fluxo {
-  height: 400px;
+.div-fluxo {
   width: 95%;
-  background-color: rgba(255,255,255,0.3);
-  border: 3px;
-  margin: 2px;
-  padding:30px;
-  border-style: solid;
-  border-color: white;
-}
-
-.div-cards {
   margin: auto;
-  margin-top: 2rem;
-  display: flex;
-  flex-direction: row;
-  align-content: space-around;
-  justify-content: space-around;
-  height: 50rem;
 }
 
-.div-ceos{
-  margin: 5% 50% 20px 50%;
-  display: flex;
-  align-items: center;
-  flex-wrap: nowrap;
-  flex-direction: row;
-  align-content: space-around;
-  justify-content: space-around;
-}
-
-.ceos{
-  display: flex;
-  grid-template-columns:  repeat(3, 310px);
-}
-
-.card{
-  height: 350px;
-  width: 200px;
-  border: 3px;
-  align-items: center;
-  border-style: solid;
+.fluxo {
   background-color: rgba(255,255,255,0.3);
-  margin: 10px;
+  border: 2px;
+  margin: 2px;
+  padding: 10px;
+  border-style: solid;
   border-color: white;
 }
-.card img{
-  margin-top: 10px;
-  border: 2px;
-  border-style: solid;
-  border-radius: 5px;
-  border-color: #379683;
-  height: 250px;
-  width: 90%;
+
+.info {
+  text-align: justify;
+}
+
+.info-title {
+  font-size: 3rem;
+  padding-bottom: 0rem;
+  border-bottom: 4px solid #379683;
+  text-align: start;
+}
+
+.circle-div {
+  width: 170px;
+  height: 170px;
+  padding: 0;
+}
+
+.circle {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.img-algorithm {
+  max-width: 600px;
+  max-height: 350px;
+}
+
+.icon {
+  font-size: 5rem;
+  color: #379683;
+}
+
+.icon-circle {
+  width: 140px;
+  height: 140px;
+  border: 5px solid #379683;
+  border-radius: 50%;
+}
+
+.footer {
+  width: 100%;
+  height: 60px;
+  background-color: #56C290;
 }
