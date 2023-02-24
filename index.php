@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="styles/homeStyle.css" >
     <title>Food Waste</title>
 </head>
-<body>
+<body class="homePage">
 <?php
     require_once("./navbar.php"); 
 ?>
@@ -72,7 +72,7 @@
 
   <div class="row row-cols-2 p-4 mx-3 justify-content-around align-content-center who-div">
     <div class="row row-cols-1 px-5 info">
-      <h2 class="info-title">Quem Somos?</h2>
+      <h2 id="whoTitle" class="info-title">Quem somos?</h2>
       <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ducimus, quibusdam eum, molestiae minus nihil, animi maiores iste delectus sint rerum ut natus officiis molestias. Magnam iusto fuga earum asperiores nobis?</p>
     </div>
     <div class="row row-cols-1 py-4">
@@ -105,7 +105,7 @@
       </div>
     </div>
     <div class="row row-cols-1 px-5 info">
-      <h2 class="info-title">O que fazemos?</h2>
+      <h2 id="whatTitle" class="info-title">O que fazemos?</h2>
       <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ducimus, quibusdam eum, molestiae minus nihil, animi maiores iste delectus sint rerum ut natus officiis molestias. Magnam iusto fuga earum asperiores nobis?</p>
     </div>
   </div>
@@ -121,7 +121,7 @@
   
   <div class="row row-cols-2 justify-content-around align-items-center p-4 mx-3 mb-4">
     <div class="row row-cols-1 px-5 info">
-      <h2 class="info-title">Por que fazemos?</h2>
+      <h2 id="whyTitle" class="info-title">Por que fazemos?</h2>
       <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ducimus, quibusdam eum, molestiae minus nihil, animi maiores iste delectus sint rerum ut natus officiis molestias. Magnam iusto fuga earum asperiores nobis?</p>
     </div>
     <div class="row row-cols-1">

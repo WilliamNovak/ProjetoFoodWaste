@@ -233,3 +233,22 @@ form {
   background-color: #56c290;
   color: #ffff;
 }
+
+.home-links {
+  margin-right: 16rem;
+}
+
+@media (max-width: 991px) {
+  .home-links {
+    flex-direction: column;
+    margin: auto;
+  }
+}
+
+.home-links {
+  display:none;
+}
+
+.homePage .home-links {
+  display: flex;
+}

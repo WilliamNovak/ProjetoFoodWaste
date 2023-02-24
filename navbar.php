@@ -12,6 +12,18 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
 
+                    <div class="home-links">
+                        <li class="nav-item active">
+                            <a class="nav-link" id="login-link" href="#whoTitle">Quem somos?</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" id="login-link" href="#whatTitle">O que fazemos?</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" id="login-link" href="#whyTitle">Por que fazemos?</a>
+                        </li>
+                    </div>
+
                     <?php 
                         if((!isset($_SESSION['user']) == true) and (!isset($_SESSION['password']) == true)){
                     ?>
@@ -19,46 +31,34 @@
                         <a class="nav-link" id="cadastro-link" href="cadastro.php">Cadastro</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" id="login-link" href="login.php">
-                            Login
-                        </a>
+                        <a class="nav-link" id="login-link" href="login.php">Login</a>
                     </li>
 
                     <?php
                         } else {
                     ?>
                     <li class="nav-item active">
-                        <a class="nav-link" id="chartsLink" href="charts.php">
-                            Dashboard
-                        </a>
+                        <a class="nav-link" id="chartsLink" href="charts.php">Dashboard</a>
                     </li>
 
                     <?php
                             if($_SESSION['userType'] == "D"){
                     ?>
                     <li class="nav-item active">
-                        <a class="nav-link" id="doacaoLinkD" href="doacoes.php">
-                            Doações
-                        </a>
+                        <a class="nav-link" id="doacaoLinkD" href="doacoes.php">Doações</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" id="alimento-link" href="alimentos.php">
-                            Alimentos
-                        </a>
+                        <a class="nav-link" id="alimento-link" href="alimentos.php">Alimentos</a>
                     </li>
 
                     <?php
                             } else {
                     ?>
                     <li class="nav-item active">
-                        <a class="nav-link" id="doacaoLinkR" href="doacoesReceptor.php">
-                            Doações
-                        </a>
+                        <a class="nav-link" id="doacaoLinkR" href="doacoesReceptor.php">Doações</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" id="doacaoEsperaLink" href="doacoesEspera.php">
-                            Disponível
-                        </a>
+                        <a class="nav-link" id="doacaoEsperaLink" href="doacoesEspera.php">Disponível</a>
                     </li>
                     <?php
                             }
