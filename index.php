@@ -51,7 +51,7 @@
       <img src="imgs/algorithm_img" class="d-block w-100 dark-img crs-algorithm" alt="Imagem algoritmo">
       <div class="carousel-caption d-md-block">
         <h2 class="text-start crs-content fs-1">Algoritmo</h2>
-        <p class="text-start crs-content fs-3">Teste slide sobre algoritmo</p>
+        <p class="text-start crs-content fs-3">Trabalhamos com a tecnologia para redirecionar doações de alimentos de forma proporcional e igualitária, através de um algoritmo que realiza o encaminhamento das doações de forma automatizada.</p>
       </div>
     </div>
   </div>
@@ -124,7 +124,7 @@
       <h2 id="whyTitle" class="info-title">Por que fazemos?</h2>
       <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ducimus, quibusdam eum, molestiae minus nihil, animi maiores iste delectus sint rerum ut natus officiis molestias. Magnam iusto fuga earum asperiores nobis?</p>
     </div>
-    <div class="row row-cols-1">
+    <div class="row row-cols-1 d-flex justify-content-center">
       <img src="imgs/fluxo_algoritmo.png" alt="" class="img-algorithm">
     </div>
   </div>

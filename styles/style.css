@@ -235,20 +235,38 @@ form {
 }
 
 .home-links {
-  margin-right: 16rem;
-}
-
-@media (max-width: 991px) {
-  .home-links {
-    flex-direction: column;
-    margin: auto;
-  }
-}
-
-.home-links {
   display:none;
 }
 
-.homePage .home-links {
+.homePage .home-links{
   display: flex;
+}
+
+.links-div, .navbar-nav, .pages-links {
+  width: 100%;
+}
+
+.homePage .pages-links {
+  width: 20%;
+}
+
+.pages-links {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.navbar-nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (max-width: 991px) {
+  .home-links, .pages-links {
+    flex-direction: column;
+    margin: auto;
+  }
+
+  .links-div {
+    width: 18%;
+  }
 }
