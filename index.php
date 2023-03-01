@@ -73,7 +73,7 @@
   <div class="row row-cols-2 p-4 mx-3 justify-content-around align-content-center who-div">
     <div class="row row-cols-1 px-5 info">
       <h2 id="whoTitle" class="info-title">Quem somos?</h2>
-      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ducimus, quibusdam eum, molestiae minus nihil, animi maiores iste delectus sint rerum ut natus officiis molestias. Magnam iusto fuga earum asperiores nobis?</p>
+      <p>Uma equipe de desenvolvedores focada em desenvolver aplicações ágeis e inovadoras, que tenham pontecial para viabilizar mais praticidade e uma melhor qualidade de vida aos usuários do sistema.</p>
     </div>
     <div class="row row-cols-1 py-4">
       <div class="row row-cols-3 justify-content-around align-content-center">
@@ -106,7 +106,7 @@
     </div>
     <div class="row row-cols-1 px-5 info">
       <h2 id="whatTitle" class="info-title">O que fazemos?</h2>
-      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ducimus, quibusdam eum, molestiae minus nihil, animi maiores iste delectus sint rerum ut natus officiis molestias. Magnam iusto fuga earum asperiores nobis?</p>
+      <p>Através do sistema web FoodWaste, buscamos viabilizar e facilitar o processo de doação de alimentos excedentes do comércio, intermediando para que estas doações cheguem até instituições que precisem.</p>
     </div>
   </div>
 
@@ -122,7 +122,7 @@
   <div class="row row-cols-2 justify-content-around align-items-center p-4 mx-3 mb-4">
     <div class="row row-cols-1 px-5 info">
       <h2 id="whyTitle" class="info-title">Por que fazemos?</h2>
-      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ducimus, quibusdam eum, molestiae minus nihil, animi maiores iste delectus sint rerum ut natus officiis molestias. Magnam iusto fuga earum asperiores nobis?</p>
+      <p>O intuito do projeto é tornar o processo de encaminhamento das doações mais fácil, ágil e igualitário, garantindo a inclusão de todos usuários e buscando minimizar os problemas da insegurança alimentar e desperdício de alimentos, através do algoritmo encarregado do sistema, exemplificado ao lado.</p>
     </div>
     <div class="row row-cols-1 d-flex justify-content-center">
       <img src="imgs/fluxo_algoritmo.png" alt="" class="img-algorithm">
