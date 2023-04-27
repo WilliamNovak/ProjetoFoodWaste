@@ -148,7 +148,7 @@
             <i class="fa-solid fa-chevron-left"></i> 
             Voltar
           </button>
-          <button type="button" class="btn btn-success" onclick="doarAlimento()">
+          <button type="button" class="btn btnFormat" onclick="doarAlimento()">
             <i class="fa-solid fa-utensils"></i> 
             Doar
           </button>

@@ -11,6 +11,11 @@
     color: #EDF5E1;
 }
 
+.btnFormat:hover {
+    background-color: #338877;
+    color: #EDF5E1;
+}
+
 .flex-container {
     display: flex;
     padding: 10px;
